@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import '../../../core/model/account_mine.dart';
 import '../../../core/service/request/login_request.dart';
 import '../../../core/service/utils/constant.dart';
-import '../../../core/shared_preferences/bilibili_shared_preference.dart';
+import '../../../core/shared_preferences/feelYoung_shared_preference.dart';
 import '../../../core/shared_preferences/shared_preference_util.dart';
 import '../../shared/params_sign.dart';
 import 'mine_state.dart';

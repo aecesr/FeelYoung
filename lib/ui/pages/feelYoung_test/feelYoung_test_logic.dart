@@ -5,10 +5,10 @@ import 'package:flutter_floating/floating/floating.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:video_player/video_player.dart';
-import 'bilibili_test_state.dart';
+import 'feelYoung_test_state.dart';
 
-class BilibiliTestLogic extends GetxController {
-  final BilibiliTestState state = BilibiliTestState();
+class FeelYoungTestLogic extends GetxController {
+  final FeelYoungTestState state = FeelYoungTestState();
 
   @override
   void onReady() {

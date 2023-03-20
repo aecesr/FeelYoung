@@ -17,7 +17,7 @@ class UploadLogic extends GetxController {
 
   @override
   void onReady() {
-    BilibiliPermission.requestUploadPermissions();
+    FeelYoungPermission.requestUploadPermissions();
     ///获取本地文件-待补充
     fetLocalFileData();
     super.onReady();

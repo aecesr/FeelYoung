@@ -31,9 +31,18 @@ apply plugin: 'com.huawei.agconnect'
 //keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 
 
-
-
 android {
+
+    // 自定义APK安装包名
+    android.applicationVariants.all {
+        variant ->
+            variant.outputs.all {
+                def flavor = variant.name
+                def versionName = variant.versionName
+                outputFileName = "FeelYoung.apk"
+
+            }
+    }
     compileSdkVersion 33
     ndkVersion flutter.ndkVersion
 
@@ -56,11 +65,11 @@ android {
             abiFilters 'x86', 'x86_64', 'armeabi', 'armeabi-v7a', 'mips', 'mips64', 'arm64-v8a'
         }
         manifestPlaceholders = [
-                JPUSH_PKGNAME: applicationId,
+                JPUSH_PKGNAME : applicationId,
                 //JPush 上注册的包名对应的 Appkey.
-                JPUSH_APPKEY : "7d6d63fa06959ac31ff30914",
+                JPUSH_APPKEY  : "7d6d63fa06959ac31ff30914",
                 //暂时填写默认值即可.
-                JPUSH_CHANNEL: "developer-default",
+                JPUSH_CHANNEL : "developer-default",
                 TENCENT_APP_ID: "102026031"//腾讯QQ AppId
         ]
     }
@@ -103,3 +112,4 @@ dependencies {
     implementation 'com.huawei.hms:push:6.5.0.300'
     implementation 'cn.jiguang.sdk.plugin:huawei:4.8.4'
 }
+

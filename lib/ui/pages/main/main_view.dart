@@ -1,12 +1,12 @@
 import 'package:FeelYoung_getx/core/permission/feelyoung_permission.dart';
-import 'package:FeelYoung_getx/ui/pages/bilibili_test/bilibili_test_view.dart';
+import 'package:FeelYoung_getx/ui/pages/feelYoung_test/feelYoung_test_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:get/get.dart';
 
 import '../../../core/I18n/str_res_keys.dart';
-import '../../../core/shared_preferences/bilibili_shared_preference.dart';
+import '../../../core/shared_preferences/feelYoung_shared_preference.dart';
 import '../../../core/shared_preferences/shared_preference_util.dart';
 import '../../shared/app_theme.dart';
 import '../../shared/image_asset.dart';
@@ -66,7 +66,7 @@ class MainScreen extends StatelessWidget {
               onTap: (index) {
                 ///发布界面
                 if (index == 2) {
-                  BilibiliPermission.requestUploadPermissions();
+                  FeelYoungPermission.requestUploadPermissions();
                   Get.toNamed(PublishScreen.routeName);
                 } else {
                   logic.updateCurrentIndex(index);
@@ -157,7 +157,7 @@ class MainScreen extends StatelessWidget {
                 SpeedDialChild(
                   backgroundColor: HYAppTheme.norWhite01Color,
                   onTap: () {
-                    Get.toNamed(BilibiliTestScreen.routeName);
+                    Get.toNamed(FeelYoungTestScreen.routeName);
                   },
                   label: '小窗口',
                   child: Icon(

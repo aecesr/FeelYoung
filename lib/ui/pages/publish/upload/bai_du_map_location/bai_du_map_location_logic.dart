@@ -20,7 +20,7 @@ class BaiDuMapLocationLogic extends GetxController {
     initBaiduMap();
 
     ///请求权限
-    BilibiliPermission.requestBaiDuMapLocationPermissions();
+    FeelYoungPermission.requestBaiDuMapLocationPermissions();
     super.onReady();
   }
 

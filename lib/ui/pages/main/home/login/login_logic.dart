@@ -9,7 +9,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import '../../../../../core/service/request/login_request.dart';
-import '../../../../../core/shared_preferences/bilibili_shared_preference.dart';
+import '../../../../../core/shared_preferences/feelYoung_shared_preference.dart';
 import '../../../../../core/shared_preferences/shared_preference_util.dart';
 import '../../../../shared/params_sign.dart';
 import '../../../../shared/rsa_encrypt.dart';

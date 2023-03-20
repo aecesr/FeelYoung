@@ -13,7 +13,7 @@ class MainLogic extends GetxController {
     ///手机端获取权限
     if (!kIsWeb) {
       if (Platform.isAndroid) {
-        BilibiliPermission.requestAllPermissions();
+        FeelYoungPermission.requestAllPermissions();
       }
     }
     super.onInit();

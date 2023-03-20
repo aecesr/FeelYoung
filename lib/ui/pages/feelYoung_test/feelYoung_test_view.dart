@@ -6,21 +6,21 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 
-import 'bilibili_test_logic.dart';
+import 'feelYoung_test_logic.dart';
 
 ///只用于测试的界面!!!!
 ///到main.dart切换初始路由
-class BilibiliTestScreen extends StatefulWidget {
-  static String routeName = "/bilibili_test";
+class FeelYoungTestScreen extends StatefulWidget {
+  static String routeName = "/feelYoung_test";
 
   @override
-  State<BilibiliTestScreen> createState() => _BilibiliTestScreenState();
+  State<FeelYoungTestScreen> createState() => _FeelYoungTestScreenState();
 }
 
-class _BilibiliTestScreenState extends State<BilibiliTestScreen>
+class _FeelYoungTestScreenState extends State<FeelYoungTestScreen>
     with SingleTickerProviderStateMixin {
-  final logic = Get.find<BilibiliTestLogic>();
-  final state = Get.find<BilibiliTestLogic>().state;
+  final logic = Get.find<FeelYoungTestLogic>();
+  final state = Get.find<FeelYoungTestLogic>().state;
   late AnimationController animationController;
   late Animation<double> animation;
   late Animation<double> curve;
@@ -54,7 +54,7 @@ class _BilibiliTestScreenState extends State<BilibiliTestScreen>
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<BilibiliTestLogic>(
+    return GetBuilder<FeelYoungTestLogic>(
       builder: (logic) {
         return Scaffold(
           backgroundColor: Colors.blueGrey,

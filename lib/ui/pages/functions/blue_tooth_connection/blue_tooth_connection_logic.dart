@@ -21,7 +21,7 @@ class BlueToothConnectionLogic extends GetxController {
   }
 
   Future startScanBlueTooth() {
-    BilibiliPermission.requestBlueToothPermissions();
+    FeelYoungPermission.requestBlueToothPermissions();
     return BlueToothUtil.startScan();
   }
 

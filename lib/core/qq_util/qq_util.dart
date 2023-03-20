@@ -65,7 +65,7 @@ class QQUtil {
     await Tencent.instance.shareWebpage(
       scene: TencentScene.SCENE_QQ,
       title: '网页分享',
-      targetUrl: 'https://www.bilibili.com',
+      targetUrl: 'https://www.FeelYoung.com',
     );
   }
 }

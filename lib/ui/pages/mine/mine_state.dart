@@ -1,5 +1,5 @@
 import '../../../core/model/account_mine.dart';
-import '../../../core/shared_preferences/bilibili_shared_preference.dart';
+import '../../../core/shared_preferences/feelYoung_shared_preference.dart';
 import '../../../core/shared_preferences/shared_preference_util.dart';
 
 class MineState {

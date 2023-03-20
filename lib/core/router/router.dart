@@ -4,8 +4,8 @@ import 'package:FeelYoung_getx/ui/pages/start/start_binding.dart';
 import 'package:FeelYoung_getx/ui/pages/start/start_view.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 
-import '../../ui/pages/bilibili_test/bilibili_test_binding.dart';
-import '../../ui/pages/bilibili_test/bilibili_test_view.dart';
+import '../../ui/pages/feelYoung_test/feelYoung_test_binding.dart';
+import '../../ui/pages/feelYoung_test/feelYoung_test_view.dart';
 import '../../ui/pages/dynamic_circle/dynamic_circle_binding.dart';
 import '../../ui/pages/functions/animation_compoent/animation_compoent_view.dart';
 import '../../ui/pages/functions/blue_tooth_connection/blue_tooth_connection_binding.dart';
@@ -184,8 +184,8 @@ class AsRouter {
 
     ///搜索地名
     GetPage(
-        name: BilibiliTestScreen.routeName,
-        page: () => BilibiliTestScreen(),
+        name: FeelYoungTestScreen.routeName,
+        page: () => FeelYoungTestScreen(),
         binding: BilibiliTestBinding()),
 
     ///QQ分享

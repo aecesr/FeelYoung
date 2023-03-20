@@ -273,7 +273,7 @@ class _FeelYoungVideoPlayerComponentState
                         state.showTopBarMore ? GestureDetector(
                           onTap: () {
                             ///请求下载的权限
-                            BilibiliPermission.requestDownloadPermissions();
+                            FeelYoungPermission.requestDownloadPermissions();
 
                             ///初始化下载列表
                             logic.iniDownloadList();

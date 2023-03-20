@@ -58,17 +58,17 @@ const strResZh = {
   SR.goIntoTeenMode: '进入青少年模式>',
   SR.iKnowIt: '我知道了',
   SR.teenagerModeDetailDesc:
-      '为呵护未成年健康成长，哔哩哔哩特别推出青少年模式，该模式下部分功能无法正常使用。请监护人主动选择，并设置监护密码',
-  SR.userAgreementDetailDesc: "感谢您信任并使用bilibili。\n"
-      "我们将依据《哔哩哔哩弹幕网用户使用协议》及《哔哩哔哩隐私政策》"
+      '为呵护未成年健康成长，飞漾视频特别推出青少年模式，该模式下部分功能无法正常使用。请监护人主动选择，并设置监护密码',
+  SR.userAgreementDetailDesc: "感谢您信任并使用FeelYoung。\n"
+      "我们将依据《飞漾视频用户使用协议》及《飞漾视频隐私政策》"
       "来帮助您了解我们在收集、使用、存储和共享您个人信息的情况以及您享有的相关权利。\n"
-      "在您使用bilibili视频观看服务时，我们将收集您设备信息、操作日志及浏览记录等信息。\n"
-      "在您使用bilibili视频及其他内容上传、分享、评论、收藏等服务时，我们需要获取您设备的"
+      "在您使用FeelYoung视频观看服务时，我们将收集您设备信息、操作日志及浏览记录等信息。\n"
+      "在您使用FeelYoung视频及其他内容上传、分享、评论、收藏等服务时，我们需要获取您设备的"
       "相机权限、相册权限、位置权限等信息。\n\n您可以在相关页面访问、修改、删除您的个人信息或"
       "管理您的授权。\n\n我们会采用行业内领先的安全技术来保护您的个人信息。\n\n",
   SR.userAgreementDetailDescText01: '您可通过阅读完整的',
-  SR.userAgreementDetailDescText02: '《哔哩哔哩弹幕网用户使用协议》',
-  SR.userAgreementDetailDescText03: '《哔哩哔哩隐私政策》',
+  SR.userAgreementDetailDescText02: '《飞漾视频弹幕网用户使用协议》',
+  SR.userAgreementDetailDescText03: '《飞漾视频隐私政策》',
   SR.userAgreementDetailDescText04: '来了解详细信息。',
   SR.disagree: '不同意',
   SR.agree: '同意并继续',
@@ -118,7 +118,7 @@ const strResZh = {
   SR.go2Publish: "去发布",
   SR.publishVideo: "发布视频",
   SR.iHaveReadAndAccept: "我已经阅读并接受",
-  SR.blibiliCreativePolicy: "《哔哩哔哩创作公约》",
+  SR.blibiliCreativePolicy: "《飞漾视频创作公约》",
   SR.saveScript: "存草稿",
   SR.publish: "发布",
   SR.prePublishDesc: "若存在非官方商业合作，需前往电脑网页端投稿并进行商业声明报备",

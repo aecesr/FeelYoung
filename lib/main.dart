@@ -16,7 +16,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
 import 'core/I18n/string_res.dart';
-import 'core/shared_preferences/bilibili_shared_preference.dart';
+import 'core/shared_preferences/feelYoung_shared_preference.dart';
 import 'core/shared_preferences/shared_preference_util.dart';
 import 'dart:ui' as ui;
 

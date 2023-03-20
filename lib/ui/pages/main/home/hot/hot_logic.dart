@@ -13,7 +13,7 @@ import '../../../../../core/model/feed_index_model.dart';
 import '../../../../../core/service/request/home_request.dart';
 import '../../../../../core/service/request/video_play_request.dart';
 import '../../../../../core/service/utils/constant.dart';
-import '../../../../../core/shared_preferences/bilibili_shared_preference.dart';
+import '../../../../../core/shared_preferences/feelYoung_shared_preference.dart';
 import '../../../../../core/shared_preferences/shared_preference_util.dart';
 import '../../../../shared/app_theme.dart';
 import '../../../../shared/color_radix_change.dart';
