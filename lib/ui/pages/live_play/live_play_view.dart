@@ -1,11 +1,11 @@
 import 'dart:async';
 
-import 'package:FeelYoung_getx/ui/pages/video_play/bilibili_video_player/bilibili_video_player_view.dart';
-import 'package:FeelYoung_getx/ui/shared/app_theme.dart';
+import 'package:FeelYoung_getx/ui/pages/video_play/feelYoung_video_player/feelYoung_video_player_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:webview_flutter/webview_flutter.dart';
+import 'package:flutter/material.dart';
 
 import 'live_play_logic.dart';
 
@@ -59,6 +59,7 @@ class _LivePlayViewState extends State<LivePlayView> {
       // backgroundColor: HYAppTheme.norTextColors,
       initialUrl:
           'file:///android_asset/flutter_assets/assets/html/live_dan_mu.html?roomid=21721813',
+      // state.url,
       // 'file:///android_asset/flutter_assets/assets/html/live_dan_mu.html?roomid=${state.roomId}',
       zoomEnabled: false,
       javascriptMode: JavascriptMode.unrestricted,
@@ -70,4 +71,5 @@ class _LivePlayViewState extends State<LivePlayView> {
       },
     );
   }
+
 }

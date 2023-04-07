@@ -1,3 +1,5 @@
+// import 'package:FeelYoung_getx/ui/pages/main/home/message/message_view.dart';
+import 'package:FeelYoung_getx/ui/pages/message/views/message_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_floating/floating/floating.dart';
 import 'package:flutter_floating/floating/manager/floating_manager.dart';
@@ -18,10 +20,11 @@ class MainState {
     currentIndex = 0;
     mainIndexStackPages = [
       HomeScreen(),
-      DynamicCircleScreen(),
-      PublishScreen(),
-      MallScreen(),
+      // DynamicCircleScreen(),
+      MessageView(),
       MineScreen(),
     ];
   }
 }
+// PublishScreen(),
+// MallScreen(),

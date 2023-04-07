@@ -5,8 +5,8 @@ import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
-import '../video_play/bilibili_video_player/feelyoung_video_player_logic.dart';
-import '../video_play/bilibili_video_player/bilibili_video_player_state.dart';
+import '../video_play/feelYoung_video_player/feelyoung_video_player_logic.dart';
+import '../video_play/feelYoung_video_player/feelYoung_video_player_state.dart';
 import 'live_play_state.dart';
 
 class LivePlayLogic extends GetxController {
@@ -37,7 +37,8 @@ class LivePlayLogic extends GetxController {
   void fetchLiveRoomVideoStream(int roomId) {
     state.roomId = roomId;
     HYLiveRoomPlayRequest.getLiveRoomStreamData(state.roomId).then((value) {
-      state.playUrl = value.durl[0].url;
+      // state.playUrl = value.durl[0].url;
+      state.playUrl = state.url;
       print(state.playUrl);
       ///视频播放控件
       Get.put(FeelYoungVideoPlayerLogic());

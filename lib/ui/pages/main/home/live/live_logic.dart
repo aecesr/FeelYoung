@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:FeelYoung_getx/core/model/xliveAppInterfaceV2IndexFeedModel.dart';
+import 'package:FeelYoung_getx/ui/pages/live_play/live/live_class/live_class_demo.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -33,6 +34,7 @@ class LiveLogic extends GetxController {
     livePlayLogic.fetchLiveRoomVideoStream(21721813);
     // livePlayLogic.fetchLiveRoomVideoStream(item.smallCardV1!.id);
     Get.toNamed(LivePlayView.routeName);
+    // Get.to(TXAppDemo());
   }
 
   ///初始化Android数据

@@ -1,9 +1,9 @@
 import 'package:flutter/services.dart';
 
-import 'bilibili_channel.dart';
+import 'feelYoung_channel.dart';
 
 class ChannelUtil {
-  static MethodChannel methodChannel = MethodChannel(BilibiliChannel.uploadChannel);
-  static MethodChannel stayAliveChannel = MethodChannel(BilibiliChannel.stayAliveChannel);
-  static MethodChannel startServiceChannel = MethodChannel(BilibiliChannel.startServiceChannel);
+  static MethodChannel methodChannel = MethodChannel(FeelYoungChannel.uploadChannel);
+  static MethodChannel stayAliveChannel = MethodChannel(FeelYoungChannel.stayAliveChannel);
+  static MethodChannel startServiceChannel = MethodChannel(FeelYoungChannel.startServiceChannel);
 }

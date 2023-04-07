@@ -1,3 +1,10 @@
+import 'package:FeelYoung_getx/core/shared_preferences/feelYoung_shared_preference.dart';
+import 'package:FeelYoung_getx/core/shared_preferences/shared_preference_util.dart';
+import 'package:FeelYoung_getx/ui/pages/feelYoung_test/feelYoung_test_view.dart';
+import 'package:FeelYoung_getx/ui/pages/functions/push_message/push_message_view.dart';
+import 'package:FeelYoung_getx/ui/pages/functions/qq_share/qq_share_view.dart';
+import 'package:FeelYoung_getx/ui/pages/functions/statistics_chart/statistics_chart_view.dart';
+import 'package:FeelYoung_getx/ui/pages/functions/wx_share/wx_share_view.dart';
 import 'package:FeelYoung_getx/ui/pages/main/home/login/login_view.dart';
 import 'package:FeelYoung_getx/ui/pages/main/home/search/search_view.dart';
 import 'package:FeelYoung_getx/ui/pages/main/main_logic.dart';
@@ -5,6 +12,7 @@ import 'package:FeelYoung_getx/ui/pages/mine/scan_login/scan_login_view.dart';
 import 'package:FeelYoung_getx/ui/widgets/fade_image_default.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:get/get.dart';
 import 'package:permission_handler/permission_handler.dart';
 
@@ -15,6 +23,7 @@ import '../../shared/image_asset.dart';
 import '../../widgets/advertising_row.dart';
 import '../../widgets/icon_button_row.dart';
 import '../../widgets/user_level.dart';
+import '../functions/blue_tooth_connection/blue_tooth_connection_view.dart';
 import 'mine_logic.dart';
 
 class MineScreen extends StatelessWidget {
@@ -54,6 +63,100 @@ class MineScreen extends StatelessWidget {
                     controller: ScrollController(),
                     child: buildMineContentBody(),
                   ),
+            floatingActionButton: SpeedDial(
+              icon: Icons.star_rate_sharp,
+              backgroundColor: HYAppTheme.norMainThemeColors,
+              children: [
+                SpeedDialChild(
+                  onTap: () {
+                    Get.toNamed(StatisticsChartView.routeName);
+                  },
+                  backgroundColor: HYAppTheme.norWhite01Color,
+                  label: '统计',
+                  child: ImageIcon(
+                    AssetImage(ImageAssets.chartsCustomPNG),
+                    size: 10.h,
+                  ),
+                ),
+                SpeedDialChild(
+                  backgroundColor: HYAppTheme.norWhite01Color,
+                  onTap: () {
+                    Get.toNamed(PushMessageScreen.routeName);
+                  },
+                  label: '推送',
+                  child: Icon(
+                    Icons.announcement_sharp,
+                    size: 10.h,
+                  ),
+                ),
+                SpeedDialChild(
+                  backgroundColor: HYAppTheme.norWhite01Color,
+                  onTap: () {
+                    Get.toNamed(QqShareView.routeName);
+                  },
+                  label: 'QQ分享',
+                  child: Icon(
+                    Icons.share,
+                    size: 10.h,
+                  ),
+                ),
+                SpeedDialChild(
+                  backgroundColor: HYAppTheme.norWhite01Color,
+                  onTap: () {
+                    // Get.toNamed(BlueToothConnectionView.routeName);
+                  },
+                  label: '蓝牙',
+                  child: Icon(
+                    Icons.bluetooth,
+                    size: 10.h,
+                  ),
+                ),
+                SpeedDialChild(
+                  backgroundColor: HYAppTheme.norWhite01Color,
+                  onTap: () {
+                    Get.toNamed(WxShareView.routeName);
+                  },
+                  label: '微信分享',
+                  child: Icon(
+                    Icons.wechat,
+                    size: 10.h,
+                  ),
+                ),
+                SpeedDialChild(
+                  backgroundColor: HYAppTheme.norWhite01Color,
+                  onTap: () {
+                    ///切换语言并保存语言至本地
+                    String? locale = SharedPreferenceUtil.getString(
+                        BilibiliSharedPreference.locale);
+                    if (locale == 'zh') {
+                      Get.updateLocale(const Locale('en', 'US'));
+                      SharedPreferenceUtil.setString(
+                          BilibiliSharedPreference.locale, 'en');
+                    } else {
+                      Get.updateLocale(const Locale('zh', 'CN'));
+                      SharedPreferenceUtil.setString(
+                          BilibiliSharedPreference.locale, 'zh');
+                    }
+                  },
+                  label: '切换语言',
+                  child: Icon(
+                    Icons.abc,
+                    size: 10.h,
+                  ),
+                ),
+                SpeedDialChild(
+                  backgroundColor: HYAppTheme.norWhite01Color,
+                  onTap: () {
+                    Get.toNamed(FeelYoungTestScreen.routeName);
+                  },
+                  label: '小窗口',
+                  child: Icon(
+                    Icons.desktop_windows_sharp,
+                    size: 10.h,
+                  ),
+                ),
+              ],
+            ),
                 )
               : Scaffold(
                   body: Center(
@@ -364,7 +467,7 @@ class MineScreen extends StatelessWidget {
             state.isLogin == false
                 ? "—"
                 : state.accountMineData.data.dataDynamic.toString(),
-            SR.dynamic),
+            SR.message),
         Stack(
           alignment: AlignmentDirectional.center,
           children: [

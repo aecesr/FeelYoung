@@ -11,7 +11,7 @@ import 'package:path_provider/path_provider.dart';
 import '../../../core/service/request/video_play_request.dart';
 import '../../../core/service/utils/constant.dart';
 import '../../shared/params_sign.dart';
-import 'bilibili_video_player/feelyoung_video_player_logic.dart';
+import 'feelYoung_video_player/feelyoung_video_player_logic.dart';
 
 class VideoPlayLogic extends GetxController {
   final VideoPlayState state = VideoPlayState();

@@ -4,6 +4,8 @@
 
 list(APPEND FLUTTER_PLUGIN_LIST
   desktop_window
+  emoji_picker_flutter
+  tencent_trtc_cloud
   url_launcher_windows
 )
 

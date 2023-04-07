@@ -29,8 +29,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
-
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
@@ -65,22 +63,31 @@ dependencies:
   flutter_baidu_mapapi_utils: ^3.2.0 #百度地图
   flutter_baidu_mapapi_base: ^3.2.0 #百度地图
   jpush_flutter: ^2.4.0 #极光推送
-#  open_file: ^3.2.1 #打开文件
+#  fijkplayer:
+#  haishin_kit:
+#  logger:
+#  audio_session:
+  images_picker: ^1.2.11
+  photo_view:
+#  qr_code_scanner:
+  tencent_trtc_cloud: ^2.3.9 #腾讯SDK
+#  flutter_styled_toast:
+  #  open_file: ^3.2.1 #打开文件
   flutter_downloader: ^1.8.4 #下载文件(dio的download没有暂停功能...)
-#  just_audio: ^0.9.29 #音频
+  #  just_audio: ^0.9.29 #音频
   url_launcher: ^6.1.6 #打开链接
   open_file_plus: ^3.3.0 #打开文件
   fl_chart: ^0.55.2 #图表
   flare_flutter: ^3.0.2 #精致的flare动画
   lottie: ^1.4.3 #精致的lottie动画
   rive: ^0.9.1 #精致的rive动画
-#  fluwx: ^3.11.0 #微信第三方接入
+  #  fluwx: ^3.11.0 #微信第三方接入
   fluwx_no_pay: ^3.12.2 #微信第三方接入(没有支付)
   tencent_kit: ^4.0.0 #QQ第三方接入
   json_annotation: ^4.5.0 #json默认值
   json_serializable: ^6.5.4 #json序列化？
   flutter_cache_manager: ^3.3.0 #缓存图片
-  flutter_blue: ^0.8.0 #蓝牙
+#  flutter_blue: ^0.8.0 #蓝牙
   qr_flutter: ^4.0.0 #生成二维码
   qrscan: ^0.3.3 #扫描二维码,也可以生成二维码
   flutter_floating: ^1.0.1 #浮动窗口
@@ -88,7 +95,25 @@ dependencies:
   flutter_svg: ^1.1.6 #svg
   package_info_plus: ^3.0.2 #获取应用的包名、版本等信息
   workmanager: ^0.5.1 #workmanager
+#  lifecycle_lite: ^0.0.3 #监听页面生命周期
+  leancloud_official_plugin: ^1.0.1 #实时聊天
+#  images_picker: ^1.2.11 #图片选择器
+##  flutter_plugin_record: any # 录音插件
+  flutter_plugin_record:
+    git:
+      url: https://github.com/szuwest/flutter_plugin_record.git
+      ref: 987ef8771aeb28e41513a486ad999e47ac9143ae
 
+
+  emoji_picker_flutter: ^1.5.2 #表情包
+
+
+  common_utils: ^2.1.0 #基础工具类
+  flutter_easyloading: ^3.0.5 #loading
+
+  cached_network_image: ^3.2.3 #缓存网络图像
+  sp_util: ^2.0.3 #常用工具
+  flustars: ^2.0.1 #常用工具类库
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -106,13 +131,12 @@ dev_dependencies:
 # The following section is specific to Flutter packages.
 flutter:
   fonts:
-    - family: bilibiliFonts
-      fonts:
-        - asset: fonts/cn.ttf
-        - asset: fonts/en.ttf
     - family: feelYoung
       fonts:
         - asset: fonts/webfont.ttf
+    - family: start
+      fonts:
+        - asset: fonts/start.ttf
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.

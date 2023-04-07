@@ -25,6 +25,7 @@ class MainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final logic = Get.find<MainLogic>();
     final state = Get.find<MainLogic>().state;
+    bool showAdd = true;
     return GetBuilder<MainLogic>(
       builder: (logic) {
         return SafeArea(
@@ -58,141 +59,81 @@ class MainScreen extends StatelessWidget {
               items: [
                 buildBottomNavigationBarItem(SR.home.tr.toUpperCase(), "home"),
                 buildBottomNavigationBarItem(
-                    SR.dynamic.tr.toUpperCase(), "dynamic"),
-                buildBottomNavigationBarCenterBarItem(),
-                buildBottomNavigationBarItem(SR.mall.tr.toUpperCase(), "vip"),
+                    SR.message.tr.toUpperCase(), "message"),
+
+                // buildBottomNavigationBarItem(SR.mall.tr.toUpperCase(), "vip"),
                 buildBottomNavigationBarItem(SR.mine.tr.toUpperCase(), "mine"),
               ],
               onTap: (index) {
                 ///发布界面
-                if (index == 2) {
-                  FeelYoungPermission.requestUploadPermissions();
-                  Get.toNamed(PublishScreen.routeName);
+                // if (index == 2) {
+                //   FeelYoungPermission.requestUploadPermissions();
+                //   Get.toNamed(PublishScreen.routeName);
+                // } else {
+                if (index != 0) {
+                  showAdd = false;
                 } else {
-                  logic.updateCurrentIndex(index);
+                  showAdd = true;
                 }
+                logic.updateCurrentIndex(index);
+                // }
               },
             ),
-            floatingActionButton: SpeedDial(
-              icon: Icons.star_rate_sharp,
-              backgroundColor: HYAppTheme.norMainThemeColors,
-              children: [
-                SpeedDialChild(
-                  onTap: () {
-                    Get.toNamed(StatisticsChartView.routeName);
-                  },
-                  backgroundColor: HYAppTheme.norWhite01Color,
-                  label: '统计',
-                  child: ImageIcon(
-                    AssetImage(ImageAssets.chartsCustomPNG),
-                    size: 10.h,
-                  ),
-                ),
-                SpeedDialChild(
-                  backgroundColor: HYAppTheme.norWhite01Color,
-                  onTap: () {
-                    Get.toNamed(PushMessageScreen.routeName);
-                  },
-                  label: '推送',
-                  child: Icon(
-                    Icons.announcement_sharp,
-                    size: 10.h,
-                  ),
-                ),
-                SpeedDialChild(
-                  backgroundColor: HYAppTheme.norWhite01Color,
-                  onTap: () {
-                    Get.toNamed(QqShareView.routeName);
-                  },
-                  label: 'QQ分享',
-                  child: Icon(
-                    Icons.share,
-                    size: 10.h,
-                  ),
-                ),
-                SpeedDialChild(
-                  backgroundColor: HYAppTheme.norWhite01Color,
-                  onTap: () {
-                    Get.toNamed(BlueToothConnectionView.routeName);
-                  },
-                  label: '蓝牙',
-                  child: Icon(
-                    Icons.bluetooth,
-                    size: 10.h,
-                  ),
-                ),
-                SpeedDialChild(
-                  backgroundColor: HYAppTheme.norWhite01Color,
-                  onTap: () {
-                    Get.toNamed(WxShareView.routeName);
-                  },
-                  label: '微信分享',
-                  child: Icon(
-                    Icons.wechat,
-                    size: 10.h,
-                  ),
-                ),
-                SpeedDialChild(
-                  backgroundColor: HYAppTheme.norWhite01Color,
-                  onTap: () {
-                    ///切换语言并保存语言至本地
-                    String? locale = SharedPreferenceUtil.getString(
-                        BilibiliSharedPreference.locale);
-                    if (locale == 'zh') {
-                      Get.updateLocale(const Locale('en', 'US'));
-                      SharedPreferenceUtil.setString(
-                          BilibiliSharedPreference.locale, 'en');
-                    } else {
-                      Get.updateLocale(const Locale('zh', 'CN'));
-                      SharedPreferenceUtil.setString(
-                          BilibiliSharedPreference.locale, 'zh');
-                    }
-                  },
-                  label: '切换语言',
-                  child: Icon(
-                    Icons.abc,
-                    size: 10.h,
-                  ),
-                ),
-                SpeedDialChild(
-                  backgroundColor: HYAppTheme.norWhite01Color,
-                  onTap: () {
-                    Get.toNamed(FeelYoungTestScreen.routeName);
-                  },
-                  label: '小窗口',
-                  child: Icon(
-                    Icons.desktop_windows_sharp,
-                    size: 10.h,
-                  ),
-                ),
-              ],
-            ),
+            floatingActionButton: showAdd
+                ? Opacity(
+                    opacity: 0.5,
+                    child: MaterialButton(
+                      padding: const EdgeInsets.only(right: 0),
+                      onPressed: () {
+                        FeelYoungPermission.requestUploadPermissions();
+                        Get.toNamed(PublishScreen.routeName);
+                      },
+                      child: Container(
+                        margin: EdgeInsets.only(top: 8.h),
+                        padding: const EdgeInsets.symmetric(
+                                vertical: 12, horizontal: 15)
+                            .r,
+                        decoration: BoxDecoration(
+                          color: HYAppTheme.norMainThemeColors,
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(8.r),
+                          ),
+                        ),
+                        child: Image.asset(
+                          ImageAssets.addCustomPNG,
+                          width: 16.sp,
+                          height: 16.sp,
+                        ),
+                      ),
+                    ),
+                  )
+                : Container(),
           ),
         );
       },
     );
   }
 
-  BottomNavigationBarItem buildBottomNavigationBarCenterBarItem() {
-    return BottomNavigationBarItem(
-      label: "",
-      icon: Container(
-        margin: EdgeInsets.only(top: 8.h),
-        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 15).r,
-        decoration: BoxDecoration(
-          color: HYAppTheme.norMainThemeColors,
-          borderRadius: BorderRadius.all(
-            Radius.circular(15.r),
-          ),
-        ),
-        child: Image.asset(
-          ImageAssets.addCustomPNG,
-          width: 16.sp,
-          height: 16.sp,
-        ),
-      ),
-    );
-  }
+  // BottomNavigationBarItem buildBottomNavigationBarCenterBarItem() {
+  //   return BottomNavigationBarItem(
+  //     label: "",
+  //     icon: Container(
+  //       margin: EdgeInsets.only(top: 8.h),
+  //       padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 15).r,
+  //       decoration: BoxDecoration(
+  //         color: HYAppTheme.norMainThemeColors,
+  //         borderRadius: BorderRadius.all(
+  //           Radius.circular(15.r),
+  //         ),
+  //       ),
+  //       child: Image.asset(
+  //         ImageAssets.addCustomPNG,
+  //         width: 16.sp,
+  //         height: 16.sp,
+  //       ),
+  //     ),
+  //   );
+  // }
 
   ///首页、动态、会员、我的
   BottomNavigationBarItem buildBottomNavigationBarItem(

@@ -6,7 +6,7 @@ import 'blue_tooth_connection_logic.dart';
 class BlueToothConnectionBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut(() => BlueToothConnectionLogic());
-    Get.lazyPut(() => BlueToothDeviceOperationLogic());
+    // Get.lazyPut(() => BlueToothConnectionLogic());
+    // Get.lazyPut(() => BlueToothDeviceOperationLogic());
   }
 }

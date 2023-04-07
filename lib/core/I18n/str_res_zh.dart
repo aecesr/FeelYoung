@@ -3,7 +3,7 @@ import 'package:FeelYoung_getx/core/I18n/str_res_keys.dart';
 const strResZh = {
   ///首页、动态、
   SR.home: '首页',
-  SR.dynamic: '动态',
+  SR.message: '消息',
   SR.mall: '会员',
   SR.mine: '我的',
 
@@ -50,9 +50,11 @@ const strResZh = {
   SR.forgetPassword: '忘记密码?',
   SR.havingProblems: '遇到问题?',
   SR.seeTheHelp: '查看帮助',
-  SR.pleaseInputTelOrMail: '请输入手机号或邮箱',
+  SR.pleaseInputTelOrMail: '请输入账号',
+  SR.pleaseInputVerify: '请输入验证码',
   SR.account: '账号',
-  SR.passwordLogin: '密码登录',
+  SR.verify: '验证码',
+  SR.passwordLogin: '账号密码登录',
   SR.password: '密码',
   SR.zone: '地区',
   SR.goIntoTeenMode: '进入青少年模式>',
@@ -79,18 +81,18 @@ const strResZh = {
   SR.userAgreementAndPrivacyPolicyTips: "用户协议与隐私政策提示",
 
   ///搜索
-  SR.hotKeys: "B站热搜",
+  SR.hotKeys: "飞漾热搜",
   SR.entireRanking: "完整榜单 > ",
   SR.filter: "筛选",
   SR.synthesis: "综合",
-  SR.drama: "番剧",
+  SR.drama: "电视剧",
   SR.user: "用户",
   SR.column: "专栏",
   SR.defaultOrder: "默认排序",
   SR.newestPublish: "新发布",
   SR.highVideoPlay: "播放多",
   SR.highDanmaku: "弹幕多",
-  SR.searchSomething: "搜索视频、番剧或up主",
+  SR.searchSomething: "搜索视频、电视剧或视频主",
 
   ///主页界面
   SR.refresh: "刷新一下",

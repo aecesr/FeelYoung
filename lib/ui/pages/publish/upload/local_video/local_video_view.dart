@@ -8,7 +8,7 @@ import 'package:video_thumbnail/video_thumbnail.dart';
 import '../../../../shared/app_theme.dart';
 import '../../../../shared/image_asset.dart';
 import '../../../../shared/math_compute.dart';
-import '../../../video_play/bilibili_video_player/feelyoung_video_player_logic.dart';
+import '../../../video_play/feelYoung_video_player/feelyoung_video_player_logic.dart';
 import '../pre_edit_video/pre_edit_video_view.dart';
 import 'local_video_logic.dart';
 

@@ -1,7 +1,8 @@
 import 'dart:io';
-import 'package:FeelYoung_getx/ui/pages/chat/chat_view.dart';
+// import 'package:FeelYoung_getx/ui/pages/main/home/chat/chat_view.dart';
 import 'package:FeelYoung_getx/ui/pages/main/home/comic/comic_view.dart';
 import 'package:FeelYoung_getx/ui/pages/main/home/hot/hot_view.dart';
+// import 'package:FeelYoung_getx/ui/pages/main/home/message/message_page.dart';
 import 'package:FeelYoung_getx/ui/pages/main/home/recommend/recommend_view.dart';
 import 'package:FeelYoung_getx/ui/pages/main/home/search/search_view.dart';
 import 'package:FeelYoung_getx/ui/pages/main/main_logic.dart';
@@ -35,7 +36,7 @@ class _HomeScreenState extends State<HomeScreen>
 
   @override
   void initState() {
-    tabController = TabController(length: 5, vsync: this, initialIndex: 1);
+    tabController = TabController(length: 3, vsync: this, initialIndex: 1);
     tabController.addListener(() {
       for (int i = 0; i < state.scrollChildKeys.length; i++) {
         GlobalKey<PrimaryScrollContainerState> key = state.scrollChildKeys[i];
@@ -58,7 +59,7 @@ class _HomeScreenState extends State<HomeScreen>
   Widget build(BuildContext context) {
     return GetBuilder<HomeLogic>(builder: (logic) {
       return DefaultTabController(
-        length: 7,
+        length: 5,
         initialIndex: 1,
         child: NestedScrollView(
           body: buildHomeTabBarView(),
@@ -140,7 +141,7 @@ class _HomeScreenState extends State<HomeScreen>
           15.horizontalSpace,
           GestureDetector(
             onTap: () {
-              Get.toNamed(ChatScreen.routeName);
+              // Get.toNamed(MessagesPage.routeName);
             },
             child: Image.asset(
               width: 18.sp,
@@ -161,8 +162,8 @@ class _HomeScreenState extends State<HomeScreen>
         Tab(text: SR.live.tr.toUpperCase()),
         Tab(text: SR.recommend.tr.toUpperCase()),
         Tab(text: SR.hot.tr.toUpperCase()),
-        Tab(text: SR.comic.tr.toUpperCase()),
-        Tab(text: SR.movie.tr.toUpperCase()),
+        // Tab(text: SR.comic.tr.toUpperCase()),
+        // Tab(text: SR.movie.tr.toUpperCase()),
         // Tab(text: SR.covid.tr.toUpperCase()),
         // Tab(text: SR.journey.tr.toUpperCase()),
       ],
@@ -208,14 +209,14 @@ class _HomeScreenState extends State<HomeScreen>
                 key: state.scrollChildKeys[2],
                 child: HotScreen(),
               ),
-              PrimaryScrollContainer(
-                key: state.scrollChildKeys[3],
-                child: ComicScreen(),
-              ),
-              PrimaryScrollContainer(
-                key: state.scrollChildKeys[4],
-                child: Container(),
-              ),
+              // PrimaryScrollContainer(
+              //   key: state.scrollChildKeys[3],
+              //   child: ComicScreen(),
+              // ),
+              // PrimaryScrollContainer(
+              //   key: state.scrollChildKeys[4],
+              //   child: Container(),
+              // ),
               // PrimaryScrollContainer(
               //   key: state.scrollChildKeys[5],
               //   child: Container(),
@@ -257,22 +258,24 @@ class _HomeScreenState extends State<HomeScreen>
         onPressed: () async {
           SmartDialog.showLoading(
             displayTime: const Duration(seconds: 2),
-            maskColor: const Color.fromRGBO(0, 0, 0, .4),
+            maskColor: Colors.white24,
             builder: (ctx) {
               return Container(
                 decoration: BoxDecoration(
-                    color: const Color.fromRGBO(0, 0, 0, .8),
+                    color: Colors.white10,
                     borderRadius: BorderRadius.all(Radius.circular(8.w))),
                 height: 80.h,
                 width: 80.w,
                 padding: const EdgeInsets.all(5).r,
                 child: Column(
                   children: [
-                    Image.asset(
-                      ImageAssets.ploadingGif,
-                      width: 35.w,
-                      height: 35.h,
-                    ),
+                    CircleAvatar(
+                      backgroundImage:  AssetImage(
+                        ImageAssets.ploadingGif,
+                      ),
+                      radius: 18.r,
+                    )
+                   ,
                     10.verticalSpace,
                     Text(
                       SR.loading.tr,
@@ -342,7 +345,7 @@ class _HomeScreenState extends State<HomeScreen>
                   Container(
                     padding: const EdgeInsets.only(top: 30, bottom: 20).r,
                     child: Text(
-                      "183****1731",
+                      "155****1006",
                       style: TextStyle(
                           fontSize: 18.sp, color: HYAppTheme.norTextColors),
                     ),

@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import '../../../../../core/I18n/str_res_keys.dart';
 import '../../../../shared/app_theme.dart';
 import '../../../../widgets/custom_floating_action_button_location.dart';
-import '../../../video_play/bilibili_video_player/bilibili_video_player_view.dart';
+import '../../../video_play/feelYoung_video_player/feelYoung_video_player_view.dart';
 import '../pre_publish_video/pre_publish_video_view.dart';
 import 'pre_edit_video_logic.dart';
 

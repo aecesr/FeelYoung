@@ -1,4 +1,5 @@
-
+import 'package:FeelYoung_getx/ui/pages/main/home/home_view.dart';
+import 'package:FeelYoung_getx/ui/pages/video_play/feelYoung_video_player/feelyoung_video_player_logic.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -12,10 +13,11 @@ import '../../widgets/expanded_widget.dart';
 import '../../widgets/fade_image_default.dart';
 import '../../widgets/primary_scroll_container.dart';
 import '../../widgets/video_reply_item.dart';
-import 'bilibili_video_player/bilibili_video_player_view.dart';
+import 'feelYoung_video_player/feelYoung_video_player_view.dart';
 import 'video_play_logic.dart';
 
 final logic = Get.find<VideoPlayLogic>();
+final FeelYoungLogic = Get.put(FeelYoungVideoPlayerLogic());
 final state = Get.find<VideoPlayLogic>().state;
 
 class VideoPlayScreen extends StatefulWidget {
@@ -118,23 +120,30 @@ class _VideoPlayScreenState extends State<VideoPlayScreen>
             pinned: true,
             floating: false,
             snap: false,
-            actions: [
-              Container(
-                margin: EdgeInsets.only(right: 15.sp),
-                width: 20.sp,
-                height: 20.sp,
-                child: Image.asset(
-                  ImageAssets.moreAndroidLightPNG,
-                ),
-              )
-            ],
+            // actions: [
+            // Container(
+            //   margin: EdgeInsets.only(right: 15.sp),
+            //   width: 20.sp,
+            //   height: 20.sp,
+            //   child: Image.asset(
+            //     ImageAssets.moreAndroidLightPNG,
+            //   ),
+            // )
+            // ],
             title: Opacity(
               opacity: 1 - state.showOrHideIconAndTitleOpacity,
-              child: Image.asset(
-                ImageAssets.videoHomePNG,
-                width: 20.sp,
-                height: 20.sp,
-                fit: BoxFit.cover,
+              child: InkWell(
+                onTap: (){
+                  ///跳转至首页
+                  Get.toNamed(HomeScreen.routeName);
+                  print("跳转至首页");
+                },
+                child: Image.asset(
+                  ImageAssets.videoHomePNG,
+                  width: 20.sp,
+                  height: 20.sp,
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
             expandedHeight: state.expandedHeight,
@@ -149,6 +158,7 @@ class _VideoPlayScreenState extends State<VideoPlayScreen>
                       ImageAssets.playVideoCustomPNG,
                       width: 15.sp,
                       height: 15.sp,
+                      // color: Colors.red,
                     ),
                     10.horizontalSpace,
                     Text(
@@ -211,169 +221,182 @@ class _VideoPlayScreenState extends State<VideoPlayScreen>
             style: TextStyle(
               color: HYAppTheme.norGrayColor,
               fontSize: 14.sp,
+              fontFamily: "feelYoung",
+              fontWeight: FontWeight.bold,
             ),
           ),
-          Row(
-            children: [
-              Stack(
-                alignment: Alignment.center,
-                children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(5.r),
-                    child: DefaultFadeImage(
-                      imageUrl: relate.pic!,
-                      width: 120.w,
-                      height: 65.w,
-                    ),
-                  ),
-                  Image.asset(
-                    ImageAssets.playVideoCustomPNG,
-                    width: 30.w,
-                    height: 30.w,
-                  ),
-                  Positioned(
-                    right: 10.r,
-                    bottom: 6.r,
-                    child: Container(
-                      decoration: BoxDecoration(
-                          color: HYAppTheme.norTextColors.withOpacity(.4),
-                          borderRadius: BorderRadius.circular(3.r)),
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 5.r, vertical: 2.r),
-                      child: Text(
-                        changeToDurationText(relate.duration!.toDouble()),
-                        style: TextStyle(
-                          fontSize: 13.sp,
-                          color: HYAppTheme.norWhite01Color,
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              10.horizontalSpace,
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+          GestureDetector(
+            onTap: () {
+              print("跳转");
+
+              ///跳转至播放界面
+              Get.toNamed(VideoPlayScreen.routeName);
+            },
+            child: Row(
+              children: [
+                Stack(
+                  alignment: Alignment.center,
                   children: [
-                    Text(
-                      relate.title!,
-                      style: TextStyle(
-                        color: HYAppTheme.norWhite01Color,
-                        fontSize: 12.sp,
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(5.r),
+                      child: DefaultFadeImage(
+                        imageUrl: relate.pic!,
+                        width: 120.w,
+                        height: 65.w,
                       ),
                     ),
-                    10.verticalSpace,
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                SizedBox(
-                                  width: 14.sp,
-                                  height: 14.sp,
-                                  child: Image.asset(ImageAssets.upGrayPNG),
-                                ),
-                                5.horizontalSpace,
-                                Container(
-                                  alignment: Alignment.center,
-                                  height: 16.sp,
-                                  child: Text(
-                                    relate.owner.name!,
-                                    style: TextStyle(
-                                      color: HYAppTheme.norGrayColor,
-                                      fontSize: 12.sp,
-                                    ),
-                                  ),
-                                )
-                              ],
-                            ),
-                            5.verticalSpace,
-                            Row(
-                              mainAxisSize: MainAxisSize.min,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                SizedBox(
-                                  width: 16.sp,
-                                  height: 16.sp,
-                                  child: Image.asset(
-                                      ImageAssets.iconListPlayerPNG),
-                                ),
-                                5.horizontalSpace,
-                                SizedBox(
-                                  height: 16.sp,
-                                  child: Text(
-                                    changeToWan(relate.stat["view"]!),
-                                    style: TextStyle(
-                                        fontSize: 12.sp,
-                                        color: HYAppTheme.norGrayColor),
-                                  ),
-                                ),
-                                10.horizontalSpace,
-                                SizedBox(
-                                  width: 16.sp,
-                                  height: 16.sp,
-                                  child:
-                                      Image.asset(ImageAssets.icDanmuWhitePNG),
-                                ),
-                                5.horizontalSpace,
-                                SizedBox(
-                                  height: 16.sp,
-                                  child: Text(
-                                    changeToWan(relate.stat["danmaku"]!),
-                                    style: TextStyle(
-                                        fontSize: 12.sp,
-                                        color: HYAppTheme.norGrayColor),
-                                  ),
-                                )
-                              ],
-                            )
-                          ],
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
-                            color: HYAppTheme.norGrayColor.withOpacity(.8),
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(3.r)),
-                          ),
-                          margin: EdgeInsets.only(right: 6.r),
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 6.r, vertical: 4.r),
-                          child: Text(
-                            "立即播放",
-                            style: TextStyle(
-                                fontSize: 14.sp,
-                                color: HYAppTheme.norWhite01Color),
+                    Image.asset(
+                      ImageAssets.playVideoCustomPNG,
+                      width: 30.w,
+                      height: 30.w,
+                    ),
+                    Positioned(
+                      right: 10.r,
+                      bottom: 6.r,
+                      child: Container(
+                        decoration: BoxDecoration(
+                            color: HYAppTheme.norTextColors.withOpacity(.4),
+                            borderRadius: BorderRadius.circular(3.r)),
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 5.r, vertical: 2.r),
+                        child: Text(
+                          changeToDurationText(relate.duration!.toDouble()),
+                          style: TextStyle(
+                            fontSize: 13.sp,
+                            color: HYAppTheme.norWhite01Color,
                           ),
                         ),
-                      ],
+                      ),
                     ),
                   ],
                 ),
-              )
-            ],
+                10.horizontalSpace,
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        relate.title!,
+                        style: TextStyle(
+                          color: HYAppTheme.norWhite01Color,
+                          fontSize: 12.sp,
+                        ),
+                      ),
+                      10.verticalSpace,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  SizedBox(
+                                    width: 14.sp,
+                                    height: 14.sp,
+                                    child: Image.asset(ImageAssets.upGrayPNG),
+                                  ),
+                                  5.horizontalSpace,
+                                  Container(
+                                    alignment: Alignment.center,
+                                    height: 16.sp,
+                                    child: Text(
+                                      relate.owner.name!,
+                                      style: TextStyle(
+                                        color: HYAppTheme.norGrayColor,
+                                        fontSize: 12.sp,
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              ),
+                              5.verticalSpace,
+                              Row(
+                                mainAxisSize: MainAxisSize.min,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  SizedBox(
+                                    width: 16.sp,
+                                    height: 16.sp,
+                                    child: Image.asset(
+                                        ImageAssets.iconListPlayerPNG),
+                                  ),
+                                  5.horizontalSpace,
+                                  SizedBox(
+                                    height: 16.sp,
+                                    child: Text(
+                                      changeToWan(relate.stat["view"]!),
+                                      style: TextStyle(
+                                          fontSize: 12.sp,
+                                          color: HYAppTheme.norGrayColor),
+                                    ),
+                                  ),
+                                  10.horizontalSpace,
+                                  SizedBox(
+                                    width: 16.sp,
+                                    height: 16.sp,
+                                    child: Image.asset(
+                                        ImageAssets.icDanmuWhitePNG),
+                                  ),
+                                  5.horizontalSpace,
+                                  SizedBox(
+                                    height: 16.sp,
+                                    child: Text(
+                                      changeToWan(relate.stat["danmaku"]!),
+                                      style: TextStyle(
+                                          fontSize: 12.sp,
+                                          color: HYAppTheme.norGrayColor),
+                                    ),
+                                  )
+                                ],
+                              )
+                            ],
+                          ),
+                          Container(
+                            decoration: BoxDecoration(
+                              color: HYAppTheme.norGrayColor.withOpacity(.8),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(3.r)),
+                            ),
+                            margin: EdgeInsets.only(right: 6.r),
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 6.r, vertical: 4.r),
+                            child: Text(
+                              "立即播放",
+                              style: TextStyle(
+                                  fontSize: 14.sp,
+                                  color: HYAppTheme.norWhite01Color),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            ),
           ),
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Container(
-                width: 20.sp,
-                height: 20.sp,
-                child: Image.asset(ImageAssets.replayPNG),
+              InkWell(
+                onTap: (){
+                  FeelYoungLogic.playOrPauseVideo();
+                },
+                child: SizedBox(
+                  width: 20.sp,
+                  height: 20.sp,
+                  child: Image.asset(ImageAssets.replayPNG),
+                ),
               ),
               5.horizontalSpace,
-              Container(
-                child: Text(
-                  "重播",
-                  style: TextStyle(
-                    color: HYAppTheme.norWhite01Color,
-                    fontSize: 16.sp,
-                  ),
+              Text(
+                "重播",
+                style: TextStyle(
+                  color: HYAppTheme.norWhite01Color,
+                  fontSize: 16.sp,
                 ),
               ),
               10.horizontalSpace,
@@ -627,11 +650,25 @@ class _buildVideoProfileState extends State<buildVideoProfile>
                 defaultHeight: 0,
                 child: buildVideoPlayVideoInfoVideoDetails(),
               ),
-              30.verticalSpace,
+              10.verticalSpace,
               buildVideoPlayVideoInfoButtonBanner(),
-              60.verticalSpace,
+              10.verticalSpace,
+              Container(
+                transformAlignment: Alignment.topLeft,
+                width: MediaQuery.of(context).size.width,
+                child: Text(
+                  "推荐视频",
+                  style: TextStyle(
+                    color: HYAppTheme.norGrayColor,
+                    fontSize: 22.sp,
+                    fontFamily: "feelYoung",
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
 
               ///推荐视频
+              10.verticalSpace,
               buildVideoRecommendList(),
             ],
           ),
@@ -814,7 +851,7 @@ class _buildVideoProfileState extends State<buildVideoProfile>
     );
   }
 
-  ///点赞投币收藏按钮
+  ///点赞收藏按钮
   Widget buildVideoPlayVideoInfoButtonBanner() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -822,8 +859,8 @@ class _buildVideoProfileState extends State<buildVideoProfile>
         buildVideoPlayIconButton(ImageAssets.likeCustomPNG,
             changeToWan(state.videoProfile.stat!["like"] ?? 0)),
         buildVideoPlayIconButton(ImageAssets.dislikeCustomPNG, "不喜欢"),
-        buildVideoPlayIconButton(ImageAssets.coinCustomPNG,
-            changeToWan(state.videoProfile.stat!["coin"] ?? 0)),
+        // buildVideoPlayIconButton(ImageAssets.coinCustomPNG,
+        //     changeToWan(state.videoProfile.stat!["coin"] ?? 0)),
         buildVideoPlayIconButton(ImageAssets.collectCustomPNG,
             changeToWan(state.videoProfile.stat!["favorite"] ?? 0)),
         buildVideoPlayIconButton(ImageAssets.shareCustomPNG,

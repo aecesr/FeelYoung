@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'hot_state.dart';
 import 'dart:async';
 
-import 'package:FeelYoung_getx/ui/pages/video_play/bilibili_video_player/bilibili_video_player_state.dart';
+import 'package:FeelYoung_getx/ui/pages/video_play/feelYoung_video_player/feelYoung_video_player_state.dart';
 import 'package:FeelYoung_getx/ui/pages/video_play/video_play_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -19,9 +19,10 @@ import '../../../../shared/app_theme.dart';
 import '../../../../shared/color_radix_change.dart';
 import '../../../../shared/image_asset.dart';
 import '../../../../shared/params_sign.dart';
-import '../../../video_play/bilibili_video_player/feelyoung_video_player_logic.dart';
+import '../../../video_play/feelYoung_video_player/feelyoung_video_player_logic.dart';
 import '../../../video_play/video_play_logic.dart';
 import '../../../video_play/video_play_view.dart';
+
 class HotLogic extends GetxController {
   final HotState state = HotState();
 
@@ -30,6 +31,7 @@ class HotLogic extends GetxController {
     fetchFeedIndexData();
     super.onReady();
   }
+
   // @override
   // void onClose() {
   //   state.easyRefreshController.dispose();
@@ -121,7 +123,7 @@ class HotLogic extends GetxController {
       's_locale': 'zh_CN',
       'splash_id': '',
       'statistics':
-      '%7B%22appId%22%3A1%2C%22platform%22%3A3%2C%22version%22%3A%226.72.0%22%2C%22abtest%22%3A%22%22%7D',
+          '%7B%22appId%22%3A1%2C%22platform%22%3A3%2C%22version%22%3A%226.72.0%22%2C%22abtest%22%3A%22%22%7D',
       'ts': '1659143497',
       'voice_balance': '1',
     };
@@ -129,7 +131,7 @@ class HotLogic extends GetxController {
     ///如果已经登录，加上access_key字段
     if (isLogin == true) {
       String? accessKey =
-      SharedPreferenceUtil.getString(BilibiliSharedPreference.accessToken);
+          SharedPreferenceUtil.getString(BilibiliSharedPreference.accessToken);
       final accessKeyEntry = <String, dynamic>{'access_key': accessKey!};
       params.addEntries(accessKeyEntry.entries);
     }
@@ -154,8 +156,8 @@ class HotLogic extends GetxController {
       refreshVideosData(value.data.items);
       state.homeHotWidgets
           .insert(0, buildHYHomeRefreshItemOneVideo(value.data.items[8]));
-      state.homeHotWidgets.insert(
-          0, buildHomeHotVideoCards(value.data.items.sublist(0, 8)));
+      state.homeHotWidgets
+          .insert(0, buildHomeHotVideoCards(value.data.items.sublist(0, 8)));
       Future.delayed(const Duration(seconds: 2), () {
         update();
       });
@@ -191,7 +193,8 @@ class HotLogic extends GetxController {
       physics: const NeverScrollableScrollPhysics(),
       itemCount: items.length,
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2
+        crossAxisCount: 1,
+        childAspectRatio: 2.5,
       ),
       itemBuilder: (ctx, index) {
         // print(data[index].aid);
@@ -206,42 +209,44 @@ class HotLogic extends GetxController {
     return GestureDetector(
       onTap: () {
         if (video.goto == "av") {
-          HYVideoRequest.getMp4VideoPlayData(video.args!.aid!)
-              .then((value) {
+          HYVideoRequest.getMp4VideoPlayData(video.args!.aid!).then((value) {
             ///匹配字符串readyVideoUrl: 到readyDuration之间的字符串
             RegExp exp =
-            RegExp(r'(?<=(readyVideoUrl: ))[\s\S]*?(?=(readyDuration))');
+                RegExp(r'(?<=(readyVideoUrl: ))[\s\S]*?(?=(readyDuration))');
             print("exp.allMatches(value)---${exp.stringMatch(value)}");
             String videoMp4 = exp.stringMatch(value) ?? "";
             print(
                 "videoMp4-----------${videoMp4.substring(0, videoMp4.length)}");
             if (videoMp4.isEmpty) {
               video.videoData =
-              "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4";
+                  "https://chl-bucket.oss-cn-hangzhou.aliyuncs.com/video/video.mp4";
+              // "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4";
               // "http://61.164.90.254:9000/dm-pls/08388d26a77a413fa8da09837c6df420.mp4";
             } else {
               video.videoData = videoMp4.substring(1, videoMp4.length - 1);
             }
 
             ///传递数据
-            Get.lazyPut(()=>VideoPlayLogic());
-            Get.lazyPut(()=>FeelYoungVideoPlayerLogic());
+            Get.lazyPut(() => VideoPlayLogic());
+            Get.lazyPut(() => FeelYoungVideoPlayerLogic());
             VideoPlayLogic videoPlayLogic = Get.find<VideoPlayLogic>();
             VideoPlayState videoPlayState = Get.find<VideoPlayLogic>().state;
-            FeelYoungVideoPlayerLogic bilibiliVideoPlayerLogic = Get.find<FeelYoungVideoPlayerLogic>();
-            FeelYoungVideoPlayerState bilibiliVideoPlayerState = Get.find<FeelYoungVideoPlayerLogic>().state;
+            FeelYoungVideoPlayerLogic feelYoungVideoPlayerLogic =
+                Get.find<FeelYoungVideoPlayerLogic>();
+            FeelYoungVideoPlayerState feelYoungVideoPlayerState =
+                Get.find<FeelYoungVideoPlayerLogic>().state;
 
-            bilibiliVideoPlayerState.haveDanMuFunction = true;
-            bilibiliVideoPlayerState.haveFullScreenFunction = true;
-            bilibiliVideoPlayerState.haveFinishView = true;
-            bilibiliVideoPlayerState.videoOriginalUrl = video.videoData;
-            bilibiliVideoPlayerState.cid = video.playerArgs!.cid!.toString();
-            bilibiliVideoPlayerState.oid = video.playerArgs!.cid!.toString();
+            feelYoungVideoPlayerState.haveDanMuFunction = true;
+            feelYoungVideoPlayerState.haveFullScreenFunction = true;
+            feelYoungVideoPlayerState.haveFinishView = true;
+            feelYoungVideoPlayerState.videoOriginalUrl = video.videoData;
+            feelYoungVideoPlayerState.cid = video.playerArgs!.cid!.toString();
+            feelYoungVideoPlayerState.oid = video.playerArgs!.cid!.toString();
 
-            bilibiliVideoPlayerLogic.initVideoPlayerVideoData();
-            bilibiliVideoPlayerLogic.initVideoPlayerDanMuData();
-            bilibiliVideoPlayerLogic.initVideoControllerAndDanMuController();
-            bilibiliVideoPlayerLogic.fetchDanMu(0);
+            feelYoungVideoPlayerLogic.initVideoPlayerVideoData();
+            feelYoungVideoPlayerLogic.initVideoPlayerDanMuData();
+            feelYoungVideoPlayerLogic.initVideoControllerAndDanMuController();
+            feelYoungVideoPlayerLogic.fetchDanMu(0);
 
             videoPlayState.aid = video.playerArgs!.aid!.toString();
 
@@ -264,7 +269,7 @@ class HotLogic extends GetxController {
             topRight: Radius.circular(5.r),
           ),
         ),
-        child: Column(
+        child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -294,7 +299,7 @@ class HotLogic extends GetxController {
                   buildHomeVideoItemFooter(video),
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),
@@ -342,7 +347,8 @@ class HotLogic extends GetxController {
                     fit: BoxFit.cover,
                     placeholderFit: BoxFit.cover,
                     placeholder: AssetImage(ImageAssets.icUpperVideoDefaultPNG),
-                    image: NetworkImage(bannerItems[index].staticBanner!.image!),
+                    image:
+                        NetworkImage(bannerItems[index].staticBanner!.image!),
                   ),
                 ),
                 Positioned(
@@ -366,8 +372,8 @@ class HotLogic extends GetxController {
           pagination: SwiperPagination(
               alignment: Alignment.bottomRight,
               margin:
-              const EdgeInsets.only(left: 0, right: 8, bottom: 8, top: 0)
-                  .r),
+                  const EdgeInsets.only(left: 0, right: 8, bottom: 8, top: 0)
+                      .r),
           fade: 1.0,
           autoplay: true,
           scrollDirection: Axis.horizontal,
@@ -447,18 +453,18 @@ class HotLogic extends GetxController {
           height: 100.w,
           child: video.cover != null
               ? FadeInImage(
-            imageErrorBuilder: (ctx, error, stackTrace) {
-              return Container(
-                child: Text("加载中"),
-              );
-            },
-            placeholder: AssetImage(ImageAssets.icUpperVideoDefaultPNG),
-            image: NetworkImage(
-              video.cover!,
-            ),
-            fit: BoxFit.fill,
-            placeholderFit: BoxFit.fill,
-          )
+                  imageErrorBuilder: (ctx, error, stackTrace) {
+                    return Container(
+                      child: Text("加载中"),
+                    );
+                  },
+                  placeholder: AssetImage(ImageAssets.icUpperVideoDefaultPNG),
+                  image: NetworkImage(
+                    video.cover!,
+                  ),
+                  fit: BoxFit.fill,
+                  placeholderFit: BoxFit.fill,
+                )
               : Text(video.cover!),
         ),
       );
@@ -509,8 +515,8 @@ class HotLogic extends GetxController {
               height: 14.sp,
               child: Text(
                 seenText,
-                style:
-                TextStyle(color: HYAppTheme.norWhite02Color, fontSize: 10.sp),
+                style: TextStyle(
+                    color: HYAppTheme.norWhite02Color, fontSize: 10.sp),
               ),
             ),
           ],
@@ -538,8 +544,8 @@ class HotLogic extends GetxController {
               height: 14.sp,
               child: Text(
                 viewText,
-                style:
-                TextStyle(color: HYAppTheme.norWhite02Color, fontSize: 10.sp),
+                style: TextStyle(
+                    color: HYAppTheme.norWhite02Color, fontSize: 10.sp),
                 textAlign: TextAlign.center,
               ),
             ),
@@ -555,8 +561,8 @@ class HotLogic extends GetxController {
               height: 14.sp,
               child: Text(
                 remarkText,
-                style:
-                TextStyle(color: HYAppTheme.norWhite02Color, fontSize: 10.sp),
+                style: TextStyle(
+                    color: HYAppTheme.norWhite02Color, fontSize: 10.sp),
                 textAlign: TextAlign.center,
               ),
             ),
@@ -585,8 +591,8 @@ class HotLogic extends GetxController {
               height: 14.sp,
               child: Text(
                 viewText,
-                style:
-                TextStyle(color: HYAppTheme.norWhite02Color, fontSize: 10.sp),
+                style: TextStyle(
+                    color: HYAppTheme.norWhite02Color, fontSize: 10.sp),
               ),
             ),
             6.horizontalSpace,
@@ -601,8 +607,8 @@ class HotLogic extends GetxController {
               height: 14.sp,
               child: Text(
                 likeText,
-                style:
-                TextStyle(color: HYAppTheme.norWhite02Color, fontSize: 10.sp),
+                style: TextStyle(
+                    color: HYAppTheme.norWhite02Color, fontSize: 10.sp),
               ),
             ),
           ],
@@ -658,31 +664,52 @@ class HotLogic extends GetxController {
           child: Text(video.rcmdReasonStyle!.text!,
               style: TextStyle(
                 fontSize: 10.sp,
-                color:
-                ColorRadixChange.hexColor(video.rcmdReasonStyle!.textColor!),
+                color: ColorRadixChange.hexColor(
+                    video.rcmdReasonStyle!.textColor!),
               )),
         );
       } else {
-        return Row(
-          textBaseline: TextBaseline.ideographic,
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.baseline,
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Image.asset(
-              ImageAssets.uperCustomPNG,
-              width: 14.sp,
-              height: 14.sp,
+            const Text("点赞数：${10001>1000?"${4523/10000}w":4523}"),
+            Row(
+              textBaseline: TextBaseline.ideographic,
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Image.asset(
+                  ImageAssets.uperCustomPNG,
+                  width: 15.sp,
+                  height: 15.sp,
+                ),
+                4.horizontalSpace,
+                SizedBox(
+                  width: 80.w,
+                  child: Text(video.args!.upName!,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        fontSize: 10.sp,
+                        color: HYAppTheme.norGrayColor,
+                      )),
+                ),
+
+
+              ],
             ),
-            4.horizontalSpace,
-            SizedBox(
-              width: 80.w,
-              child: Text(video.args!.upName!,
+            ///todo 这里要填写视频发布时间
+            Row(
+              children:  const [
+                Text("发布时间："),
+                Text(
+                  "2023-04-04 12:30:12",
+                  textAlign: TextAlign.left,
                   maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                    fontSize: 10.sp,
-                    color: HYAppTheme.norGrayColor,
-                  )),
+                  overflow: TextOverflow.clip,
+                ),
+
+              ],
             ),
           ],
         );
@@ -709,7 +736,8 @@ class HotLogic extends GetxController {
         child: Text(video.rcmdReasonStyle!.text!,
             style: TextStyle(
               fontSize: 10.sp,
-              color: ColorRadixChange.hexColor(video.rcmdReasonStyle!.textColor!),
+              color:
+                  ColorRadixChange.hexColor(video.rcmdReasonStyle!.textColor!),
             )),
       );
     } else if (video.goto == "live") {
@@ -736,63 +764,64 @@ class HotLogic extends GetxController {
     } else if (video.goto == "bangumi") {
       return video.badgeStyle != null
           ? Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 2).r,
-            decoration: BoxDecoration(
-                color: Colors.transparent,
-                borderRadius: BorderRadius.all(Radius.circular(2.r)),
-                border: Border(
-                    left: BorderSide(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 2).r,
+                  decoration: BoxDecoration(
+                      color: Colors.transparent,
+                      borderRadius: BorderRadius.all(Radius.circular(2.r)),
+                      border: Border(
+                          left: BorderSide(
+                              color: ColorRadixChange.hexColor(
+                                  video.badgeStyle!.borderColor!)),
+                          top: BorderSide(
+                              color: ColorRadixChange.hexColor(
+                                  video.badgeStyle!.borderColor!)),
+                          bottom: BorderSide(
+                              color: ColorRadixChange.hexColor(
+                                  video.badgeStyle!.borderColor!)),
+                          right: BorderSide(
+                              color: ColorRadixChange.hexColor(
+                                  video.badgeStyle!.borderColor!)))),
+                  child: Text(video.badgeStyle!.text!,
+                      style: TextStyle(
+                        fontSize: 10.sp,
                         color: ColorRadixChange.hexColor(
-                            video.badgeStyle!.borderColor!)),
-                    top: BorderSide(
-                        color: ColorRadixChange.hexColor(
-                            video.badgeStyle!.borderColor!)),
-                    bottom: BorderSide(
-                        color: ColorRadixChange.hexColor(
-                            video.badgeStyle!.borderColor!)),
-                    right: BorderSide(
-                        color: ColorRadixChange.hexColor(
-                            video.badgeStyle!.borderColor!)))),
-            child: Text(video.badgeStyle!.text!,
-                style: TextStyle(
-                  fontSize: 10.sp,
-                  color: ColorRadixChange.hexColor(
-                      video.badgeStyle!.textColor!),
-                )),
-          ),
-          6.horizontalSpace,
-          video.rcmdReasonStyle != null
-              ? Container(
-            padding: const EdgeInsets.symmetric(horizontal: 2).r,
-            decoration: BoxDecoration(
-                color: ColorRadixChange.hexColor(
-                    video.rcmdReasonStyle!.bgColor!),
-                borderRadius: BorderRadius.all(Radius.circular(2.r)),
-                border: Border(
-                    left: BorderSide(
-                        color: ColorRadixChange.hexColor(
-                            video.rcmdReasonStyle!.borderColor!)),
-                    top: BorderSide(
-                        color: ColorRadixChange.hexColor(
-                            video.rcmdReasonStyle!.borderColor!)),
-                    bottom: BorderSide(
-                        color: ColorRadixChange.hexColor(
-                            video.rcmdReasonStyle!.borderColor!)),
-                    right: BorderSide(
-                        color: ColorRadixChange.hexColor(video.rcmdReasonStyle!.borderColor!)))),
-            child: Text(video.rcmdReasonStyle!.text!,
-                style: TextStyle(
-                  fontSize: 10.sp,
-                  color: ColorRadixChange.hexColor(
-                      video.rcmdReasonStyle!.textColor!),
-                )),
-          )
-              : Container(),
-        ],
-      )
+                            video.badgeStyle!.textColor!),
+                      )),
+                ),
+                6.horizontalSpace,
+                video.rcmdReasonStyle != null
+                    ? Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 2).r,
+                        decoration: BoxDecoration(
+                            color: ColorRadixChange.hexColor(
+                                video.rcmdReasonStyle!.bgColor!),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(2.r)),
+                            border: Border(
+                                left: BorderSide(
+                                    color: ColorRadixChange.hexColor(
+                                        video.rcmdReasonStyle!.borderColor!)),
+                                top: BorderSide(
+                                    color: ColorRadixChange.hexColor(
+                                        video.rcmdReasonStyle!.borderColor!)),
+                                bottom: BorderSide(
+                                    color: ColorRadixChange.hexColor(
+                                        video.rcmdReasonStyle!.borderColor!)),
+                                right:
+                                    BorderSide(color: ColorRadixChange.hexColor(video.rcmdReasonStyle!.borderColor!)))),
+                        child: Text(video.rcmdReasonStyle!.text!,
+                            style: TextStyle(
+                              fontSize: 10.sp,
+                              color: ColorRadixChange.hexColor(
+                                  video.rcmdReasonStyle!.textColor!),
+                            )),
+                      )
+                    : Container(),
+              ],
+            )
           : Container();
     } else {
       return Container();
@@ -807,9 +836,8 @@ class HotLogic extends GetxController {
         children: [
           ///视频Up主信息
           buildHomeVideoBottomInfo(video),
-
-          ///视频右下更多按钮
-          buildHomeVideoMoreIcon()
+          // ///视频右下更多按钮
+          // buildHomeVideoMoreIcon()
         ],
       ),
     );

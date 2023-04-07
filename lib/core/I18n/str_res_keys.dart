@@ -1,7 +1,7 @@
 class SR {
   ///主页、动态、会员购、我的
   static const home = 'home';
-  static const dynamic = 'dynamic';
+  static const message = 'message';
   static const mall = 'mall';
   static const mine = 'mine';
 
@@ -45,6 +45,7 @@ class SR {
   static const sendCode = 'send_code';
   static const pleaseInputTel = 'please_input_tel';
   static const pleaseInputTelOrMail = 'please_input_tel_or_mail';
+  static const pleaseInputVerify = 'please_input_verify';
   static const pleaseInputCode = 'please_input_code';
   static const forgetPassword = 'forget_password';
   static const pleaseInputPassword = 'please_input_password';
@@ -53,6 +54,7 @@ class SR {
   static const havingProblems = 'have problems?';
   static const seeTheHelp = 'See the help';
   static const account = 'account';
+  static const verify= 'verify';
   static const password = 'password';
   static const zone = 'zone';
   static const goIntoTeenMode = 'go_into_teen_mode';

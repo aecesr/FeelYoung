@@ -3,7 +3,7 @@ import 'package:FeelYoung_getx/core/I18n/str_res_keys.dart';
 const strResEn = {
   ///首页、动态、会员购、我的
   SR.home: 'home',
-  SR.dynamic: 'dynamic',
+  SR.message: 'dynamic',
   SR.mall: 'mall',
   SR.mine: 'mine',
 
@@ -52,7 +52,9 @@ const strResEn = {
   SR.havingProblems: 'having problems?',
   SR.seeTheHelp: 'see the help',
   SR.pleaseInputTelOrMail: 'please input tel or mail',
+  SR.pleaseInputVerify: 'please input Verify',
   SR.account: 'account',
+  SR.verify: 'verify',
   SR.password: 'psw',
   SR.zone: 'zone',
   SR.goIntoTeenMode: 'go into teen mode>',

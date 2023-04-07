@@ -58,7 +58,7 @@ class _RecommendScreenState extends State<RecommendScreen>
         return EasyRefresh(
           // controller: state.easyRefreshController,
           // scrollController: state.easyRefreshScrollController,
-          header: BilibiliClassicalHeader(
+          header: FeelYoungClassicalHeader(
             enableHapticFeedback: false,
             float: true,
           ),

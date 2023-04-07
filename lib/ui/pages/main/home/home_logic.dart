@@ -42,7 +42,7 @@ class HomeLogic extends GetxController {
 
     ///判断是否同意青少年模式
     if (state.tempTeenagerMode == false && state.tempUserAgreement == true) {
-      showTeenagerModeDialog();
+      // showTeenagerModeDialog();
     }
     Future.delayed(const Duration(seconds: 1), () {
       initHomeSliverAppBarHeightY();
@@ -227,14 +227,14 @@ class HomeLogic extends GetxController {
                     state.tempUserAgreement = true;
 
                     ///青少年模式弹框
-                    state.tempTeenagerMode = SharedPreferenceUtil.getBool(
-                        BilibiliSharedPreference.teenagerMode)!;
-                    if (state.tempTeenagerMode == false) {
-                      Future.delayed(const Duration(seconds: 1), () {
-                        showTeenagerModeDialog();
-                      });
-                    }
-                    update();
+                  //   state.tempTeenagerMode = SharedPreferenceUtil.getBool(
+                  //       BilibiliSharedPreference.teenagerMode)!;
+                  //   if (state.tempTeenagerMode == false) {
+                  //     Future.delayed(const Duration(seconds: 1), () {
+                  //       showTeenagerModeDialog();
+                  //     });
+                  //   }
+                  //   update();
                   },
                   child: Container(
                     color: HYAppTheme.norMainThemeColors,
@@ -283,70 +283,70 @@ class HomeLogic extends GetxController {
   }
 
   ///青少年模式弹框
-  void showTeenagerModeDialog() {
-    SmartDialog.show(
-      builder: (ctx) {
-        return Card(
-          shape: RoundedRectangleBorder(
-              borderRadius: const BorderRadius.all(Radius.circular(8)).r),
-          child: Container(
-            width: 250.w,
-            padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 15).r,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Image.asset(
-                  ImageAssets.teenagerModePNG,
-                  width: 50.r,
-                  height: 50.r,
-                ),
-                15.verticalSpace,
-                Text(
-                  SR.teenagerModeDetailDesc.tr,
-                  style: TextStyle(
-                    color: HYAppTheme.norGrayColor,
-                    fontSize: 12.sp,
-                  ),
-                ),
-                10.verticalSpace,
-                Text(
-                  SR.goIntoTeenMode.tr,
-                  style: TextStyle(
-                    color: HYAppTheme.norGrayColor,
-                    fontSize: 12.sp,
-                  ),
-                ),
-                15.verticalSpace,
-                GestureDetector(
-                  onTap: () {
-                    SmartDialog.dismiss();
-                  },
-                  child: Container(
-                    alignment: Alignment.center,
-                    padding: EdgeInsets.symmetric(vertical: 5.r),
-                    width: 220.w,
-                    decoration: BoxDecoration(
-                        borderRadius:
-                            BorderRadius.all(const Radius.circular(5).r),
-                        border: Border.all(
-                            color: HYAppTheme.norGrayColor.withOpacity(.4))),
-                    child: Text(
-                      SR.iKnowIt.tr.toUpperCase(),
-                      style: TextStyle(
-                        fontSize: 12.sp,
-                        color: Colors.black,
-                      ),
-                    ),
-                  ),
-                )
-              ],
-            ),
-          ),
-        );
-      },
-      clickMaskDismiss: false,
-    );
-  }
+  // void showTeenagerModeDialog() {
+  //   SmartDialog.show(
+  //     builder: (ctx) {
+  //       return Card(
+  //         shape: RoundedRectangleBorder(
+  //             borderRadius: const BorderRadius.all(Radius.circular(8)).r),
+  //         child: Container(
+  //           width: 250.w,
+  //           padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 15).r,
+  //           child: Column(
+  //             mainAxisSize: MainAxisSize.min,
+  //             children: [
+  //               Image.asset(
+  //                 ImageAssets.teenagerModePNG,
+  //                 width: 50.r,
+  //                 height: 50.r,
+  //               ),
+  //               15.verticalSpace,
+  //               Text(
+  //                 SR.teenagerModeDetailDesc.tr,
+  //                 style: TextStyle(
+  //                   color: HYAppTheme.norGrayColor,
+  //                   fontSize: 12.sp,
+  //                 ),
+  //               ),
+  //               10.verticalSpace,
+  //               Text(
+  //                 SR.goIntoTeenMode.tr,
+  //                 style: TextStyle(
+  //                   color: HYAppTheme.norGrayColor,
+  //                   fontSize: 12.sp,
+  //                 ),
+  //               ),
+  //               15.verticalSpace,
+  //               GestureDetector(
+  //                 onTap: () {
+  //                   SmartDialog.dismiss();
+  //                 },
+  //                 child: Container(
+  //                   alignment: Alignment.center,
+  //                   padding: EdgeInsets.symmetric(vertical: 5.r),
+  //                   width: 220.w,
+  //                   decoration: BoxDecoration(
+  //                       borderRadius:
+  //                           BorderRadius.all(const Radius.circular(5).r),
+  //                       border: Border.all(
+  //                           color: HYAppTheme.norGrayColor.withOpacity(.4))),
+  //                   child: Text(
+  //                     SR.iKnowIt.tr.toUpperCase(),
+  //                     style: TextStyle(
+  //                       fontSize: 12.sp,
+  //                       color: Colors.black,
+  //                     ),
+  //                   ),
+  //                 ),
+  //               )
+  //             ],
+  //           ),
+  //         ),
+  //       );
+  //     },
+  //     clickMaskDismiss: false,
+  //   );
+  // }
 
   ///接受用户个人信息
   void initHomeUserInfo() {

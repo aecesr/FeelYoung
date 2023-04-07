@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -14,11 +16,11 @@ import 'login_logic.dart';
 class LoginScreen extends StatelessWidget {
   static const String routeName = "/home/login";
   final logic = Get.find<LoginLogic>();
-  final state = Get
-      .find<LoginLogic>()
-      .state;
+  final state = Get.find<LoginLogic>().state;
+
   @override
   Widget build(BuildContext context) {
+
     return GetBuilder<LoginLogic>(builder: (logic) {
       return Scaffold(
         appBar: AppBar(
@@ -35,7 +37,7 @@ class LoginScreen extends StatelessWidget {
             ),
           ),
           title: Text(
-            state.loginTypeIsMessage == true
+            state.loginTypeIsMessage != true
                 ? SR.telRegisterAndLogin.tr.toUpperCase()
                 : SR.passwordLogin.tr.toUpperCase(),
             style: TextStyle(
@@ -44,7 +46,6 @@ class LoginScreen extends StatelessWidget {
                 fontWeight: FontWeight.normal),
           ),
           actions: [
-
             ///右上角的密码登录
             GestureDetector(
               onTap: () {
@@ -52,36 +53,35 @@ class LoginScreen extends StatelessWidget {
               },
               child: Center(
                   child: Text(
-                    state.loginTypeIsMessage == true
-                        ? SR.passwordLogin.tr
-                        : SR.telRegisterAndLogin.tr,
-                    style: TextStyle(
-                        fontSize: 12.sp,
-                        color: HYAppTheme.norTextColors,
-                        ),
-                  )),
+                state.loginTypeIsMessage != true
+                    ? SR.passwordLogin.tr
+                    : SR.telRegisterAndLogin.tr,
+                style: TextStyle(
+                  fontSize: 12.sp,
+                  color: HYAppTheme.norTextColors,
+                ),
+              )),
             ),
             10.horizontalSpace,
           ],
         ),
         body: Column(
           children: [
-            ///2233娘背景
+            ///banner背景
             buildLoginImage(),
+
             ///地区
-            state.loginTypeIsMessage == true
-                ? buildLoginRegion()
-                : Container(),
+            state.loginTypeIsMessage != true ? buildLoginRegion() : Container(),
 
             ///电话号码
-            state.loginTypeIsMessage == true
+            state.loginTypeIsMessage != true
                 ? buildLoginTel(context)
                 : buildUserNameAndPassword(),
 
             15.verticalSpace,
 
             ///登录按钮
-            state.loginTypeIsMessage == true
+            state.loginTypeIsMessage != true
                 ? buildVerifyLoginButton()
                 : buildRegisterAndLoginButton(),
             15.verticalSpace,
@@ -97,29 +97,46 @@ class LoginScreen extends StatelessWidget {
     });
   }
 
-  ///2233娘
+  ///banner
   Widget buildLoginImage() {
     return Stack(
       children: [
-        Center(
-            child: Image.asset(
-              ImageAssets.bilibiliPNG,
-              width: 90.r,
-              height: 90.r,
-            ),),
+        const Center(
+          child: SizedBox(
+            height: 160,
+            child: Text("Feel Young",
+                style: TextStyle(
+                    fontFamily: 'start',
+                    fontSize: 80,
+                    fontWeight: FontWeight.bold,
+                    color: HYAppTheme.norPink05Colors)),
+          ),
+        ),
         Positioned(
           width: 90.r,
           height: 90.r,
           left: 0,
           bottom: 0,
-          child: Image.asset(state.isInputPassword ? ImageAssets.close22PNG : ImageAssets.open22PNG, gaplessPlayback:true),
+          child: Image.asset(
+            state.isInputPassword
+                ? ImageAssets.close22PNG
+                : ImageAssets.open22PNG,
+            gaplessPlayback: true,
+            opacity: const AlwaysStoppedAnimation(0.2),
+          ),
         ),
         Positioned(
           width: 90.r,
           height: 90.r,
           right: 0,
           bottom: 0,
-          child: Image.asset(state.isInputPassword ? ImageAssets.close33PNG : ImageAssets.open33PNG, gaplessPlayback:true),
+          child: Image.asset(
+            state.isInputPassword
+                ? ImageAssets.close33PNG
+                : ImageAssets.open33PNG,
+            gaplessPlayback: true,
+            opacity: const AlwaysStoppedAnimation(0.2),
+          ),
         ),
       ],
     );
@@ -141,8 +158,8 @@ class LoginScreen extends StatelessWidget {
               color: Colors.white,
               border: Border(
                 ///底部设置边框
-                bottom: BorderSide(
-                    width: 1.w, color: HYAppTheme.norWhite06Color),
+                bottom:
+                    BorderSide(width: 1.w, color: HYAppTheme.norWhite06Color),
               ),
             ),
             child: Text(
@@ -151,13 +168,14 @@ class LoginScreen extends StatelessWidget {
             ),
           ),
           Positioned(
-              right: 15.w,
-              top: 0,
-              bottom: 0,
-              child: Icon(
-                Icons.arrow_forward_ios,
-                size: 15.sp,
-              ),)
+            right: 15.w,
+            top: 0,
+            bottom: 0,
+            child: Icon(
+              Icons.arrow_forward_ios,
+              size: 15.sp,
+            ),
+          )
         ],
       ),
     );
@@ -165,6 +183,7 @@ class LoginScreen extends StatelessWidget {
 
   ///用户名和密码
   Widget buildUserNameAndPassword() {
+    Image image = Image.memory(base64.decode(state.verifyImg));
     return Container(
       color: Colors.white,
       width: 1.sw,
@@ -175,8 +194,8 @@ class LoginScreen extends StatelessWidget {
             decoration: BoxDecoration(
               color: Colors.white,
               border: Border(
-                bottom: BorderSide(
-                    width: 2.w, color: HYAppTheme.norWhite06Color),
+                bottom:
+                    BorderSide(width: 2.w, color: HYAppTheme.norWhite06Color),
               ),
             ),
             child: Row(
@@ -186,9 +205,9 @@ class LoginScreen extends StatelessWidget {
                   width: 45.w,
                   child: Text(SR.account.tr,
                       style: TextStyle(
-                          color: HYAppTheme.norTextColors,
-                          fontSize: 12.sp,
-                          )),
+                        color: HYAppTheme.norTextColors,
+                        fontSize: 12.sp,
+                      )),
                 ),
                 Expanded(
                   child: Container(
@@ -219,6 +238,13 @@ class LoginScreen extends StatelessWidget {
             ),
           ),
           Container(
+            decoration: BoxDecoration(
+              color: Colors.white,
+              border: Border(
+                bottom:
+                    BorderSide(width: 2.w, color: HYAppTheme.norWhite06Color),
+              ),
+            ),
             padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 15).r,
             child: Row(
               children: [
@@ -228,9 +254,9 @@ class LoginScreen extends StatelessWidget {
                   child: Text(
                     SR.password.tr,
                     style: TextStyle(
-                        color: HYAppTheme.norTextColors,
-                        fontSize: 12.sp,
-                        ),
+                      color: HYAppTheme.norTextColors,
+                      fontSize: 12.sp,
+                    ),
                   ),
                 ),
                 Expanded(
@@ -239,27 +265,29 @@ class LoginScreen extends StatelessWidget {
                     child: TextField(
                       focusNode: state.passwordFocusNode,
                       obscureText: state.isObscure,
-                        onChanged: (text) {
-                          logic.updatePassword(text);
-                        },
-                        showCursor: true,
-                        cursorHeight: 18.sp,
-                        cursorColor: HYAppTheme.norMainThemeColors,
-                        controller: state.passwordTextFieldController,
-                        decoration: InputDecoration(
-                            hintText: SR.pleaseInputPassword.tr,
-                            border: InputBorder.none,
-                            hintStyle: TextStyle(
-                              fontSize: 12.sp,
-                            ),
-                          suffixIcon: IconButton(onPressed: () {
-                            logic.updateIsObscure();
-                          }, icon: Icon(
-                              state.isObscure ? Icons.visibility : Icons.visibility_off))
-                        ),
-                        style: TextStyle(
-                            fontSize: 14.sp,
-                            color: HYAppTheme.norTextColors),),
+                      onChanged: (text) {
+                        logic.updatePassword(text);
+                      },
+                      showCursor: true,
+                      cursorHeight: 18.sp,
+                      cursorColor: HYAppTheme.norMainThemeColors,
+                      controller: state.passwordTextFieldController,
+                      decoration: InputDecoration(
+                          hintText: SR.pleaseInputPassword.tr,
+                          border: InputBorder.none,
+                          hintStyle: TextStyle(
+                            fontSize: 12.sp,
+                          ),
+                          suffixIcon: IconButton(
+                              onPressed: () {
+                                logic.updateIsObscure();
+                              },
+                              icon: Icon(state.isObscure
+                                  ? Icons.visibility
+                                  : Icons.visibility_off))),
+                      style: TextStyle(
+                          fontSize: 14.sp, color: HYAppTheme.norTextColors),
+                    ),
                   ),
                 ),
                 Container(
@@ -267,10 +295,77 @@ class LoginScreen extends StatelessWidget {
                   child: Text(
                     SR.forgetPassword.tr,
                     style: TextStyle(
-                        color: HYAppTheme.norMainThemeColors,
-                        fontSize: 12.sp),
+                        color: HYAppTheme.norMainThemeColors, fontSize: 12.sp),
                   ),
                 ),
+              ],
+            ),
+          ),
+          // 验证码
+          Container(
+            padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 15).r,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              border: Border(
+                bottom:
+                    BorderSide(width: 2.w, color: HYAppTheme.norWhite06Color),
+              ),
+            ),
+            child: Row(
+              children: [
+                Expanded(
+                  flex:1,
+                  child: Container(
+                    alignment: Alignment.centerLeft,
+                    width: 45.w,
+                    child: Text(SR.verify.tr,
+                        style: TextStyle(
+                          color: HYAppTheme.norTextColors,
+                          fontSize: 12.sp,
+                        )),
+                  ),
+                ),
+                Expanded(
+                  flex: 3,
+                  child: Container(
+                    margin: const EdgeInsets.only(left: 15).r,
+                    child: TextField(
+                      keyboardType: TextInputType.number,
+                      focusNode: state.verifyFocusNode,
+                      autofocus: true,
+                      showCursor: true,
+                      cursorHeight: 18.sp,
+                      onChanged: (text) {
+                        logic.updateVerify(int.tryParse(text) ?? 0);
+                      },
+                      cursorColor: HYAppTheme.norMainThemeColors,
+                      controller: state.verifyTextEditController,
+                      decoration: InputDecoration(
+                          hintText: SR.pleaseInputVerify.tr,
+                          border: InputBorder.none,
+                          hintStyle: TextStyle(
+                            fontSize: 12.sp,
+                          )),
+                      style: TextStyle(
+                          fontSize: 14.sp,
+                          color: HYAppTheme.norMainThemeColors),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  flex: 3,
+                  child: InkWell(
+                    onTap: () {
+                      // 点击事件
+                      print("更换验证码");
+                      logic.setVerify();
+                    },
+                    child: Container(
+                      height: 60.w,
+                      child: image,
+                    ),
+                  ),
+                )
               ],
             ),
           ),
@@ -333,21 +428,20 @@ class LoginScreen extends StatelessWidget {
                 ),
                 state.telText.isNotEmpty
                     ? TimerButton(
-                  onTap: () {
-                    if(kIsWeb) {
-                      SmartDialog.showToast("网页端未实现短信登录功能");
-                    } else {
-                      logic.sendSMS();
-                    }
-
-                  },
-                )
+                        onTap: () {
+                          if (kIsWeb) {
+                            SmartDialog.showToast("网页端未实现短信登录功能");
+                          } else {
+                            logic.sendSMS();
+                          }
+                        },
+                      )
                     : TimerButton(
-                  onTap: () {
-                    SmartDialog.showToast("嘿，留个电话~");
-                  },
-                  isEnable: false,
-                )
+                        onTap: () {
+                          SmartDialog.showToast("嘿，留个电话~");
+                        },
+                        isEnable: false,
+                      )
               ],
             ),
           ),
@@ -370,7 +464,7 @@ class LoginScreen extends StatelessWidget {
                   child: Container(
                     margin: const EdgeInsets.only(left: 15).r,
                     child: TextField(
-                      focusNode: state.verifyCodeFocusNode,
+                        focusNode: state.verifyCodeFocusNode,
                         onChanged: (text) {
                           logic.updateVerifyText(text);
                         },
@@ -385,8 +479,7 @@ class LoginScreen extends StatelessWidget {
                               fontSize: 12.sp,
                             )),
                         style: TextStyle(
-                            fontSize: 14.sp,
-                            color: HYAppTheme.norTextColors)),
+                            fontSize: 14.sp, color: HYAppTheme.norTextColors)),
                   ),
                 )
               ],
@@ -460,35 +553,25 @@ class LoginScreen extends StatelessWidget {
                   ),
                   TextSpan(
                     text: SR.userAgreementText01.tr,
-                    style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: 12.sp),
+                    style: TextStyle(color: Colors.grey, fontSize: 12.sp),
                   ),
                   TextSpan(
                     text: SR.userAgreementText02A.tr,
-                    style: TextStyle(
-                        color: Colors.blue,
-                        fontSize: 12.sp),
+                    style: TextStyle(color: Colors.blue, fontSize: 12.sp),
                   ),
                   TextSpan(
                     text: SR.userAgreementText03.tr,
-                    style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: 12.sp),
+                    style: TextStyle(color: Colors.grey, fontSize: 12.sp),
                   ),
                   TextSpan(
                     text: SR.userAgreementText02B.tr,
-                    style: TextStyle(
-                        color: Colors.blue,
-                        fontSize: 12.sp),
+                    style: TextStyle(color: Colors.blue, fontSize: 12.sp),
                   ),
-                  state.loginTypeIsMessage == true
+                  state.loginTypeIsMessage != true
                       ? TextSpan(
-                    text: SR.userAgreementText05.tr,
-                    style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: 12.sp),
-                  )
+                          text: SR.userAgreementText05.tr,
+                          style: TextStyle(color: Colors.grey, fontSize: 12.sp),
+                        )
                       : const TextSpan(),
                 ],
               ),
@@ -500,13 +583,11 @@ class LoginScreen extends StatelessWidget {
               children: [
                 TextSpan(
                   text: SR.havingProblems.tr,
-                  style: TextStyle(
-                      color: Colors.grey, fontSize: 12.sp),
+                  style: TextStyle(color: Colors.grey, fontSize: 12.sp),
                 ),
                 TextSpan(
                   text: SR.seeTheHelp.tr,
-                  style: TextStyle(
-                      color: Colors.blue, fontSize: 12.sp),
+                  style: TextStyle(color: Colors.blue, fontSize: 12.sp),
                 ),
               ],
             ),
@@ -526,21 +607,24 @@ class LoginScreen extends StatelessWidget {
               HYAppTheme.norTextColors.withOpacity(.1)),
           elevation: MaterialStateProperty.all(0),
           backgroundColor:
-          MaterialStateProperty.all(HYAppTheme.norMainThemeColors),
+              MaterialStateProperty.all(HYAppTheme.norMainThemeColors),
           minimumSize: MaterialStateProperty.all(Size(1.sw - 30.w, 40.h)),
         ),
         onPressed: state.telText.isNotEmpty && state.verifyText.isNotEmpty
             ? () {
-          ///短信验证登录（同时获取登录后的用户基本信息）
-          logic.messageVerifyLogin();
-        }
+                ///短信验证登录（同时获取登录后的用户基本信息）
+                logic.messageVerifyLogin();
+              }
             : () {
-          SmartDialog.showToast("电话或验证码为空");
-        },
+                SmartDialog.showToast("电话或验证码为空");
+              },
         child: Text(
           SR.verifyLogin.tr,
           style: TextStyle(
-              color: Colors.white, fontSize: 14.sp,fontWeight: FontWeight.normal,),
+            color: Colors.white,
+            fontSize: 14.sp,
+            fontWeight: FontWeight.normal,
+          ),
         ),
       ),
     );
@@ -562,13 +646,16 @@ class LoginScreen extends StatelessWidget {
                 RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(const Radius.circular(3).r),
                     side:
-                    const BorderSide(color: HYAppTheme.norMainThemeColors)),
+                        const BorderSide(color: HYAppTheme.norMainThemeColors)),
               )),
-          onPressed: state.userNameText.isNotEmpty && state.passwordText.isNotEmpty
-              ? () {
-            SmartDialog.showToast("暂无注册功能");
-          }
-              : null,
+          onPressed:
+              state.userNameText.isNotEmpty && state.passwordText.isNotEmpty
+                  ? () {
+                      SmartDialog.showToast("暂无注册功能");
+                    }
+                  : () {
+                      SmartDialog.showToast("账号密码不符合规则");
+                    },
           child: Text(
             SR.register.tr.toUpperCase(),
             style: TextStyle(
@@ -579,26 +666,34 @@ class LoginScreen extends StatelessWidget {
         ),
         Opacity(
           opacity:
-          state.userNameText.isNotEmpty && state.passwordText.isNotEmpty ? 1 : .5,
+              state.userNameText.isNotEmpty && state.passwordText.isNotEmpty
+                  ? 1
+                  : .5,
           child: ElevatedButton(
             style: ButtonStyle(
               overlayColor: MaterialStateProperty.all(
                   HYAppTheme.norTextColors.withOpacity(.1)),
               elevation: MaterialStateProperty.all(0),
               backgroundColor:
-              MaterialStateProperty.all(HYAppTheme.norMainThemeColors),
+                  MaterialStateProperty.all(HYAppTheme.norMainThemeColors),
               minimumSize: MaterialStateProperty.all(Size(.5.sw - 15.w, 40.h)),
             ),
-            onPressed: state.userNameText.isNotEmpty && state.passwordText.isNotEmpty
-                ? () {
-              if(kIsWeb) {
-                SmartDialog.showToast("网页端暂时无法登录");
-              } else {
-                SmartDialog.showToast("密码登录需要验证身份，请使用短信登录");
-                logic.userNameAndPasswordLogin();
-              }
-            }
-                : null,
+            onPressed:
+                state.userNameText.isNotEmpty && state.passwordText.isNotEmpty
+                    ? () {
+                        if (kIsWeb) {
+                          SmartDialog.showToast("网页端暂时无法登录");
+                        } else {
+                          // SmartDialog.showToast("密码登录需要验证身份，请使用短信登录");
+                          logic.userNameAndPasswordLogin({
+                            "username": state.userNameText,
+                            "password": state.passwordText,
+                            "code": state.verifyInt,
+                            "uuid": state.UUID
+                          });
+                        }
+                      }
+                    : null,
             child: Text(
               SR.login.tr.toUpperCase(),
               style: TextStyle(

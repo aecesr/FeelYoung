@@ -147,7 +147,7 @@ class PrePublishVideoScreen extends StatelessWidget {
             ///动态
             BilibiliRowButton(
               title: TextSpan(
-                text: SR.dynamic.tr,
+                text: SR.message.tr,
                 style:
                     TextStyle(color: HYAppTheme.norTextColors, fontSize: 14.sp),
               ),

@@ -20,6 +20,7 @@ import 'core/shared_preferences/feelYoung_shared_preference.dart';
 import 'core/shared_preferences/shared_preference_util.dart';
 import 'dart:ui' as ui;
 
+
 Size defaultSize = const Size(360, 690);
 Size androidScreenSize = const Size(360, 690);
 Size windowsScreenSize = const Size(1080, 1920);
@@ -77,8 +78,6 @@ Future<void> initialization() async {
 
       ///监听微信回调结果
       WxUtil.wxDebugResult();
-
-
     } else if (Platform.isWindows) {
       initWindowsSize();
     } else if (Platform.isIOS) {}
@@ -144,7 +143,9 @@ class MyApp extends StatelessWidget {
           getPages: AsRouter.getPages,
 
           ///smartDialog 插件需要初始化
-          navigatorObservers: [FlutterSmartDialog.observer],
+          navigatorObservers: [
+            FlutterSmartDialog.observer,
+          ],
           builder: FlutterSmartDialog.init(),
         );
       },

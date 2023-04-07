@@ -46,7 +46,7 @@ class QQUtil {
   static void shareText() async {
     Tencent.instance.shareText(
       scene: TencentScene.SCENE_QQ,
-      summary: '分享文本',
+      summary: '我在飞漾看到了一个好看的视频，邀请你一起观看',
     );
   }
 

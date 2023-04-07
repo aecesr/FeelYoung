@@ -77,6 +77,7 @@ class AsRouter {
       page: () => MainScreen(),
       binding: MainBinding(),
     ),
+
     ///会员界面
     GetPage(
         name: MallScreen.routeName,
@@ -201,10 +202,10 @@ class AsRouter {
         binding: AnimationCompoentBinding()),
 
     ///蓝牙
-    GetPage(
-        name: BlueToothConnectionView.routeName,
-        page: () => BlueToothConnectionView(),
-        binding: BlueToothConnectionBinding()),
+    // GetPage(
+    //     name: BlueToothConnectionView.routeName,
+    //     page: () => BlueToothConnectionView(),
+    //     binding: BlueToothConnectionBinding()),
 
     ///统计图表
     GetPage(
@@ -213,10 +214,10 @@ class AsRouter {
         binding: StatisticsChartBinding()),
 
     ///蓝牙设备操作
-    GetPage(
-        name: BlueToothDeviceOperationView.routeName,
-        page: () => BlueToothDeviceOperationView(),
-        binding: BlueToothDeviceOperationBinding()),
+    // GetPage(
+    //     name: BlueToothDeviceOperationView.routeName,
+    //     page: () => BlueToothDeviceOperationView(),
+    //     binding: BlueToothDeviceOperationBinding()),
 
     ///直播间
     GetPage(

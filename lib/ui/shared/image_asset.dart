@@ -14,14 +14,13 @@ class ImageAssets {
   static String icDanmuWhitePNG = "assets/image/icon/ic_danmu_white.png";
   static String liveMoreCustomPNG = "assets/image/icon/live_more_custom.png";
   static String seenPNG = "assets/image/icon/seen.png";
-  static String bilibiliPNG = "assets/image/icon/bilibili.png";
   static String open22PNG = "assets/image/icon/22_open.png";
   static String open33PNG = "assets/image/icon/33_open.png";
   static String close22PNG = "assets/image/icon/22_close.png";
   static String close33PNG = "assets/image/icon/33_close.png";
   static String addCustomPNG = "assets/image/icon/add_custom.png";
   static String publishPNG = "assets/image/icon/publish.png";
-  static String bilibiliConnectPNG = "assets/image/icon/bilibili_connect.png";
+  static String bilibiliConnectPNG = "assets/image/icon/connect.png";
   static String scanPNG = "assets/image/icon/scan.png";
   // static String clothesPNG = "assets/image/icon/clothes.png";
   static String clothesPNG = "assets/image/icon/clothes.png";
@@ -33,32 +32,32 @@ class ImageAssets {
   static String icVoteCommonPNG = "assets/image/icon/ic_vote_common.png";
   static String roundAddPNG = "assets/image/icon/round_add.png";
   static String biliPlayerBackButtonPNG =
-      "assets/image/icon/bili_player_back_button.png";
+      "assets/image/icon/player_back_button.png";
   static String videoPlayerMoreCustomPNG =
       "assets/image/icon/video_player_more_custom.png";
   static String facePNG = "assets/image/icon/face.png";
   static String hotActivityPNG = "assets/image/icon/hot_activity.png";
-  static String giftPNG = "assets/image/icon/biligame_mine_gift_ic.png";
+  static String giftPNG = "assets/image/icon/game_mine_gift_ic.png";
   static String appLogoPNG = "assets/image/icon/ic_launcher.png";
-  static String icRecommendAvatarPNG =
-      "assets/image/icon/ic_recommend_avatar.png";
+  // static String icRecommendAvatarPNG =
+  //     "assets/image/icon/ic_recommend_avatar.png";
   static String biliSocializeQqZonePNG =
-      "assets/image/icon/bili_socialize_qq_zone.png";
+      "assets/image/icon/socialize_qq_zone.png";
   static String biliSocializeSinaPNG =
-      "assets/image/icon/bili_socialize_sina.png";
+      "assets/image/icon/socialize_sina.png";
   static String biliSocializeWxChatPNG =
-      "assets/image/icon/bili_socialize_wx_chat.png";
+      "assets/image/icon/socialize_wx_chat.png";
   static String biliSocializeWxMomentPNG =
-      "assets/image/icon/bili_socialize_wx_moment.png";
+      "assets/image/icon/socialize_wx_moment.png";
   static String biliSocializeCopyPNG =
-      "assets/image/icon/bili_socialize_copy.png";
+      "assets/image/icon/socialize_copy.png";
   static String biliSocializeDynamicPNG =
-      "assets/image/icon/bili_socialize_dynamic.png";
+      "assets/image/icon/socialize_dynamic.png";
   static String biliSocializeGenericPNG =
-      "assets/image/icon/bili_socialize_generic.png";
-  static String biliSocializeImPNG = "assets/image/icon/bili_socialize_im.png";
+      "assets/image/icon/socialize_generic.png";
+  static String biliSocializeImPNG = "assets/image/icon/socialize_im.png";
   static String biliSocializeQqChatPNG =
-      "assets/image/icon/bili_socialize_qq_chat.png";
+      "assets/image/icon/socialize_qq_chat.png";
   static String icVideoDownloadCompletePNG =
       "assets/image/icon/ic_video_download_complete.png";
   static String icVideoDownloadProcessingPNG =
@@ -78,12 +77,12 @@ class ImageAssets {
   static String sharePNG = "assets/image/icon/share.png";
   static String morePNG = "assets/image/icon/more.png";
   static String icUpperVideoDefaultPNG =
-      "assets/image/icon/ic_upper_video_default.png";
+      "assets/image/icon/ic_upper_video_default.gif";
   static String chartsCustomPNG = "assets/image/icon/charts_custom.png";
   static String bilibiliPlayerPlayCanPlayPNG =
-      "assets/image/icon/bili_player_play_can_play.png";
+      "assets/image/icon/player_play_can_play.png";
   static String biliPlayerPlayCanPausePNG =
-      "assets/image/icon/bili_player_play_can_pause.png";
+      "assets/image/icon/player_play_can_pause.png";
   static String teenagerModePNG = "assets/image/icon/teenager_mode.png";
   static String clearSearchPNG = "assets/image/icon/clear_search.png";
   static String icFilterPNG = "assets/image/icon/ic_filter.png";
@@ -103,14 +102,13 @@ class ImageAssets {
   static String arPNG = "assets/image/icon/ar.png";
   static String heartPNG = "assets/image/icon/heart.png";
   static String moreBlockPNG = "assets/image/icon/more_block.png";
-  static String playVideoCustomPNG = "assets/image/icon/play_video_custom.png";
+  static String playVideoCustomPNG = "assets/image/icon/play_custom.png";
   static String videoHomePNG = "assets/image/icon/video_home.png";
   static String moreAndroidLightPNG = "assets/image/icon/more_android_light.png";
   static String danmuClosePNG = "assets/image/icon/danmu_close.png";
   static String danmuOpenPNG = "assets/image/icon/danmu_open.png";
   static String likeCustomPNG = "assets/image/icon/like_custom.png";
   static String dislikeCustomPNG = "assets/image/icon/dislike_custom.png";
-  static String coinCustomPNG = "assets/image/icon/coin_custom.png";
   static String collectCustomPNG = "assets/image/icon/collect_custom.png";
   static String shareCustomPNG = "assets/image/icon/share_custom.png";
   static String icDanmuGrayPNG = "assets/image/icon/ic_danmu.png";

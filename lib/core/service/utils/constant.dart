@@ -14,7 +14,7 @@ class Constant {
     "video": "https://m.bilibili.com",
     "app": "http://app.bilibili.com",
     "search": "http://s.search.bilibili.com",
-    "login": "https://passport.bilibili.com",
+    "login": "http://42.192.1.98:8080/",
     "mall": "https://mall.bilibili.com",
     "mall-web": "https://show.bilibili.com",
     "covid": "https://api.vvhan.com/",

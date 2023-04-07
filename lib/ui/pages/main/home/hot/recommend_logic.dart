@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:FeelYoung_getx/ui/pages/video_play/bilibili_video_player/bilibili_video_player_state.dart';
+import 'package:FeelYoung_getx/ui/pages/video_play/feelYoung_video_player/feelYoung_video_player_state.dart';
 import 'package:FeelYoung_getx/ui/pages/video_play/video_play_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -18,7 +18,7 @@ import '../../../../shared/app_theme.dart';
 import '../../../../shared/color_radix_change.dart';
 import '../../../../shared/image_asset.dart';
 import '../../../../shared/params_sign.dart';
-import '../../../video_play/bilibili_video_player/feelyoung_video_player_logic.dart';
+import '../../../video_play/feelYoung_video_player/feelyoung_video_player_logic.dart';
 import '../../../video_play/video_play_logic.dart';
 import '../../../video_play/video_play_view.dart';
 import 'recommend_state.dart';
@@ -218,7 +218,8 @@ class RecommendLogic extends GetxController {
                 "videoMp4-----------${videoMp4.substring(0, videoMp4.length)}");
             if (videoMp4.isEmpty) {
               video.videoData =
-              "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4";
+              // "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4";
+              "https://chl-bucket.oss-cn-hangzhou.aliyuncs.com/video/video.mp4";
               // "http://61.164.90.254:9000/dm-pls/08388d26a77a413fa8da09837c6df420.mp4";
             } else {
               video.videoData = videoMp4.substring(1, videoMp4.length - 1);
@@ -229,20 +230,20 @@ class RecommendLogic extends GetxController {
             Get.lazyPut(()=>FeelYoungVideoPlayerLogic());
             VideoPlayLogic videoPlayLogic = Get.find<VideoPlayLogic>();
             VideoPlayState videoPlayState = Get.find<VideoPlayLogic>().state;
-            FeelYoungVideoPlayerLogic bilibiliVideoPlayerLogic = Get.find<FeelYoungVideoPlayerLogic>();
-            FeelYoungVideoPlayerState bilibiliVideoPlayerState = Get.find<FeelYoungVideoPlayerLogic>().state;
+            FeelYoungVideoPlayerLogic feelYoungVideoPlayerLogic = Get.find<FeelYoungVideoPlayerLogic>();
+            FeelYoungVideoPlayerState feelYoungVideoPlayerState = Get.find<FeelYoungVideoPlayerLogic>().state;
 
-            bilibiliVideoPlayerState.haveDanMuFunction = true;
-            bilibiliVideoPlayerState.haveFullScreenFunction = true;
-            bilibiliVideoPlayerState.haveFinishView = true;
-            bilibiliVideoPlayerState.videoOriginalUrl = video.videoData;
-            bilibiliVideoPlayerState.cid = video.playerArgs!.cid!.toString();
-            bilibiliVideoPlayerState.oid = video.playerArgs!.cid!.toString();
+            feelYoungVideoPlayerState.haveDanMuFunction = true;
+            feelYoungVideoPlayerState.haveFullScreenFunction = true;
+            feelYoungVideoPlayerState.haveFinishView = true;
+            feelYoungVideoPlayerState.videoOriginalUrl = video.videoData;
+            feelYoungVideoPlayerState.cid = video.playerArgs!.cid!.toString();
+            feelYoungVideoPlayerState.oid = video.playerArgs!.cid!.toString();
 
-            bilibiliVideoPlayerLogic.initVideoPlayerVideoData();
-            bilibiliVideoPlayerLogic.initVideoPlayerDanMuData();
-            bilibiliVideoPlayerLogic.initVideoControllerAndDanMuController();
-            bilibiliVideoPlayerLogic.fetchDanMu(0);
+            feelYoungVideoPlayerLogic.initVideoPlayerVideoData();
+            feelYoungVideoPlayerLogic.initVideoPlayerDanMuData();
+            feelYoungVideoPlayerLogic.initVideoControllerAndDanMuController();
+            feelYoungVideoPlayerLogic.fetchDanMu(0);
 
             videoPlayState.aid = video.playerArgs!.aid!.toString();
 

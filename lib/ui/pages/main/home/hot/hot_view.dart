@@ -58,7 +58,7 @@ with AutomaticKeepAliveClientMixin{
         return EasyRefresh(
           // controller: state.easyRefreshController,
           // scrollController: state.easyRefreshScrollController,
-          header: BilibiliClassicalHeader(
+          header: FeelYoungClassicalHeader(
             enableHapticFeedback: false,
             float: true,
           ),

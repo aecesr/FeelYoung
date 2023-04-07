@@ -27,10 +27,19 @@ class HYLoginRequest {
 
   ///密码登录
   static Future<String> passwordLogin(postBody) async {
-    const url = "/x/passport-login/oauth2/login";
+    const url = "auth/login";
     final result = await HttpBaseRequest.request("login", url,
         params: postBody,
         method: 'POST',
+        contentType: 'UTF-8',
+        responseType: ResponseType.plain);
+    return result.toString();
+  }
+  ///获取验证码
+  static Future<String> getVerify() async {
+    const url = "code";
+    final result = await HttpBaseRequest.request("login", url,
+        method: 'GET',
         contentType: 'UTF-8',
         responseType: ResponseType.plain);
     return result.toString();

@@ -2,8 +2,8 @@ import 'package:get/get.dart';
 
 import '../../../../../core/channel/channel_util.dart';
 import '../../../../../core/model/local_video_model.dart';
-import '../../../video_play/bilibili_video_player/feelyoung_video_player_logic.dart';
-import '../../../video_play/bilibili_video_player/bilibili_video_player_state.dart';
+import '../../../video_play/feelYoung_video_player/feelyoung_video_player_logic.dart';
+import '../../../video_play/feelYoung_video_player/feelYoung_video_player_state.dart';
 import '../pre_edit_video/pre_edit_video_view.dart';
 import 'local_video_state.dart';
 

@@ -7,11 +7,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../shared/app_theme.dart';
 
 /// 经典Header
-class BilibiliClassicalHeader extends Header {
+class FeelYoungClassicalHeader extends Header {
   /// Key
   final Key? key;
 
-  BilibiliClassicalHeader({
+  FeelYoungClassicalHeader({
     double extent = 60,
     double triggerDistance = 70.0,
     bool float = false,
@@ -52,7 +52,7 @@ class BilibiliClassicalHeader extends Header {
       bool enableInfiniteRefresh,
       bool success,
       bool noMore) {
-    return BilibiliClassicalHeaderWidget(
+    return FeelYoungClassicalHeaderWidget(
       key: key,
       classicalHeader: this,
       refreshState: refreshState,
@@ -70,8 +70,8 @@ class BilibiliClassicalHeader extends Header {
 }
 
 /// 经典Header组件
-class BilibiliClassicalHeaderWidget extends StatefulWidget {
-  final BilibiliClassicalHeader classicalHeader;
+class FeelYoungClassicalHeaderWidget extends StatefulWidget {
+  final FeelYoungClassicalHeader classicalHeader;
   final RefreshMode refreshState;
   final double pulledExtent;
   final double refreshTriggerPullDistance;
@@ -83,7 +83,7 @@ class BilibiliClassicalHeaderWidget extends StatefulWidget {
   final bool success;
   final bool noMore;
 
-  const BilibiliClassicalHeaderWidget(
+  const FeelYoungClassicalHeaderWidget(
       {Key? key,
       required this.refreshState,
       required this.classicalHeader,
@@ -99,13 +99,13 @@ class BilibiliClassicalHeaderWidget extends StatefulWidget {
       : super(key: key);
 
   @override
-  BilibiliClassicalHeaderWidgetState createState() =>
-      BilibiliClassicalHeaderWidgetState();
+  FeelYoungClassicalHeaderWidgetState createState() =>
+      FeelYoungClassicalHeaderWidgetState();
 }
 
-class BilibiliClassicalHeaderWidgetState
-    extends State<BilibiliClassicalHeaderWidget>
-    with TickerProviderStateMixin<BilibiliClassicalHeaderWidget> {
+class FeelYoungClassicalHeaderWidgetState
+    extends State<FeelYoungClassicalHeaderWidget>
+    with TickerProviderStateMixin<FeelYoungClassicalHeaderWidget> {
   // 是否到达触发刷新距离
   bool _overTriggerDistance = false;
 

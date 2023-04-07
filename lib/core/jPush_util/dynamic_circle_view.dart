@@ -22,8 +22,10 @@ class DynamicCircleScreen extends StatelessWidget {
       child: GetBuilder<DynamicCircleLogic>(builder: (logic) {
         return Scaffold(
           body: state.isLoading
-              ? buildDynamicCircleLoading()
-              : buildDynamicCircleContent(),
+              ?
+          buildDynamicCircleLoading()
+              : buildDynamicCircleLoading(),
+              // : buildDynamicCircleContent(),
         );
       }),
     );

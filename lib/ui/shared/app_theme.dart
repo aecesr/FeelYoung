@@ -49,8 +49,8 @@ class HYAppTheme {
   static const Color norGray05Color = Color.fromRGBO(156, 156, 158, 1);
   static const Color unselectedLabelColor = Color.fromRGBO(95, 95, 95, 1);
 
-  ///粉色（主题色）
-  static const Color norMainThemeColors = Color(0xffffd452);
+  ///绿色（主题色）
+  static const Color norMainThemeColors = Color(0xff2daa75);
   static const Color norPink02Colors = Color(0xff288061);
   static const Color norPink03Colors = Color(0xff165439);
   static const Color norPink04Colors = Color(0xff329E7C);

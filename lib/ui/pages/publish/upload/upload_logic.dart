@@ -2,7 +2,7 @@ import 'package:FeelYoung_getx/core/permission/feelyoung_permission.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
-import '../../../../core/channel/bilibili_channel.dart';
+import '../../../../core/channel/feelYoung_channel.dart';
 import '../../../../core/model/local_image_model.dart';
 import '../../../../core/model/local_video_model.dart';
 import 'upload_state.dart';

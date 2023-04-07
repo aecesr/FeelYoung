@@ -6,13 +6,23 @@ class LoginState {
   late TextEditingController telTextEditController;
   late TextEditingController verifyPasswordTextFieldController;
   late TextEditingController userNameTextEditController;
+  late TextEditingController verifyTextEditController;
   late TextEditingController passwordTextFieldController;
 
   ///电话号码
   late String telText;
 
-  ///验证码
+  ///手机验证码
   late String verifyText;
+
+  ///账户密码验证码
+  late int verifyInt;
+
+  /// 验证码图片
+  late String verifyImg;
+
+  /// UUID
+  late String UUID;
 
   ///用户名
   late String userNameText;
@@ -50,6 +60,7 @@ class LoginState {
   late FocusNode verifyCodeFocusNode;
   late FocusNode telFocusNode;
   late FocusNode userNameFocusNode;
+  late FocusNode verifyFocusNode;
   late FocusNode passwordFocusNode;
 
   ///隐藏密码
@@ -58,6 +69,9 @@ class LoginState {
   LoginState() {
     telText = "";
     verifyText = "";
+    verifyImg = "";
+    verifyInt = 0;
+    UUID = "";
     userNameText = "";
     passwordText = "";
     loginTypeIsMessage = true;
@@ -69,6 +83,7 @@ class LoginState {
     telTextEditController = TextEditingController();
     verifyPasswordTextFieldController = TextEditingController();
     userNameTextEditController = TextEditingController();
+    verifyTextEditController = TextEditingController();
     passwordTextFieldController = TextEditingController();
     regionIndex = 0;
     regionList = [
@@ -87,6 +102,7 @@ class LoginState {
     verifyCodeFocusNode = FocusNode();
     telFocusNode = FocusNode();
     userNameFocusNode = FocusNode();
+    verifyFocusNode = FocusNode();
     passwordFocusNode = FocusNode();
     isObscure = true;
   }
