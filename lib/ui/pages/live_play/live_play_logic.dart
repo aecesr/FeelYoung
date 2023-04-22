@@ -42,19 +42,19 @@ class LivePlayLogic extends GetxController {
       print(state.playUrl);
       ///视频播放控件
       Get.put(FeelYoungVideoPlayerLogic());
-      FeelYoungVideoPlayerState bilibiliVideoPlayerState =
+      FeelYoungVideoPlayerState feelYoungVideoPlayerState =
           Get.find<FeelYoungVideoPlayerLogic>().state;
-      bilibiliVideoPlayerState.haveFinishView = false;
-      bilibiliVideoPlayerState.haveFullScreenFunction = false;
-      bilibiliVideoPlayerState.haveDanMuFunction = false;
-      bilibiliVideoPlayerState.haveProcessSlider = false;
-      bilibiliVideoPlayerState.haveProcessTimePosition = false;
-      bilibiliVideoPlayerState.videoOriginalUrl = state.playUrl;
-      FeelYoungVideoPlayerLogic bilibiliVideoPlayerLogic =
+      feelYoungVideoPlayerState.haveFinishView = false;
+      feelYoungVideoPlayerState.haveFullScreenFunction = false;
+      feelYoungVideoPlayerState.haveDanMuFunction = false;
+      feelYoungVideoPlayerState.haveProcessSlider = false;
+      feelYoungVideoPlayerState.haveProcessTimePosition = false;
+      feelYoungVideoPlayerState.videoOriginalUrl = state.playUrl;
+      FeelYoungVideoPlayerLogic feelYoungliVideoPlayerLogic =
           Get.find<FeelYoungVideoPlayerLogic>();
-      bilibiliVideoPlayerLogic.initVideoPlayerVideoData();
-      bilibiliVideoPlayerLogic.initVideoPlayerDanMuData();
-      bilibiliVideoPlayerLogic.initVideoControllerAndDanMuController();
+      feelYoungliVideoPlayerLogic.initVideoPlayerVideoData();
+      feelYoungliVideoPlayerLogic.initVideoPlayerDanMuData();
+      feelYoungliVideoPlayerLogic.initVideoControllerAndDanMuController();
 
       state.isLoading = false;
       update();

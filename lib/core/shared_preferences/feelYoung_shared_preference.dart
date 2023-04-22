@@ -1,4 +1,4 @@
-class BilibiliSharedPreference {
+class FeelYoungSharedPreference {
   ///用户协议与隐私政策
   static const String appUserAgreementPrivatePolicy =
       "app_user_agreement_private_policy";

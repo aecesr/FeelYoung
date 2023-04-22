@@ -20,7 +20,6 @@ import 'core/shared_preferences/feelYoung_shared_preference.dart';
 import 'core/shared_preferences/shared_preference_util.dart';
 import 'dart:ui' as ui;
 
-
 Size defaultSize = const Size(360, 690);
 Size androidScreenSize = const Size(360, 690);
 Size windowsScreenSize = const Size(1080, 1920);
@@ -106,10 +105,10 @@ class MyApp extends StatelessWidget {
       builder: (ctx, child) {
         ///保存本地语言
         String? locale =
-            SharedPreferenceUtil.getString(BilibiliSharedPreference.locale);
+            SharedPreferenceUtil.getString(FeelYoungSharedPreference.locale);
         if (locale!.isEmpty) {
           SharedPreferenceUtil.setString(
-              BilibiliSharedPreference.locale, ui.window.locale.languageCode);
+              FeelYoungSharedPreference.locale, ui.window.locale.languageCode);
         }
 
         ///移除闪屏
@@ -122,7 +121,7 @@ class MyApp extends StatelessWidget {
           title: '飞漾',
 
           ///主题
-          theme: HYAppTheme.norTheme,
+          theme:HYAppTheme.norTheme,
 
           ///I18n国际化
           translations: StringRes(),

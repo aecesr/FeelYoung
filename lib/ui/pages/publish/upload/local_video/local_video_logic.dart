@@ -24,15 +24,18 @@ class LocalVideoLogic extends GetxController {
   ///获取手机本地的视频
   fetchLocalVideo() {
     ChannelUtil.methodChannel.invokeMethod("getVideos").then((value) {
+
       for (int i = 0; i < value.length; i++) {
+
         state.localVideoList.add(HYLocalVideoModel(
           videoLocation: value[i]["videoLocation"],
           videoName: value[i]["videoName"],
 
-          ///这里的duration返回值单位为毫秒，不是秒
+          ///这里的duration返回值单位为毫秒，
           duration: value[i]["duration"] ?? "0",
         ));
-        print(value[i]["videoLocation"]);
+        print(value[i]["videoLocation"]+"---------------------");
+        print(value.length);
         print(value[i]["videoName"]);
       }
       update();
@@ -46,12 +49,13 @@ class LocalVideoLogic extends GetxController {
     FeelYoungVideoPlayerState feelYoungVideoPlayerState = Get.find<FeelYoungVideoPlayerLogic>().state;
 
     feelYoungVideoPlayerLogic.initVideoPlayerVideoData();
-    feelYoungVideoPlayerState.haveFinishView = false;
-    feelYoungVideoPlayerState.haveFullScreenFunction = false;
+    feelYoungVideoPlayerState.haveFinishView = true;
+    feelYoungVideoPlayerState.haveFullScreenFunction = true;
     feelYoungVideoPlayerState.haveDanMuFunction = false;
     feelYoungVideoPlayerState.showDanMu = false;
     feelYoungVideoPlayerState.showTopBarHome = false;
     feelYoungVideoPlayerState.showTopBarMore = false;
+
     feelYoungVideoPlayerState.videoOriginalUrl = state.localVideoList[index].videoLocation;
     feelYoungVideoPlayerLogic.initVideoControllerAndDanMuController();
 

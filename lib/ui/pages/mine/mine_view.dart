@@ -35,8 +35,8 @@ class MineScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<MineLogic>(builder: (logic) {
       return SafeArea(
-          child: state.finishLoading == true
-              ? Scaffold(
+          child:
+              Scaffold(
                   appBar: AppBar(
                     backgroundColor: Theme.of(context).primaryColor,
                     elevation: .5,
@@ -63,110 +63,102 @@ class MineScreen extends StatelessWidget {
                     controller: ScrollController(),
                     child: buildMineContentBody(),
                   ),
-            floatingActionButton: SpeedDial(
-              icon: Icons.star_rate_sharp,
-              backgroundColor: HYAppTheme.norMainThemeColors,
-              children: [
-                SpeedDialChild(
-                  onTap: () {
-                    Get.toNamed(StatisticsChartView.routeName);
-                  },
-                  backgroundColor: HYAppTheme.norWhite01Color,
-                  label: '统计',
-                  child: ImageIcon(
-                    AssetImage(ImageAssets.chartsCustomPNG),
-                    size: 10.h,
+                  floatingActionButton: SpeedDial(
+                    icon: Icons.star_rate_sharp,
+                    backgroundColor: HYAppTheme.norMainThemeColors,
+                    children: [
+                      SpeedDialChild(
+                        onTap: () {
+                          Get.toNamed(StatisticsChartView.routeName);
+                        },
+                        backgroundColor: HYAppTheme.norWhite01Color,
+                        label: '统计',
+                        child: ImageIcon(
+                          AssetImage(ImageAssets.chartsCustomPNG),
+                          size: 10.h,
+                        ),
+                      ),
+                      SpeedDialChild(
+                        backgroundColor: HYAppTheme.norWhite01Color,
+                        onTap: () {
+                          Get.toNamed(PushMessageScreen.routeName);
+                        },
+                        label: '推送',
+                        child: Icon(
+                          Icons.announcement_sharp,
+                          size: 10.h,
+                        ),
+                      ),
+                      SpeedDialChild(
+                        backgroundColor: HYAppTheme.norWhite01Color,
+                        onTap: () {
+                          Get.toNamed(QqShareView.routeName);
+                        },
+                        label: 'QQ分享',
+                        child: Icon(
+                          Icons.share,
+                          size: 10.h,
+                        ),
+                      ),
+                      SpeedDialChild(
+                        backgroundColor: HYAppTheme.norWhite01Color,
+                        onTap: () {
+                          // Get.toNamed(BlueToothConnectionView.routeName);
+                        },
+                        label: '蓝牙',
+                        child: Icon(
+                          Icons.bluetooth,
+                          size: 10.h,
+                        ),
+                      ),
+                      SpeedDialChild(
+                        backgroundColor: HYAppTheme.norWhite01Color,
+                        onTap: () {
+                          Get.toNamed(WxShareView.routeName);
+                        },
+                        label: '微信分享',
+                        child: Icon(
+                          Icons.wechat,
+                          size: 10.h,
+                        ),
+                      ),
+                      SpeedDialChild(
+                        backgroundColor: HYAppTheme.norWhite01Color,
+                        onTap: () {
+                          ///切换语言并保存语言至本地
+                          String? locale = SharedPreferenceUtil.getString(
+                              FeelYoungSharedPreference.locale);
+                          if (locale == 'zh') {
+                            Get.updateLocale(const Locale('en', 'US'));
+                            SharedPreferenceUtil.setString(
+                                FeelYoungSharedPreference.locale, 'en');
+                          } else {
+                            Get.updateLocale(const Locale('zh', 'CN'));
+                            SharedPreferenceUtil.setString(
+                                FeelYoungSharedPreference.locale, 'zh');
+                          }
+                        },
+                        label: '切换语言',
+                        child: Icon(
+                          Icons.abc,
+                          size: 10.h,
+                        ),
+                      ),
+                      SpeedDialChild(
+                        backgroundColor: HYAppTheme.norWhite01Color,
+                        onTap: () {
+                          Get.toNamed(FeelYoungTestScreen.routeName);
+                        },
+                        label: '小窗口',
+                        child: Icon(
+                          Icons.desktop_windows_sharp,
+                          size: 10.h,
+                        ),
+                      ),
+                    ],
                   ),
-                ),
-                SpeedDialChild(
-                  backgroundColor: HYAppTheme.norWhite01Color,
-                  onTap: () {
-                    Get.toNamed(PushMessageScreen.routeName);
-                  },
-                  label: '推送',
-                  child: Icon(
-                    Icons.announcement_sharp,
-                    size: 10.h,
-                  ),
-                ),
-                SpeedDialChild(
-                  backgroundColor: HYAppTheme.norWhite01Color,
-                  onTap: () {
-                    Get.toNamed(QqShareView.routeName);
-                  },
-                  label: 'QQ分享',
-                  child: Icon(
-                    Icons.share,
-                    size: 10.h,
-                  ),
-                ),
-                SpeedDialChild(
-                  backgroundColor: HYAppTheme.norWhite01Color,
-                  onTap: () {
-                    // Get.toNamed(BlueToothConnectionView.routeName);
-                  },
-                  label: '蓝牙',
-                  child: Icon(
-                    Icons.bluetooth,
-                    size: 10.h,
-                  ),
-                ),
-                SpeedDialChild(
-                  backgroundColor: HYAppTheme.norWhite01Color,
-                  onTap: () {
-                    Get.toNamed(WxShareView.routeName);
-                  },
-                  label: '微信分享',
-                  child: Icon(
-                    Icons.wechat,
-                    size: 10.h,
-                  ),
-                ),
-                SpeedDialChild(
-                  backgroundColor: HYAppTheme.norWhite01Color,
-                  onTap: () {
-                    ///切换语言并保存语言至本地
-                    String? locale = SharedPreferenceUtil.getString(
-                        BilibiliSharedPreference.locale);
-                    if (locale == 'zh') {
-                      Get.updateLocale(const Locale('en', 'US'));
-                      SharedPreferenceUtil.setString(
-                          BilibiliSharedPreference.locale, 'en');
-                    } else {
-                      Get.updateLocale(const Locale('zh', 'CN'));
-                      SharedPreferenceUtil.setString(
-                          BilibiliSharedPreference.locale, 'zh');
-                    }
-                  },
-                  label: '切换语言',
-                  child: Icon(
-                    Icons.abc,
-                    size: 10.h,
-                  ),
-                ),
-                SpeedDialChild(
-                  backgroundColor: HYAppTheme.norWhite01Color,
-                  onTap: () {
-                    Get.toNamed(FeelYoungTestScreen.routeName);
-                  },
-                  label: '小窗口',
-                  child: Icon(
-                    Icons.desktop_windows_sharp,
-                    size: 10.h,
-                  ),
-                ),
-              ],
-            ),
                 )
-              : Scaffold(
-                  body: Center(
-                    child: SizedBox(
-                      width: 50.r,
-                      height: 50.r,
-                      child: const CircularProgressIndicator(),
-                    ),
-                  ),
-                ));
+             );
     });
   }
 
@@ -174,156 +166,45 @@ class MineScreen extends StatelessWidget {
   Widget buildMineContentBody() {
     int index = 0;
     List<Widget> widgets = [];
-    if (state.isLogin == true) {
-      for (var item in state.accountMineData.data.sectionsV2) {
-        ///广告B
-        if (index == 3 && state.accountMineData.data.liveTip != null) {
-          widgets.add(buildMineAdvertisingB());
-        }
-        if (item.items.length == 1) {
-          ///广告A
-          widgets.add(buildMineAdvertisingA(item));
-        } else {
-          ///按钮列表顶部的标题
-          item.title != null
-              ? widgets.add(
-                  buildMineTitleAndButton(
-                    item.title!,
-                    item.button.icon != null
-                        ? Container(
-                            decoration: BoxDecoration(
-                                color: HYAppTheme.norPink04Colors,
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(15.r),
-                                )),
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 12,
-                              vertical: 6,
-                            ).r,
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                DefaultFadeImage(
-                                  imageUrl: item.button.icon!,
-                                  width: 14.sp,
-                                  height: 14.sp,
-                                ),
-                                5.verticalSpace,
-                                Text(
-                                  item.button.text!,
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 12.sp,
-                                      fontWeight: FontWeight.normal,
-                                      fontFamily: 'feelYoung'),
-                                )
-                              ],
-                            ),
-                          )
-                        : Container(),
-                  ),
-                )
-              : Container();
 
-          ///最后一块采用垂直的排布（联系客服、听视频等）
-          if (index == state.accountMineData.data.sectionsV2.length - 1) {
-            widgets.add(
-              Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10).r,
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    15.verticalSpace,
-                    buildMineMoreServiceItem(
-                        item.items[0].icon, item.items[0].title),
-                    15.verticalSpace,
-                    buildMineMoreServiceItem(
-                        item.items[1].icon, item.items[1].title),
-                    15.verticalSpace,
-                    buildMineMoreServiceItem(
-                        item.items[2].icon, item.items[2].title),
-                    buildSettingButton(),
-                  ],
-                ),
-              ),
-            );
-          } else {
-            ///按钮列表
-            widgets.add(
-              Container(
-                padding: const EdgeInsets.symmetric(vertical: 15).r,
-                child: HYIconButtonRow(
-                  size: 20.sp,
-                  items: item.items,
-                ),
-              ),
-            );
-          }
-        }
-        index++;
-      }
-      return Container(
-        padding: const EdgeInsets.all(15).r,
-        color: Colors.white,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: widgets,
-        ),
-      );
-    } else {
-      ///未登录时
-      return Container(
-        padding: const EdgeInsets.all(15).r,
-        color: Colors.white,
-        child: Column(
-          children: [
-            // buildMineAdvertisingA(accountMineData.data.sectionsV2[0]),
-            // Container(
-            //   margin: const EdgeInsets.symmetric(vertical: 15).r,
-            //   child: HYIconButtonRow(
-            //     items: state.accountMineData.data.sectionsV2[0].items,
-            //     size: 20.sp,
-            //   ),
-            // ),
-            buildMineTitleAndButton(
-                state.accountMineData.data.sectionsV2[1].title!,
-                const Center()),
-            Container(
-              margin: const EdgeInsets.symmetric(vertical: 15).r,
-              child: HYIconButtonRow(
-                items: state.accountMineData.data.sectionsV2[1].items,
-                size: 20.sp,
-              ),
+    ///未登录时
+    return Container(
+      padding: const EdgeInsets.all(15).r,
+      color: Colors.white,
+      child: Column(
+        children: [
+          buildMineTitleAndButton("个人中心", const Center()),
+          Container(
+            margin: const EdgeInsets.symmetric(vertical: 15).r,
+            child: HYIconButtonRow(
+              items: state.mineItem,
+              size: 20.sp,
             ),
-            buildMineTitleAndButton(
-                state.accountMineData.data.sectionsV2[2].title!,
-                const Center()),
-            Container(
-              margin: const EdgeInsets.symmetric(horizontal: 10).r,
-              child: Column(
-                children: [
-                  Container(
-                    margin: const EdgeInsets.only(top: 15).r,
-                    child: buildMineMoreServiceItem(
-                        state.accountMineData.data.sectionsV2[2].items[0].icon,
-                        state
-                            .accountMineData.data.sectionsV2[2].items[0].title),
-                  ),
-                  Container(
-                    margin: const EdgeInsets.only(top: 15).r,
-                    child: buildMineMoreServiceItem(
-                        state.accountMineData.data.sectionsV2[2].items[1].icon,
-                        state
-                            .accountMineData.data.sectionsV2[2].items[1].title),
-                  ),
-                  buildSettingButton(),
-                ],
-              ),
+          ),
+          buildMineTitleAndButton("推荐", const Center()),
+          Container(
+            margin: const EdgeInsets.symmetric(horizontal: 10).r,
+            child: Column(
+              children: [
+                Container(
+                  margin: const EdgeInsets.only(top: 15).r,
+                  child: buildMineMoreServiceItem(
+                      "http://i0.hdslb.com/bfs/archive/aa3a13c287e4d54a62b75917dd9970a3cde472e1.png",
+                      "课程推荐"),
+                ),
+                Container(
+                  margin: const EdgeInsets.only(top: 15).r,
+                  child: buildMineMoreServiceItem(
+                      "http://i0.hdslb.com/bfs/archive/393dd15a4f0a149e016cd81b55bd8bd6fe40882c.png",
+                      "流量卡办理"),
+                ),
+                buildSettingButton(),
+              ],
             ),
-          ],
-        ),
-      );
-    }
+          ),
+        ],
+      ),
+    );
   }
 
   ///设置按钮
@@ -448,7 +329,7 @@ class MineScreen extends StatelessWidget {
       //
       // )),
       IconButton(
-          onPressed: () => print("dark_model"),
+          onPressed: () => logic.toggleTheme(),
           icon: Image.asset(
             ImageAssets.darkModelPNG,
             width: 18.sp,
@@ -636,14 +517,16 @@ class MineScreen extends StatelessWidget {
           );
   }
 
-  ///成为大会员
+  ///成为会员
   Widget buildMineAppBarFooter() {
     return Container(
+      margin: const EdgeInsets.only(bottom: 10),
       width: double.infinity,
       padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15).r,
       decoration: BoxDecoration(
         color: HYAppTheme.norWhite03Color,
-        borderRadius: BorderRadius.vertical(top: Radius.circular(4.r)),
+        borderRadius: BorderRadius.vertical(
+            top: Radius.circular(4.r), bottom: Radius.circular(4.r)),
         border: Border.all(color: HYAppTheme.norPink05Colors, width: .5.w),
       ),
       child: Stack(
@@ -652,12 +535,12 @@ class MineScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                state.accountMineData.data.vipSectionV2.title,
+                "加入我们，成为会员",
                 style: TextStyle(
                     color: HYAppTheme.norPink06Colors, fontSize: 16.sp),
               ),
               Text(
-                state.accountMineData.data.vipSectionV2.desc,
+                "了解更多权益",
                 style: TextStyle(
                     color: HYAppTheme.norPink06Colors, fontSize: 12.sp),
               )
@@ -679,17 +562,17 @@ class MineScreen extends StatelessWidget {
   }
 
   ///广告栏A
-  Widget buildMineAdvertisingA(SectionsV2 sectionsV2) {
-    return AdvertisingRow(
-      image: sectionsV2.items[0].commonOpItem!.titleIcon!,
-      title: sectionsV2.items[0].commonOpItem!.title!,
-      rightBtn: Icon(
-        Icons.close,
-        size: 20.sp,
-        color: HYAppTheme.norGrayColor,
-      ),
-    );
-  }
+  // Widget buildMineAdvertisingA(SectionsV2 sectionsV2) {
+  //   return AdvertisingRow(
+  //     image: sectionsV2.items[0].commonOpItem!.titleIcon!,
+  //     title: sectionsV2.items[0].commonOpItem!.title!,
+  //     rightBtn: Icon(
+  //       Icons.close,
+  //       size: 20.sp,
+  //       color: HYAppTheme.norGrayColor,
+  //     ),
+  //   );
+  // }
 
   ///广告栏B
   Widget buildMineAdvertisingB() {

@@ -41,6 +41,8 @@ class _LocalVideoComponentState extends State<LocalVideoComponent>
                   builder: (ctx, AsyncSnapshot<Uint8List?> snapshot) {
                     return GestureDetector(
                       onTap: () {
+                        print(index.toString() +
+                            "----------------------");
                         logic.go2PreEditScreen(index);
                       },
                       child: snapshot.data != null
@@ -83,10 +85,9 @@ class _LocalVideoComponentState extends State<LocalVideoComponent>
                               child: Text(
                                 "加载中",
                                 style: TextStyle(
-                                  color: HYAppTheme.norWhite01Color,
-                                  fontSize: 14.sp,
-                                  fontWeight: FontWeight.normal
-                                ),
+                                    color: HYAppTheme.norWhite01Color,
+                                    fontSize: 14.sp,
+                                    fontWeight: FontWeight.normal),
                               ),
                             ),
                     );
@@ -106,14 +107,15 @@ class _LocalVideoComponentState extends State<LocalVideoComponent>
 
   ///获取视频封面
   Future<Uint8List?> getVideoCover(path) async {
+    /// 生成缩略图图像数据
     Uint8List? uint8list = await VideoThumbnail.thumbnailData(
       video: path,
       imageFormat: ImageFormat.PNG,
       // maxWidth: 128,
-
       ///图片质量
       quality: 1,
     );
+    print(uint8list);
     return uint8list;
   }
 

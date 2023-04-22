@@ -23,22 +23,21 @@ class MainBinding extends Bindings {
   @override
   void dependencies() {
     Get.lazyPut(() => MainLogic());
-    // Get.lazyPut(() => PublishLogic());
-    // Get.lazyPut(() => MallLogic());
-    // Get.lazyPut(() => DynamicCircleLogic());
-    // Get.lazyPut(() => HomeLogic());
-    // Get.lazyPut(() => LoginLogic());
-    // Get.lazyPut(() => MineLogic());
-    // Get.lazyPut(() => ComicLogic());
-    // Get.lazyPut(() => RecommendLogic());
-    // Get.lazyPut(() => HotLogic());
-    // Get.lazyPut(() => LiveLogic());
-    // Get.lazyPut(() => SearchLogic());
-    // Get.lazyPut(() => UploadLogic());
-    // Get.lazyPut(() => VideoPlayLogic());
-    // Get.lazyPut(() => QqShareLogic());
-    // Get.lazyPut(() => BlueToothConnectionLogic());
-    // Get.lazyPut(() => AnimationCompoentLogic());
-    // Get.lazyPut(() => LivePlayLogic());
+    Get.lazyPut(() => PublishLogic());
+    Get.lazyPut(() => MallLogic());
+    Get.lazyPut(() => DynamicCircleLogic());
+    Get.lazyPut(() => HomeLogic());
+    Get.lazyPut(() => LoginLogic());
+    Get.lazyPut(() => MineLogic());
+    Get.lazyPut(() => ComicLogic());
+    Get.lazyPut(() => RecommendLogic());
+    Get.lazyPut(() => HotLogic());
+    Get.lazyPut(() => LiveLogic());
+    Get.lazyPut(() => SearchLogic());
+    Get.lazyPut(() => UploadLogic());
+    Get.lazyPut(() => VideoPlayLogic());
+    Get.lazyPut(() => QqShareLogic());
+    Get.lazyPut(() => AnimationCompoentLogic());
+    Get.lazyPut(() => LivePlayLogic());
   }
 }

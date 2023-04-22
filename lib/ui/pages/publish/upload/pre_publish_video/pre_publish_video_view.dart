@@ -305,7 +305,8 @@ class PrePublishVideoScreen extends StatelessWidget {
               borderRadius: BorderRadius.all(Radius.circular(5.r))),
           width: 150.w,
           height: 75.w,
-          child: Text("视频文件"),
+          child: Text("视频文件")
+          ,
         ),
         10.horizontalSpace,
         Expanded(
@@ -354,7 +355,7 @@ class PrePublishVideoScreen extends StatelessWidget {
                 ),
               ),
               Text(
-                SR.blibiliCreativePolicy.tr,
+                SR.FeelYoungCreativePolicy.tr,
                 style: TextStyle(
                   color: HYAppTheme.norMainThemeColors,
                   fontSize: 12.sp,
@@ -398,14 +399,14 @@ class PrePublishVideoScreen extends StatelessWidget {
               )
             ],
           ),
-          10.verticalSpace,
-          Text(
-            SR.prePublishDesc.tr,
-            style: TextStyle(
-              color: HYAppTheme.norGrayColor,
-              fontSize: 12.sp,
-            ),
-          )
+          // 10.verticalSpace,
+          // Text(
+          //   SR.prePublishDesc.tr,
+          //   style: TextStyle(
+          //     color: HYAppTheme.norGrayColor,
+          //     fontSize: 12.sp,
+          //   ),
+          // )
         ],
       ),
     );

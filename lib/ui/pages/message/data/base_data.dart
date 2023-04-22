@@ -3,7 +3,7 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 
 /// 创建时间：2022/11/2
-/// 作者：w2gd
+/// 作者：chl
 /// 描述：
 
 class BaseData {

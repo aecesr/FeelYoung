@@ -123,7 +123,7 @@ const strResEn = {
   SR.go2Publish: "next",
   SR.publishVideo: "publish video",
   SR.iHaveReadAndAccept: "I have read and accepted ",
-  SR.blibiliCreativePolicy: "《blibili Creative Policy》",
+  SR.FeelYoungCreativePolicy: "《blibili Creative Policy》",
   SR.saveScript: "save script",
   SR.publish: "publish",
   SR.prePublishDesc: "If there is an unofficial business cooperation, you need to go to the computer website to submit an article and file a business statement",

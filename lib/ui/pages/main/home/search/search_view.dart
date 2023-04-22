@@ -1,3 +1,4 @@
+import 'package:FeelYoung_getx/ui/pages/main/home/hot/hot_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -28,20 +29,17 @@ class _SearchScreenState extends State<SearchScreen>
   final logic = Get.find<SearchLogic>();
   final state = Get.find<SearchLogic>().state;
 
-  ///TabBar和subTabBar
-  late TabController _mainTabController;
+  ///TabBar
   late TabController _subTabController;
 
   @override
   void initState() {
-    _mainTabController = TabController(length: 6, vsync: this);
-    _subTabController = TabController(length: 4, vsync: this);
+    _subTabController = TabController(length: 5, vsync: this);
     super.initState();
   }
 
   @override
   void dispose() {
-    _mainTabController.dispose();
     _subTabController.dispose();
     super.dispose();
   }
@@ -221,7 +219,7 @@ class _SearchScreenState extends State<SearchScreen>
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          ///b站热搜
+          ///飞漾热搜
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -233,11 +231,16 @@ class _SearchScreenState extends State<SearchScreen>
                   fontSize: 14.sp,
                 ),
               ),
-              Text(
-                SR.entireRanking.tr,
-                style: TextStyle(
-                  color: HYAppTheme.norGrayColor,
-                  fontSize: 12.sp,
+              TextButton(
+                onPressed: () {
+                  Get.toNamed(HotScreen.routeName);
+                },
+                child: Text(
+                  SR.entireRanking.tr,
+                  style: TextStyle(
+                    color: HYAppTheme.norGrayColor,
+                    fontSize: 12.sp,
+                  ),
                 ),
               ),
             ],
@@ -306,46 +309,18 @@ class _SearchScreenState extends State<SearchScreen>
 
   ///搜索结果
   Widget buildSearchResult() {
-    List<Widget> mainTabs = [];
     List<Widget> subTabs = [];
     List<SearchResultDataItem> items = state.searchResult.data.item!;
 
-    mainTabs.add(Tab(text: SR.synthesis.tr, height: 30.h));
-    for (var item in state.searchResult.data.nav) {
-      String num = item.total > 99 ? "99+" : item.total.toString();
-      item.total > 0
-          ? mainTabs.add(Tab(text: "${item.name}($num)", height: 30.h))
-          : mainTabs.add(Tab(text: item.name, height: 30.h));
-    }
     subTabs.add(Tab(text: SR.defaultOrder.tr, height: 40.h));
     subTabs.add(Tab(text: SR.newestPublish.tr, height: 40.h));
     subTabs.add(Tab(text: SR.highVideoPlay.tr, height: 40.h));
     subTabs.add(Tab(text: SR.highDanmaku.tr, height: 40.h));
+    subTabs.add(Tab(text: SR.feelUser.tr, height: 40.h));
 
-    ///头部的（综合番剧用户直播影视）分类；（默认排序新发布播放多弹幕多）子分类
-    ///主分类
-    ///次分类
+    ///默认排序新发布播放多弹幕多子分类
+    ///分类
     List<Widget> staggeredGridChildren = [
-      TabBar(
-        tabs: mainTabs,
-        controller: _mainTabController,
-        indicatorColor: HYAppTheme.norMainThemeColors,
-        unselectedLabelColor: HYAppTheme.unselectedLabelColor,
-        labelColor: HYAppTheme.norMainThemeColors,
-        indicatorSize: TabBarIndicatorSize.label,
-        labelStyle: TextStyle(
-          fontSize: 16.sp,
-          fontWeight: FontWeight.normal,
-          fontFamily: 'feelYoung',
-        ),
-        unselectedLabelStyle: TextStyle(
-          fontSize: 16.sp,
-          fontWeight: FontWeight.normal,
-          fontFamily: 'feelYoung',
-        ),
-        indicatorWeight: 2.h,
-        isScrollable: true,
-      ),
       Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -372,31 +347,6 @@ class _SearchScreenState extends State<SearchScreen>
               labelPadding: EdgeInsets.zero,
             ),
           ),
-          Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Container(
-                width: 1.w,
-                height: 15.h,
-                color: HYAppTheme.norGrayColor.withOpacity(.5),
-              ),
-              Container(
-                padding: EdgeInsets.symmetric(horizontal: 10.r),
-                child: Text(
-                  SR.filter.tr,
-                  style: TextStyle(
-                      fontWeight: FontWeight.normal,
-                      color: HYAppTheme.norGrayColor,
-                      fontSize: 12.sp),
-                ),
-              ),
-              Image.asset(
-                ImageAssets.icFilterPNG,
-                width: 12.sp,
-                height: 12.sp,
-              ),
-            ],
-          )
         ],
       ),
     ];

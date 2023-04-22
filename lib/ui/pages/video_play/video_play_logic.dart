@@ -100,9 +100,9 @@ class VideoPlayLogic extends GetxController {
   void showOrHideDanMu() {
     state.danMuOpenOrClose = !state.danMuOpenOrClose;
     Get.lazyPut(() => FeelYoungVideoPlayerLogic());
-    FeelYoungVideoPlayerLogic bilibiliVideoPlayerLogic =
+    FeelYoungVideoPlayerLogic feelYoungVideoPlayerLogic =
         Get.find<FeelYoungVideoPlayerLogic>();
-    bilibiliVideoPlayerLogic.showOrHideDanMu(state.danMuOpenOrClose);
+    feelYoungVideoPlayerLogic.showOrHideDanMu(state.danMuOpenOrClose);
   }
 
   ///是否结束放映

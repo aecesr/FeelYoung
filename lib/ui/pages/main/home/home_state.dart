@@ -43,9 +43,9 @@ class HomeState {
 
     ///判断本地协议是否同意
     tempUserAgreement = SharedPreferenceUtil.getBool(
-        BilibiliSharedPreference.appUserAgreementPrivatePolicy)!;
+        FeelYoungSharedPreference.appUserAgreementPrivatePolicy)!;
     userLogo = "";
-    isLogin = SharedPreferenceUtil.getBool(BilibiliSharedPreference.isLogin)!;
+    isLogin = SharedPreferenceUtil.getBool(FeelYoungSharedPreference.isLogin)!;
     scrollController = ScrollController();
     appBarHeight = 0.08.sh;
     keyRecommend = GlobalKey<PrimaryScrollContainerState>();

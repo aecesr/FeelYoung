@@ -240,12 +240,12 @@ class LoginLogic extends GetxController {
               jsonDecode(value)["data"]["token_info"]["access_token"];
           String refreshToken =
               jsonDecode(value)["data"]["token_info"]["refresh_token"];
-          SharedPreferenceUtil.setBool(BilibiliSharedPreference.isLogin, true);
-          SharedPreferenceUtil.setInt(BilibiliSharedPreference.mid, mid);
+          SharedPreferenceUtil.setBool(FeelYoungSharedPreference.isLogin, true);
+          SharedPreferenceUtil.setInt(FeelYoungSharedPreference.mid, mid);
           SharedPreferenceUtil.setString(
-              BilibiliSharedPreference.accessToken, accessToken);
+              FeelYoungSharedPreference.accessToken, accessToken);
           SharedPreferenceUtil.setString(
-              BilibiliSharedPreference.refreshToken, refreshToken);
+              FeelYoungSharedPreference.refreshToken, refreshToken);
           Get.offAllNamed(HomeScreen.routeName);
         } else {
           String message = jsonDecode(value)["message"];

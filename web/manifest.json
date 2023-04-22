@@ -1,11 +1,11 @@
 {
-    "name": "FeelYoung_getx",
-    "short_name": "FeelYoung_getx",
+    "name": "FeelYoung",
+    "short_name": "FeelYoung",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "采用getx框架重新构造项目",
+    "description": "采用getx框架构造项目",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

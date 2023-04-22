@@ -4,6 +4,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../shared/shared_util.dart';
 
 class HYAppTheme {
+//  切换主题
+  static bool isTHeme = true;
+
   ///字体大小、颜色-共有属性
   // static double xxxSmallFontSize = 10.sp;
   // static double xxSmallFontSize = 12.sp;
@@ -93,6 +96,17 @@ class HYAppTheme {
     canvasColor: norWhite06Color,
     fontFamily: 'feelYoung',
   );
+  ///黑夜主题
+  static final ThemeData darkTheme = ThemeData(
+    primaryColor: norTextColors,
+    primarySwatch: createMaterialColor(norBlue01Colors),
+    textSelectionTheme: TextSelectionThemeData(
+        cursorColor: norBlue01Colors,
+        selectionColor: norYellow01Colors.withOpacity(.5)),
+    canvasColor: norTextColors,
+    fontFamily: 'feelYoung',
+  );
+
 
   ///暗黑模式
 // static const Color darkTextColors = Colors.green;

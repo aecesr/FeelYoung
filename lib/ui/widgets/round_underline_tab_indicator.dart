@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 ///tab底部的下划线
-class BilibiliRoundUnderlineTabIndicator extends Decoration {
-  BilibiliRoundUnderlineTabIndicator({
+class FeelYoungRoundUnderlineTabIndicator extends Decoration {
+  FeelYoungRoundUnderlineTabIndicator({
     required this.borderSide,
     this.insets = EdgeInsets.zero,
   })  : assert(borderSide != null),
@@ -61,7 +61,7 @@ class _UnderlinePainter extends BoxPainter {
       : assert(decoration != null),
         super(onChanged);
 
-  final BilibiliRoundUnderlineTabIndicator decoration;
+  final FeelYoungRoundUnderlineTabIndicator decoration;
 
   @override
   void paint(Canvas canvas, Offset offset, ImageConfiguration configuration) {

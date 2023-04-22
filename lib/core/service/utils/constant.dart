@@ -1,4 +1,4 @@
-import 'dart:ui';
+// import 'dart:ui';
 
 class Constant {
   ///手机端和桌面端
@@ -52,16 +52,16 @@ class Constant {
   static const String tencentAppId = "102026031";
 
   ///番剧榜单排行左上角的颜色顺序
-  static List<Color> rankColor = [
-    const Color.fromRGBO(252, 176, 38, 1),
-    const Color.fromRGBO(147, 176, 219, 1),
-    const Color.fromRGBO(236, 158, 145, 1),
-    const Color.fromRGBO(122, 134, 150, .9),
-    const Color.fromRGBO(122, 134, 150, .8),
-    const Color.fromRGBO(122, 134, 150, .7),
-    const Color.fromRGBO(122, 134, 150, .6),
-    const Color.fromRGBO(122, 134, 150, .5),
-    const Color.fromRGBO(122, 134, 150, .5),
-    const Color.fromRGBO(122, 134, 150, .5),
-  ];
+  // static List<Color> rankColor = [
+    // const Color.fromRGBO(252, 176, 38, 1),
+    // const Color.fromRGBO(147, 176, 219, 1),
+    // const Color.fromRGBO(236, 158, 145, 1),
+    // const Color.fromRGBO(122, 134, 150, .9),
+    // const Color.fromRGBO(122, 134, 150, .8),
+    // const Color.fromRGBO(122, 134, 150, .7),
+    // const Color.fromRGBO(122, 134, 150, .6),
+    // const Color.fromRGBO(122, 134, 150, .5),
+    // const Color.fromRGBO(122, 134, 150, .5),
+    // const Color.fromRGBO(122, 134, 150, .5),
+  // ];
 }

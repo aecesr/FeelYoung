@@ -109,7 +109,7 @@ class HomeLogic extends GetxController {
   initUserAgreement() {
     ///判断本地协议是否同意
     state.tempUserAgreement = SharedPreferenceUtil.getBool(
-        BilibiliSharedPreference.appUserAgreementPrivatePolicy)!;
+        FeelYoungSharedPreference.appUserAgreementPrivatePolicy)!;
     if (state.tempUserAgreement == false) {
       showUserAgreementDialog();
     }
@@ -222,7 +222,7 @@ class HomeLogic extends GetxController {
                     ///同意用户协议后，记录键值对
                     SmartDialog.dismiss();
                     SharedPreferenceUtil.setBool(
-                        BilibiliSharedPreference.appUserAgreementPrivatePolicy,
+                        FeelYoungSharedPreference.appUserAgreementPrivatePolicy,
                         true);
                     state.tempUserAgreement = true;
 
@@ -351,7 +351,7 @@ class HomeLogic extends GetxController {
   ///接受用户个人信息
   void initHomeUserInfo() {
     state.isLogin =
-        SharedPreferenceUtil.getBool(BilibiliSharedPreference.isLogin) ?? false;
+        SharedPreferenceUtil.getBool(FeelYoungSharedPreference.isLogin) ?? false;
 
     ///获取我的界面的数据
     Map<String, dynamic> params = {
@@ -372,7 +372,7 @@ class HomeLogic extends GetxController {
     ///如果已登录，则加上access_Key字段
     if (state.isLogin == true) {
       String? accessKey =
-          SharedPreferenceUtil.getString(BilibiliSharedPreference.accessToken);
+          SharedPreferenceUtil.getString(FeelYoungSharedPreference.accessToken);
       final accessKeyEntry = <String, dynamic>{'access_key': accessKey!};
       params.addEntries(accessKeyEntry.entries);
     }

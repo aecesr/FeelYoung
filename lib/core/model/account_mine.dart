@@ -346,57 +346,31 @@ class Button {
 
 class Item {
   Item({
-    required this.id,
     required this.title,
     required this.uri,
     required this.icon,
-    required this.needLogin,
-    required this.commonOpItem,
-    required this.globalRedDot,
-    required this.display,
-    required this.redDot,
-    required this.redDotForNew,
   });
 
-  int id;
+
   String title;
   String uri;
   String icon;
-  int? needLogin;
-  CommonOpItem? commonOpItem;
-  int? globalRedDot;
-  int? display;
-  int? redDot;
-  bool? redDotForNew;
+
 
   factory Item.fromJson(Map<String, dynamic> json) => Item(
-        id: json["id"],
+
         title: json["title"],
         uri: json["uri"],
         icon: json["icon"],
-        needLogin: json["need_login"] == null ? null : json["need_login"],
-        commonOpItem: json["common_op_item"] == null
-            ? null
-            : CommonOpItem.fromJson(json["common_op_item"]),
-        globalRedDot:
-            json["global_red_dot"] == null ? null : json["global_red_dot"],
-        display: json["display"] == null ? null : json["display"],
-        redDot: json["red_dot"] == null ? null : json["red_dot"],
-        redDotForNew:
-            json["red_dot_for_new"] == null ? null : json["red_dot_for_new"],
+
       );
 
   Map<String, dynamic> toJson() => {
-        "id": id,
+
         "title": title,
         "uri": uri,
         "icon": icon,
-        "need_login": needLogin == null ? null : needLogin,
-        "common_op_item": commonOpItem == null ? null : commonOpItem!.toJson(),
-        "global_red_dot": globalRedDot == null ? null : globalRedDot,
-        "display": display == null ? null : display,
-        "red_dot": redDot == null ? null : redDot,
-        "red_dot_for_new": redDotForNew == null ? null : redDotForNew,
+
       };
 }
 

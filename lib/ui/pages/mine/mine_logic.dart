@@ -1,4 +1,6 @@
 import 'package:FeelYoung_getx/ui/pages/main/home/home_logic.dart';
+import 'package:FeelYoung_getx/ui/shared/app_theme.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../core/model/account_mine.dart';
@@ -18,6 +20,7 @@ class MineLogic extends GetxController {
     super.onInit();
   }
 
+
   // @override
   // void onReady() {
   //   super.onReady();
@@ -32,7 +35,7 @@ class MineLogic extends GetxController {
   void fetchMineUserInfo(HYAccountMineModel accountMineData) {
     state.accountMineData = accountMineData;
     state.isLogin =
-        SharedPreferenceUtil.getBool(BilibiliSharedPreference.isLogin) ?? false;
+        SharedPreferenceUtil.getBool(FeelYoungSharedPreference.isLogin) ?? false;
     state.finishLoading = true;
     update();
   }
@@ -40,7 +43,7 @@ class MineLogic extends GetxController {
   ///获取用户数据
   void initMineUserInfo() {
     state.isLogin =
-        SharedPreferenceUtil.getBool(BilibiliSharedPreference.isLogin) ?? false;
+        SharedPreferenceUtil.getBool(FeelYoungSharedPreference.isLogin) ?? false;
 
     ///获取我的界面的数据
     Map<String, dynamic> params = {
@@ -61,7 +64,7 @@ class MineLogic extends GetxController {
     ///如果已登录，则加上access_Key字段
     if (state.isLogin == true) {
       String? accessKey =
-          SharedPreferenceUtil.getString(BilibiliSharedPreference.accessToken);
+          SharedPreferenceUtil.getString(FeelYoungSharedPreference.accessToken);
       final accessKeyEntry = <String, dynamic>{'access_key': accessKey!};
       params.addEntries(accessKeyEntry.entries);
     }
@@ -74,5 +77,20 @@ class MineLogic extends GetxController {
       state.finishLoading = true;
       update();
     });
+  }
+
+  setTheme() {
+    print("更换主题");
+
+    print(HYAppTheme.isTHeme);
+    update();
+
+  }
+  // 在你的控制器中使用updateTheme()方法来切换主题
+  void toggleTheme() {
+    HYAppTheme.isTHeme = !HYAppTheme.isTHeme;
+    Get.changeTheme(
+      HYAppTheme.isTHeme ? HYAppTheme.norTheme : HYAppTheme.darkTheme,
+    );
   }
 }

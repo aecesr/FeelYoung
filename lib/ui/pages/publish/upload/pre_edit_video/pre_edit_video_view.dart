@@ -24,27 +24,27 @@ class _PreEditVideoScreenState extends State<PreEditVideoScreen> {
 
     return SafeArea(
       child: Scaffold(
-        // appBar: AppBar(
-        //   elevation: .1,
-        //   title: Text(
-        //     "编辑视频",
-        //     style: TextStyle(
-        //         fontSize: 14.sp,
-        //         color: HYAppTheme.norWhite01Color,
-        //         fontWeight: FontWeight.normal,
-        //         fontFamily: 'bilibiliFonts'),
-        //   ),
-        //   backgroundColor: HYAppTheme.norTextColors,
-        //   leading: GestureDetector(
-        //     onTap: () {
-        //       Get.back();
-        //     },
-        //     child: const Icon(
-        //       Icons.arrow_back,
-        //       color: HYAppTheme.norWhite01Color,
-        //     ),
-        //   ),
-        // ),
+        appBar: AppBar(
+          elevation: .1,
+          title: Text(
+            "预览视频",
+            style: TextStyle(
+                fontSize: 14.sp,
+                color: HYAppTheme.norWhite01Color,
+                fontWeight: FontWeight.normal,
+                fontFamily: 'feelYoungFonts'),
+          ),
+          backgroundColor: HYAppTheme.norTextColors,
+          leading: GestureDetector(
+            onTap: () {
+              Get.back();
+            },
+            child: const Icon(
+              Icons.arrow_back,
+              color: HYAppTheme.norWhite01Color,
+            ),
+          ),
+        ),
         body: FeelYoungVideoPlayerComponent(),
 
         ///压扁的floatingActionButton

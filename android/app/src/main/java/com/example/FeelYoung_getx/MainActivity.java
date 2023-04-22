@@ -116,8 +116,10 @@ public class MainActivity extends FlutterActivity {
                 arguments.put(count, bodyData);
 
                 count++;
-                if (count > 11) break;
+//                if (count > 11) break;
+
             }
+            cursor.close();
         }
         return arguments;
     }
@@ -165,8 +167,9 @@ public class MainActivity extends FlutterActivity {
                 arguments.put(count, bodyData);
 
                 count++;
-                if (count > 11) break;
+//                if (count > 11) break;
             }
+            cursor.close();
         }
         return arguments;
     }

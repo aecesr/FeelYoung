@@ -92,6 +92,7 @@ const strResZh = {
   SR.newestPublish: "新发布",
   SR.highVideoPlay: "播放多",
   SR.highDanmaku: "弹幕多",
+  SR.feelUser: "用户",
   SR.searchSomething: "搜索视频、电视剧或视频主",
 
   ///主页界面
@@ -111,7 +112,9 @@ const strResZh = {
   SR.shareDynamic: "发动态",
   SR.templateAuthoring: "模板创作",
   SR.video: "视频",
+  SR.localVideo: "本地视频",
   SR.photo: "照片",
+  SR.localPhoto: "本地照片",
   SR.file: "文件夹",
   SR.editVideo: "编辑视频",
   SR.script: "草稿",
@@ -120,7 +123,7 @@ const strResZh = {
   SR.go2Publish: "去发布",
   SR.publishVideo: "发布视频",
   SR.iHaveReadAndAccept: "我已经阅读并接受",
-  SR.blibiliCreativePolicy: "《飞漾视频创作公约》",
+  SR.FeelYoungCreativePolicy: "《飞漾视频创作公约》",
   SR.saveScript: "存草稿",
   SR.publish: "发布",
   SR.prePublishDesc: "若存在非官方商业合作，需前往电脑网页端投稿并进行商业声明报备",

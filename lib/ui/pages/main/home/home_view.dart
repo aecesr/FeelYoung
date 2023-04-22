@@ -73,7 +73,7 @@ class _HomeScreenState extends State<HomeScreen>
                 pinned: true,
                 floating: false,
                 snap: false,
-                backgroundColor: HYAppTheme.norWhite01Color,
+                backgroundColor: Theme.of(context).primaryColor,
                 elevation: 0,
               ),
             ];
@@ -92,7 +92,7 @@ class _HomeScreenState extends State<HomeScreen>
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 15.r),
       width: 1.sw,
-      color: HYAppTheme.norWhite01Color,
+      color:Theme.of(context).primaryColor,
       height: state.appBarHeight,
       child: Row(
         children: [

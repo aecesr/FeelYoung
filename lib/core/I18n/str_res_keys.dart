@@ -89,6 +89,7 @@ class SR {
   static const newestPublish = "newestPublish";
   static const highVideoPlay = "highVideoPlay";
   static const highDanmaku = "highDanmaku";
+  static const feelUser = "feelUser";
   static const searchSomething = "search videos, drama or up...";
 
   ///主页
@@ -108,6 +109,8 @@ class SR {
   static const shareDynamic = "shareDynamic";
   static const templateAuthoring = "templateAuthoring";
   static const video = "video";
+  static const localVideo = "localVideo";
+  static const localPhoto = "localPhoto";
   static const photo = "photo";
   static const file = "file";
   static const editVideo = "editVideo";
@@ -117,7 +120,7 @@ class SR {
   static const go2Publish = "go2Publish";
   static const publishVideo = "publishVideo";
   static const iHaveReadAndAccept = "iHaveReadAndAccept";
-  static const blibiliCreativePolicy = "blibiliCreativePolicy";
+  static const FeelYoungCreativePolicy = "feelYoungCreativePolicy";
   static const saveScript = "saveScript";
   static const publish = "publish";
   static const prePublishDesc = "prePublishDesc";

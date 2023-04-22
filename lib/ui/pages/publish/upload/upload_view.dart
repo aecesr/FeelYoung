@@ -104,7 +104,7 @@ class _UploadViewState extends State<UploadView> with TickerProviderStateMixin {
       child: TabBar(
         controller: state.mainTabController,
         labelColor: HYAppTheme.norWhite01Color,
-        indicator: BilibiliRoundUnderlineTabIndicator(
+        indicator: FeelYoungRoundUnderlineTabIndicator(
             insets: EdgeInsets.symmetric(horizontal: 25.r),
             borderSide:
                 BorderSide(width: 4.sp, color: HYAppTheme.norWhite01Color)),
@@ -151,7 +151,7 @@ class _UploadViewState extends State<UploadView> with TickerProviderStateMixin {
       child: TabBar(
         controller: state.subTabController,
         labelColor: HYAppTheme.norWhite01Color,
-        indicator: BilibiliRoundUnderlineTabIndicator(
+        indicator: FeelYoungRoundUnderlineTabIndicator(
             borderSide: BorderSide(
                 width: 2.sp,
                 color: HYAppTheme.norWhite01Color.withOpacity(.5))),
@@ -164,8 +164,8 @@ class _UploadViewState extends State<UploadView> with TickerProviderStateMixin {
         ),
         tabs: [
           Tab(text: SR.all.tr),
-          Tab(text: SR.video.tr),
-          Tab(text: SR.photo.tr),
+          Tab(text: SR.localVideo.tr),
+          Tab(text: SR.localPhoto.tr),
         ],
       ),
     );

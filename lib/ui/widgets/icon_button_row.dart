@@ -19,7 +19,7 @@ class _HYIconButtonRowState extends State<HYIconButtonRow> {
   Widget build(BuildContext context) {
     List<Widget> widgets = [];
     for (var item in widget.items) {
-      widgets.add(buildIconButton(context, item.icon, item.title, item.uri));
+      widgets.add(buildIconButton(context, item.icon, item.title));
     }
     return Wrap(
       runAlignment: WrapAlignment.spaceAround,
@@ -29,11 +29,10 @@ class _HYIconButtonRowState extends State<HYIconButtonRow> {
   }
 
   Widget buildIconButton(
-      BuildContext context, String icon, String text, String realRoute) {
+      BuildContext context, String icon, String text) {
     return GestureDetector(
       onTap: () {
-        print(realRoute);
-        // Navigator.of(context).pushNamed(realRoute);
+
       },
       child: SizedBox(
         width: 80.w,

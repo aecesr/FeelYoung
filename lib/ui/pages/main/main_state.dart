@@ -16,7 +16,9 @@ class MainState {
   ///主页界面子页面
   late List<Widget> mainIndexStackPages;
 
+  late bool showAdd;
   MainState() {
+    showAdd = true;
     currentIndex = 0;
     mainIndexStackPages = [
       HomeScreen(),

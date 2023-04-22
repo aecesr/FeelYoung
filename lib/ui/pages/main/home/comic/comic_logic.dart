@@ -193,14 +193,14 @@ class ComicLogic extends GetxController {
                               ),
                             ),
                           ),
-                          Positioned(
-                            left: 0,
-                            top: 0,
-                            child: RankNo(
-                              text: (index + 1).toString(),
-                              color: Constant.rankColor[index],
-                            ),
-                          ),
+                          // Positioned(
+                          //   left: 0,
+                          //   top: 0,
+                          //   child: RankNo(
+                          //     text: (index + 1).toString(),
+                          //     // color: Constant.rankColor[index],
+                          //   ),
+                          // ),
                           Positioned(
                             right: 5.r,
                             bottom: 5.r,

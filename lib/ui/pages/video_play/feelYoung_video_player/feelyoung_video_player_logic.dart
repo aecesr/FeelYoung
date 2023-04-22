@@ -214,6 +214,7 @@ class FeelYoungVideoPlayerLogic extends GetxController {
     ///总共弹幕包数
     state.danMuPackageNum =
         state.videoPlayerController.value.duration.inMinutes ~/ 6 + 1;
+    /// 请求弹幕数据
     HYDanMuRequest.getDanMuProtoData(state.oid, 1).then((value) {
       ///发送时间做排序排序
       value.sort((left, right) => left.progress.compareTo(right.progress));
@@ -703,4 +704,5 @@ class FeelYoungVideoPlayerLogic extends GetxController {
   void openDownloadFile(taskId) {
     FlutterDownloader.open(taskId: taskId);
   }
+
 }
