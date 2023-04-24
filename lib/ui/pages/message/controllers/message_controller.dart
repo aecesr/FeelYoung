@@ -9,8 +9,6 @@ import 'package:flutter_plugin_record/flutter_plugin_record.dart';
 import 'package:get/get.dart';
 import 'package:leancloud_official_plugin/leancloud_plugin.dart';
 
-
-
 class MessageController extends GetxController {
   /// 创建一个 Client
   Client me = Client(id: '${SpUtil.getString('userId')}');
@@ -33,7 +31,7 @@ class MessageController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    // getContacts(); // 获取通讯录
+    getContacts(); // 获取通讯录
   }
 
   @override
@@ -166,6 +164,17 @@ class MessageController extends GetxController {
 
   // todo:获取 Authing 用户池列表
   Future<bool> getContacts() async {
+    contactsMap["0"] =
+        ContactModel(id: "12", phone: "123412", photo: "https://chl-bucket.oss-cn-hangzhou.aliyuncs.com/avatar/head-6.jpg", name: "张三");
+    contactsMap["1"] =
+        ContactModel(id: "11112", phone: "123412", photo: "https://chl-bucket.oss-cn-hangzhou.aliyuncs.com/avatar/head-7.jpg", name: "李四");
+    contactsMap["2"] =
+        ContactModel(id: "11112", phone: "123412", photo: "https://chl-bucket.oss-cn-hangzhou.aliyuncs.com/avatar/head-7.jpg", name: "王五");
+    contactsMap["3"] =
+        ContactModel(id: "11112", phone: "123412", photo: "https://chl-bucket.oss-cn-hangzhou.aliyuncs.com/avatar/head-7.jpg", name: "赵六");
+    contactsMap["4"] =
+        ContactModel(id: "11112", phone: "123412", photo: "https://chl-bucket.oss-cn-hangzhou.aliyuncs.com/avatar/head-7.jpg", name: "韩七");
+    print(contactsMap);
     Map? map = SpUtil.getObject('contactList');
     if (map != null) {
       LogUtil.v('从本地读取联系人');
@@ -176,9 +185,9 @@ class MessageController extends GetxController {
       return true;
     } else {
       Map<String, dynamic> params = {"page": 1, "limit": 50};
-      List res =[]
-      // await request.get('/users/userlist', params: params)
-      ;
+      List res = []
+          // await request.get('/users/userlist', params: params)
+          ;
       res.forEach((e) {
         ContactModel contact = ContactModel.fromJson(e);
         contactsMap['${contact.id}'] = contact;

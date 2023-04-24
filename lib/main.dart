@@ -15,6 +15,7 @@ import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
+import 'package:leancloud_storage/leancloud.dart';
 import 'core/I18n/string_res.dart';
 import 'core/shared_preferences/feelYoung_shared_preference.dart';
 import 'core/shared_preferences/shared_preference_util.dart';
@@ -42,6 +43,13 @@ void main() async {
     await WorkManagerUtil.initialize();
     await initialization();
   }
+  /// LeanCloud 初始化
+  LeanCloud.initialize(
+    'DtL8wv4T5fXStZXc3Vu8b1Ov-gzGzoHsz',
+    'AcSQcHf3pkFPCDKQP27CSWwu',
+    server: 'https://niit.w2gd.top',
+    queryCache: new LCQueryCache(),
+  );
   runApp(const MyApp());
 }
 

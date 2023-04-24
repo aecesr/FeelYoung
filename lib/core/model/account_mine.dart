@@ -349,28 +349,26 @@ class Item {
     required this.title,
     required this.uri,
     required this.icon,
+    required this.ontab,
   });
-
 
   String title;
   String uri;
   String icon;
-
+  Function ontab;
 
   factory Item.fromJson(Map<String, dynamic> json) => Item(
-
         title: json["title"],
         uri: json["uri"],
         icon: json["icon"],
-
+        ontab: json["ontab"],
       );
 
   Map<String, dynamic> toJson() => {
-
         "title": title,
         "uri": uri,
         "icon": icon,
-
+        "ontab": ontab,
       };
 }
 

@@ -20,7 +20,6 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return GetBuilder<LoginLogic>(builder: (logic) {
       return Scaffold(
         appBar: AppBar(
@@ -314,7 +313,7 @@ class LoginScreen extends StatelessWidget {
             child: Row(
               children: [
                 Expanded(
-                  flex:1,
+                  flex: 1,
                   child: Container(
                     alignment: Alignment.centerLeft,
                     width: 45.w,
@@ -688,7 +687,7 @@ class LoginScreen extends StatelessWidget {
                           logic.userNameAndPasswordLogin({
                             "username": state.userNameText,
                             "password": state.passwordText,
-                            "code": state.verifyInt,
+                            "code": state.verifyInt.toString(),
                             "uuid": state.UUID
                           });
                         }

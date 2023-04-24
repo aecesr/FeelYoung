@@ -1,5 +1,6 @@
 import 'package:FeelYoung_getx/ui/pages/main/home/hot/hot_binding.dart';
 import 'package:FeelYoung_getx/ui/pages/main/home/hot/hot_view.dart';
+import 'package:FeelYoung_getx/ui/pages/message/views/message_page.dart';
 import 'package:FeelYoung_getx/ui/pages/start/start_binding.dart';
 import 'package:FeelYoung_getx/ui/pages/start/start_view.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
@@ -19,6 +20,9 @@ import '../../ui/pages/main/home/recommend/recommend_binding.dart';
 import '../../ui/pages/main/home/recommend/recommend_view.dart';
 import '../../ui/pages/mall/mall_binding.dart';
 import '../../ui/pages/mall/mall_view.dart';
+import '../../ui/pages/message/bindings/message_binding.dart';
+import '../../ui/pages/mine/personal/bindings/setting_binding.dart';
+import '../../ui/pages/mine/personal/views/setting_view.dart';
 import '../../ui/pages/mine/scan_login/scan_login_binding.dart';
 import '../../ui/pages/publish/publish_binding.dart';
 import '../../ui/pages/publish/publish_view.dart';
@@ -78,6 +82,18 @@ class AsRouter {
       binding: MainBinding(),
     ),
 
+    ///设置界面
+    GetPage(
+      name: SettingView.routeName,
+      page: () => SettingView(),
+      binding: SettingBinding(),
+    ),
+    ///消息界面
+    GetPage(
+      name: MessagesPage.routeName,
+      page: () => MessagesPage(),
+      binding: MessageBinding(),
+    ),
     ///会员界面
     GetPage(
         name: MallScreen.routeName,

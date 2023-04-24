@@ -12,22 +12,22 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:leancloud_official_plugin/leancloud_plugin.dart';
 
-
-
 import 'chat_view.dart';
 
 class MessagesPage extends GetView<MessageController> {
+  static const String routeName = "/messages";
   const MessagesPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
+      shrinkWrap: true,
       slivers: [
-        // const SliverToBoxAdapter(child: _Stories()),
+        const SliverToBoxAdapter(child: _Stories()),
         // Obx(() {
           // return SliverList(
-            // delegate: SliverChildBuilderDelegate(
               // _delegate,
+
               // childCount: controller.conversationList.length,
             // ),
           // );
@@ -37,26 +37,27 @@ class MessagesPage extends GetView<MessageController> {
   }
 
   /// 会话列表
-  // Widget _delegate(BuildContext context, int index) {
-  //   Conversation conv = controller.conversationList[index];
-  //   UserModel? myInfo = SpUtil.getObj("user", (v) => UserModel.fromJson(v as Map<String, dynamic>));
-  //   String? title = conv.name?.replaceAll("${myInfo?.name}", "");
-  //   return ConversationTitle(
-  //     conversation: conv,
-  //     callback: () {
-  //       controller.currentConv = conv;
-  //       Get.to(
-  //         () => ChatView(
-  //           conversation: conv,
-  //           titleName: '$title',
-  //         ),
-  //         binding: ChatBinding(),
-  //       )?.then((value) {
-  //         controller.updateConversationList();
-  //       });
-  //     },
-  //   );
-  // }
+  Widget _delegate(BuildContext context, int index) {
+    // Conversation conv = controller.conversationList[index];
+    // UserModel? myInfo = SpUtil.getObj("user", (v) => UserModel.fromJson(v as Map<String, dynamic>));
+    // String? title = conv.name?.replaceAll("${myInfo?.name}", "");
+    return Container();
+    //   ConversationTitle(
+    //   conversation: conv,
+    //   callback: () {
+    //     controller.currentConv = conv;
+    //     Get.to(
+    //       () => ChatView(
+    //         conversation: conv,
+    //         titleName: '$title',
+    //       ),
+    //       binding: ChatBinding(),
+    //     )?.then((value) {
+    //       controller.updateConversationList();
+    //     });
+    //   },
+    // );
+  }
 }
 
 /// 顶部好友列表
@@ -75,7 +76,7 @@ class _Stories extends GetView<MessageController> {
             Padding(
               padding: EdgeInsets.only(left: 16.w, top: 4.h, bottom: 7.h),
               child: Text(
-                '联系人',
+                '我的关注',
                 style: TextStyle(
                   fontWeight: FontWeight.w900,
                   fontSize: 15.sp,
@@ -88,7 +89,8 @@ class _Stories extends GetView<MessageController> {
                   scrollDirection: Axis.horizontal,
                   itemCount: controller.contactsMap.length,
                   itemBuilder: (BuildContext context, int index) {
-                    ContactModel contact = controller.contactsMap.values.elementAt(index);
+                    ContactModel contact =
+                        controller.contactsMap.values.elementAt(index);
                     return Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: SizedBox(
@@ -97,11 +99,14 @@ class _Stories extends GetView<MessageController> {
                           /// 点击与他发起聊天
                           onTap: () {
                             controller
-                                .createConversation('${contact.id}', '${contact.name}')
+                                .createConversation(
+                                    '${contact.id}', '${contact.name}')
                                 .then((conv) {
                               controller.currentConv = conv;
                               Get.to(
-                                () => ChatView(titleName: '${contact.name}', conversation: conv),
+                                () => ChatView(
+                                    titleName: '${contact.name}',
+                                    conversation: conv),
                                 binding: ChatBinding(),
                               )?.then((value) {
                                 /// 更新会话列表

@@ -1,3 +1,5 @@
+import 'package:FeelYoung_getx/core/model/android/home/pgc_page_bangumi_model.dart';
+import 'package:FeelYoung_getx/ui/pages/main/home/model/reult_model.dart';
 import 'package:dio/dio.dart';
 
 import '../../../ui/shared/params_sign.dart';
@@ -31,7 +33,6 @@ class HYLoginRequest {
     final result = await HttpBaseRequest.request("login", url,
         params: postBody,
         method: 'POST',
-        contentType: 'UTF-8',
         responseType: ResponseType.plain);
     return result.toString();
   }
@@ -57,9 +58,10 @@ class HYLoginRequest {
   }
 
   ///获取用户的头像、粉丝、关注等基本信息
-  static Future<HYAccountMineModel> getAccountMineData(params) async {
-    String url = "/x/v2/account/mine?${ParamsSign.paramsSerialization(params)}";
-    final result = await HttpBaseRequest.request("app", url);
-    return HYAccountMineModel.fromJson(result);
+  static Future<ResultModel> getAccountMineData() async {
+    String url = "/system/user/getInfo";
+    final result = await HttpBaseRequest.request("login", url);
+     ResultModel userResult = ResultModel.fromJson(result);
+    return userResult;
   }
 }

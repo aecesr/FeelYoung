@@ -40,6 +40,7 @@ dependencies:
   dio: ^4.0.6 #网络请求
   protobuf: ^2.1.0 #proto
   encrypt: ^5.0.1 #加密
+  json2dart_safe: #数据转换
   shelf: ^1.4.0 #跨域
   shelf_proxy: ^1.0.2 #跨域
   webview_flutter: ^3.0.4 #显示网页
@@ -83,9 +84,9 @@ dependencies:
   rive: ^0.9.1 #精致的rive动画
   #  fluwx: ^3.11.0 #微信第三方接入
   fluwx_no_pay: ^3.12.2 #微信第三方接入(没有支付)
-  tencent_kit: ^4.0.0 #QQ第三方接入
-  json_annotation: ^4.5.0 #json默认值
-  json_serializable: ^6.5.4 #json序列化？
+  tencent_kit:  #QQ第三方接入
+  json_annotation: ^4.0.1  #json默认值
+  json_serializable: ^4.1.4 #json序列化？
   flutter_cache_manager: ^3.3.0 #缓存图片
 #  flutter_blue: ^0.8.0 #蓝牙
   qr_flutter: ^4.0.0 #生成二维码
@@ -97,6 +98,8 @@ dependencies:
   workmanager: ^0.5.1 #workmanager
 #  lifecycle_lite: ^0.0.3 #监听页面生命周期
   leancloud_official_plugin: ^1.0.1 #实时聊天
+  # 数据存储
+  leancloud_storage: ^0.7.10
 #  images_picker: ^1.2.11 #图片选择器
 ##  flutter_plugin_record: any # 录音插件
   flutter_plugin_record:

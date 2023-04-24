@@ -132,12 +132,6 @@ class _HomeScreenState extends State<HomeScreen>
             ),
           ),
           15.horizontalSpace,
-          //  游戏
-          // Image.asset(
-          //   ImageAssets.gameCustomPNG,
-          //   width: 18.sp,
-          //   height: 18.sp,
-          // ),
           15.horizontalSpace,
           GestureDetector(
             onTap: () {
@@ -162,23 +156,20 @@ class _HomeScreenState extends State<HomeScreen>
         Tab(text: SR.live.tr.toUpperCase()),
         Tab(text: SR.recommend.tr.toUpperCase()),
         Tab(text: SR.hot.tr.toUpperCase()),
-        // Tab(text: SR.comic.tr.toUpperCase()),
-        // Tab(text: SR.movie.tr.toUpperCase()),
-        // Tab(text: SR.covid.tr.toUpperCase()),
-        // Tab(text: SR.journey.tr.toUpperCase()),
       ],
       indicatorColor: HYAppTheme.norMainThemeColors,
       unselectedLabelColor: HYAppTheme.unselectedLabelColor,
       labelColor: HYAppTheme.norMainThemeColors,
       indicatorSize: TabBarIndicatorSize.label,
       labelStyle: TextStyle(
-        fontSize: 18.sp,
+        fontSize: 30.sp,
         fontWeight: FontWeight.normal,
         color: HYAppTheme.norMainThemeColors,
         fontFamily: 'feelYoung',
       ),
+
       unselectedLabelStyle: TextStyle(
-        fontSize: 16.sp,
+        fontSize: 28.sp,
         fontWeight: FontWeight.normal,
         color: HYAppTheme.norTextColors,
         fontFamily: 'feelYoung',
@@ -233,13 +224,13 @@ class _HomeScreenState extends State<HomeScreen>
   ///圆形图标（登录图标
   Widget buildHomeUserIcon() {
     return Container(
-      child: state.userLogo.isEmpty
+      child: !state.isLogin
           ? buildHomeUnLoginUserIcon()
           : GestureDetector(
               onTap: () {
                 ///点击已登录头像，更新mainScreen的底部导航栏下标
                 final logic = Get.find<MainLogic>();
-                logic.updateCurrentIndex(4);
+                logic.updateCurrentIndex(2);
               },
               child: CircleAvatar(
                 backgroundImage: NetworkImage(state.userLogo),

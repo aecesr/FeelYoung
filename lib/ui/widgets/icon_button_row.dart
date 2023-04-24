@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 import '../../core/model/account_mine.dart';
+import '../../core/permission/feelyoung_permission.dart';
+import '../pages/publish/publish_view.dart';
 import '../shared/app_theme.dart';
 
 class HYIconButtonRow extends StatefulWidget {
@@ -19,7 +22,7 @@ class _HYIconButtonRowState extends State<HYIconButtonRow> {
   Widget build(BuildContext context) {
     List<Widget> widgets = [];
     for (var item in widget.items) {
-      widgets.add(buildIconButton(context, item.icon, item.title));
+      widgets.add(buildIconButton(context, item.icon, item.title, item.ontab));
     }
     return Wrap(
       runAlignment: WrapAlignment.spaceAround,
@@ -29,10 +32,10 @@ class _HYIconButtonRowState extends State<HYIconButtonRow> {
   }
 
   Widget buildIconButton(
-      BuildContext context, String icon, String text) {
+      BuildContext context, String icon, String text, Function ontab) {
     return GestureDetector(
       onTap: () {
-
+        ontab();
       },
       child: SizedBox(
         width: 80.w,
@@ -48,9 +51,8 @@ class _HYIconButtonRowState extends State<HYIconButtonRow> {
             10.verticalSpace,
             Text(
               text,
-              style: TextStyle(
-                  fontSize: 12.sp,
-                  color: HYAppTheme.norGray04Color),
+              style:
+                  TextStyle(fontSize: 12.sp, color: HYAppTheme.norGray04Color),
             )
           ],
         ),

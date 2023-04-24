@@ -8,6 +8,7 @@ import 'package:FeelYoung_getx/ui/pages/functions/wx_share/wx_share_view.dart';
 import 'package:FeelYoung_getx/ui/pages/main/home/login/login_view.dart';
 import 'package:FeelYoung_getx/ui/pages/main/home/search/search_view.dart';
 import 'package:FeelYoung_getx/ui/pages/main/main_logic.dart';
+import 'package:FeelYoung_getx/ui/pages/mine/personal/views/setting_view.dart';
 import 'package:FeelYoung_getx/ui/pages/mine/scan_login/scan_login_view.dart';
 import 'package:FeelYoung_getx/ui/widgets/fade_image_default.dart';
 import 'package:flutter/material.dart';
@@ -212,7 +213,7 @@ class MineScreen extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         ///跳转至设置界面
-        // Get.toNamed(HYSettingScreen.routeName);
+        Get.toNamed(SettingView.routeName);
       },
       child: Container(
         margin: const EdgeInsets.only(top: 15).r,
@@ -345,18 +346,20 @@ class MineScreen extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         buildUserInfo(
+          // 消息
             state.isLogin == false
                 ? "—"
-                : state.accountMineData.data.dataDynamic.toString(),
+                : "33",
             SR.message),
         Stack(
           alignment: AlignmentDirectional.center,
           children: [
             Container(
+              // 关注
               child: buildUserInfo(
                   state.isLogin == false
                       ? "—"
-                      : state.accountMineData.data.following.toString(),
+                      : "22",
                   SR.follower),
             ),
             Container(
@@ -368,9 +371,10 @@ class MineScreen extends StatelessWidget {
           ],
         ),
         buildUserInfo(
+          // 粉丝
             state.isLogin == false
                 ? "—"
-                : state.accountMineData.data.follower.toString(),
+                : "33",
             SR.fan),
       ],
     );
@@ -393,6 +397,7 @@ class MineScreen extends StatelessWidget {
   }
 
   Widget buildMineUserInfoRow() {
+    print(state.isLogin);
     return state.isLogin == true
         ? Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -402,7 +407,7 @@ class MineScreen extends StatelessWidget {
                 width: 50.r,
                 child: CircleAvatar(
                   backgroundImage:
-                      NetworkImage(state.accountMineData.data.face),
+                      NetworkImage(state.accountMineData!.avatar ?? ""),
                 ),
               ),
               20.horizontalSpace,
@@ -416,13 +421,14 @@ class MineScreen extends StatelessWidget {
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             Text(
-                              state.accountMineData.data.name,
+                              state.accountMineData!.nickName ?? "",
                               style: TextStyle(
                                   color: HYAppTheme.norTextColors,
                                   fontSize: 18.sp),
                             ),
                             5.horizontalSpace,
-                            UserLevel(level: state.accountMineData.data.level)
+                            // 等级
+                            UserLevel(level: 4)
                           ],
                         ),
                         5.verticalSpace,
@@ -444,7 +450,7 @@ class MineScreen extends StatelessWidget {
                         ),
                         5.verticalSpace,
                         Text(
-                          "${SR.bCoin.tr}: ${state.accountMineData.data.bcoin}   ${SR.coin.tr}: ${state.accountMineData.data.coin}",
+                          "${SR.bCoin.tr}: ${20}   ${SR.coin.tr}: ${30}",
                           style: TextStyle(
                               color: HYAppTheme.norGrayColor, fontSize: 12.sp),
                         )
@@ -575,31 +581,31 @@ class MineScreen extends StatelessWidget {
   // }
 
   ///广告栏B
-  Widget buildMineAdvertisingB() {
-    return AdvertisingRow(
-      image: state.accountMineData.data.liveTip!.icon,
-      title: state.accountMineData.data.liveTip!.text,
-      rightBtn: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Text(
-            state.accountMineData.data.liveTip!.buttonText,
-            style: TextStyle(
-              color: HYAppTheme.norMainThemeColors,
-              fontSize: 12.sp,
-            ),
-          ),
-          state.accountMineData.data.liveTip!.buttonIcon.isEmpty
-              ? Container()
-              : DefaultFadeImage(
-                  imageUrl: state.accountMineData.data.liveTip!.buttonIcon,
-                  width: 12.sp,
-                  height: 12.sp,
-                )
-        ],
-      ),
-    );
-  }
+  // Widget buildMineAdvertisingB() {
+  //   return AdvertisingRow(
+  //     image: state.accountMineData.data.liveTip!.icon,
+  //     title: state.accountMineData.data.liveTip!.text,
+  //     rightBtn: Row(
+  //       mainAxisSize: MainAxisSize.min,
+  //       children: [
+  //         Text(
+  //           state.accountMineData.data.liveTip!.buttonText,
+  //           style: TextStyle(
+  //             color: HYAppTheme.norMainThemeColors,
+  //             fontSize: 12.sp,
+  //           ),
+  //         ),
+  //         state.accountMineData.data.liveTip!.buttonIcon.isEmpty
+  //             ? Container()
+  //             : DefaultFadeImage(
+  //                 imageUrl: state.accountMineData.data.liveTip!.buttonIcon,
+  //                 width: 12.sp,
+  //                 height: 12.sp,
+  //               )
+  //       ],
+  //     ),
+  //   );
+  // }
 
   Widget buildMineTitleAndButton(String title, Widget button) {
     return Container(

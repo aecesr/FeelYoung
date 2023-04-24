@@ -4,6 +4,7 @@ import 'package:dio/adapter.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 
+import '../../shared_preferences/shared_preference_util.dart';
 import 'constant.dart';
 
 String ua =
@@ -16,14 +17,12 @@ String uaWeb =
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.102 Safari/537.36 Edg/104.0.1293.63";
 
 class HttpBaseRequest {
-  ///请求utf8的数据
-  static Map<String, dynamic> utf8Headers = {
-    HttpHeaders.contentTypeHeader: 'multipart/form-data',
-  };
+
 
   ///请求json数据
   static Map<String, dynamic> jsonHeaders = {
     HttpHeaders.acceptHeader: 'application/json,*/*',
+    HttpHeaders.authorizationHeader:SharedPreferenceUtil.getString("token"),
     HttpHeaders.contentTypeHeader: 'application/json',
     HttpHeaders.userAgentHeader: ua,
     HttpHeaders.cookieHeader:
@@ -112,9 +111,6 @@ class HttpBaseRequest {
       } else if (contentType == 'PROTO') {
         ///弹幕
         httpHeaders = protoHeaders;
-      } else if (contentType == 'UTF-8') {
-        ///登录
-        httpHeaders = utf8Headers;
       } else {
         httpHeaders = jsonHeaders;
       }

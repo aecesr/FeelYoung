@@ -1,11 +1,15 @@
 import 'dart:convert';
+import 'dart:math';
 
 import 'package:FeelYoung_getx/ui/pages/main/home/home_view.dart';
 import 'package:FeelYoung_getx/ui/pages/main/home/recommend/recommend_view.dart';
+import 'package:FeelYoung_getx/ui/pages/main/main_logic.dart';
 import 'package:FeelYoung_getx/ui/pages/main/main_view.dart';
+import 'package:FeelYoung_getx/ui/pages/mine/mine_view.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_instance/src/extension_instance.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import '../../../../../core/service/request/login_request.dart';
@@ -48,7 +52,7 @@ class LoginLogic extends GetxController {
   ///监听用户名称输入
   updateUserName(String text) {
     state.userNameText = text;
-    print( state.userNameText);
+    print(state.userNameText);
     // update();
   }
 
@@ -129,9 +133,10 @@ class LoginLogic extends GetxController {
     HYLoginRequest.getVerify().then((value) {
       print("触发请求验证码接口");
       state.verifyImg = jsonDecode(value)["img"];
-      print(value);
+      print(state.verifyImg);
       state.UUID = jsonDecode(value)["uuid"];
       print(state.UUID);
+      update();
     });
   }
 
@@ -257,13 +262,19 @@ class LoginLogic extends GetxController {
 
   ///账号密码登录（目前还是会跳转到短信验证）
   void userNameAndPasswordLogin(postBody) {
+
     HYLoginRequest.passwordLogin(postBody).then((value) {
-
-    print(value);
-
-    if (jsonDecode(value)["code"]==200) {
-        Get.toNamed(HomeScreen.routeName);
-    }
+      print(value);
+      final mainState = Get.find<MainLogic>().state;
+      final mainLogic = Get.find<MainLogic>();
+      if (jsonDecode(value)["code"] == 200) {
+        SharedPreferenceUtil.setBool("is_login", true);
+        print(jsonDecode(value)["data"]["access_token"]);
+        SharedPreferenceUtil.setString("token", jsonDecode(value)["data"]["access_token"]);
+        mainState.currentIndex = 2;
+        mainLogic.getUserInfo();
+        Get.to(MainScreen());
+      }
     });
     // HYLoginRequest.getPassportLogin().then((value) {
     //   HYEncrypt.encryption(value.hashKeyData.hash + state.passwordText,
@@ -321,6 +332,5 @@ class LoginLogic extends GetxController {
 
   void setVerify() {
     getVerify();
-    update();
   }
 }

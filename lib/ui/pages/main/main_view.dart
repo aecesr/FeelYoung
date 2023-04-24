@@ -78,35 +78,6 @@ class MainScreen extends StatelessWidget {
                 // }
               },
             ),
-            // floatingActionButton: state.showAdd
-            //     ? Opacity(
-            //         opacity: 0.5,
-            //         child: MaterialButton(
-            //           padding: const EdgeInsets.only(right: 0),
-            //           onPressed: () {
-            //             FeelYoungPermission.requestUploadPermissions();
-            //             Get.toNamed(PublishScreen.routeName);
-            //           },
-            //           child: Container(
-            //             margin: EdgeInsets.only(top: 8.h),
-            //             padding: const EdgeInsets.symmetric(
-            //                     vertical: 12, horizontal: 15)
-            //                 .r,
-            //             decoration: BoxDecoration(
-            //               color: HYAppTheme.norMainThemeColors,
-            //               borderRadius: BorderRadius.all(
-            //                 Radius.circular(8.r),
-            //               ),
-            //             ),
-            //             child: Image.asset(
-            //               ImageAssets.addCustomPNG,
-            //               width: 16.sp,
-            //               height: 16.sp,
-            //             ),
-            //           ),
-            //         ),
-            //       )
-            //     : Container(),
           ),
         );
       },

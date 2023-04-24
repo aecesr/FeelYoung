@@ -29,7 +29,7 @@ class HomeLogic extends GetxController {
 
   @override
   void onInit() {
-    initHomeUserInfo();
+    // initHomeUserInfo();
     super.onInit();
   }
 
@@ -145,8 +145,8 @@ class HomeLogic extends GetxController {
                   height: 130.h,
                   padding: EdgeInsets.zero,
                   child: BilibiliScroll(
-                    scrollBar: buildBilibiliScrollBar(),
-                    child: buildBilibiliScrollChild(),
+                    scrollBar: buildFeelYoungScrollBar(),
+                    child: buildFeelYoungScrollChild(),
                   ),
                 ),
                 8.verticalSpace,
@@ -227,14 +227,14 @@ class HomeLogic extends GetxController {
                     state.tempUserAgreement = true;
 
                     ///青少年模式弹框
-                  //   state.tempTeenagerMode = SharedPreferenceUtil.getBool(
-                  //       BilibiliSharedPreference.teenagerMode)!;
-                  //   if (state.tempTeenagerMode == false) {
-                  //     Future.delayed(const Duration(seconds: 1), () {
-                  //       showTeenagerModeDialog();
-                  //     });
-                  //   }
-                  //   update();
+                    //   state.tempTeenagerMode = SharedPreferenceUtil.getBool(
+                    //       BilibiliSharedPreference.teenagerMode)!;
+                    //   if (state.tempTeenagerMode == false) {
+                    //     Future.delayed(const Duration(seconds: 1), () {
+                    //       showTeenagerModeDialog();
+                    //     });
+                    //   }
+                    //   update();
                   },
                   child: Container(
                     color: HYAppTheme.norMainThemeColors,
@@ -255,7 +255,7 @@ class HomeLogic extends GetxController {
     );
   }
 
-  Widget buildBilibiliScrollBar() {
+  Widget buildFeelYoungScrollBar() {
     return Container(
       margin: EdgeInsets.only(right: 2.r, top: 2.r, bottom: 2.r),
       decoration: BoxDecoration(
@@ -267,7 +267,7 @@ class HomeLogic extends GetxController {
     );
   }
 
-  Widget buildBilibiliScrollChild() {
+  Widget buildFeelYoungScrollChild() {
     return ListView(
       padding: EdgeInsets.zero,
       children: [
@@ -349,41 +349,40 @@ class HomeLogic extends GetxController {
   // }
 
   ///接受用户个人信息
-  void initHomeUserInfo() {
+  void initHomeUserInfo(value) {
     state.isLogin =
-        SharedPreferenceUtil.getBool(FeelYoungSharedPreference.isLogin) ?? false;
+        SharedPreferenceUtil.getBool(FeelYoungSharedPreference.isLogin) ??
+            false;
+    state.userLogo = value;
+    //
+    // ///获取我的界面的数据
+    // Map<String, dynamic> params = {
+    //   'appkey': Constant.appKey,
+    //   'build': '6720300',
+    //   'mobi_app': 'android',
+    //   'platform': 'android',
+    //   'bili_link_new': '1',
+    //   'c_locale': 'zh_CN',
+    //   'channel': 'html5_search_baidu',
+    //   'disable_rcmd': '0',
+    //   's_locale': 'zh_CN',
+    //   'statistics':
+    //       '%7B%22appId%22%3A1%2C%22platform%22%3A3%2C%22version%22%3A%226.72.0%22%2C%22abtest%22%3A%22%22%7D',
+    //   'ts': '1659073412'
+    // };
+    //
+    // ///如果已登录，则加上access_Key字段
+    // if (state.isLogin == true) {
+    //   String? accessKey =
+    //       SharedPreferenceUtil.getString(FeelYoungSharedPreference.accessToken);
+    //   final accessKeyEntry = <String, dynamic>{'access_key': accessKey!};
+    //   params.addEntries(accessKeyEntry.entries);
+    // }
+    //
+    // ///加上sign字段
+    // final signEntry = <String, dynamic>{'sign': ParamsSign.getSign(params)};
+    // params.addEntries(signEntry.entries);
 
-    ///获取我的界面的数据
-    Map<String, dynamic> params = {
-      'appkey': Constant.appKey,
-      'build': '6720300',
-      'mobi_app': 'android',
-      'platform': 'android',
-      'bili_link_new': '1',
-      'c_locale': 'zh_CN',
-      'channel': 'html5_search_baidu',
-      'disable_rcmd': '0',
-      's_locale': 'zh_CN',
-      'statistics':
-          '%7B%22appId%22%3A1%2C%22platform%22%3A3%2C%22version%22%3A%226.72.0%22%2C%22abtest%22%3A%22%22%7D',
-      'ts': '1659073412'
-    };
-
-    ///如果已登录，则加上access_Key字段
-    if (state.isLogin == true) {
-      String? accessKey =
-          SharedPreferenceUtil.getString(FeelYoungSharedPreference.accessToken);
-      final accessKeyEntry = <String, dynamic>{'access_key': accessKey!};
-      params.addEntries(accessKeyEntry.entries);
-    }
-
-    ///加上sign字段
-    final signEntry = <String, dynamic>{'sign': ParamsSign.getSign(params)};
-    params.addEntries(signEntry.entries);
-    HYLoginRequest.getAccountMineData(params).then((value) {
-      state.userLogo = value.data.face;
-      update();
-    });
   }
 
   ///获取SliverAppBar的位置
